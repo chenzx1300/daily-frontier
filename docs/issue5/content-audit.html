@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Content Audit · 2026-09-13 · Issue №5</title>
+<style>
+  :root {
+    --bg: #faf7f2; --ink: #1a1815; --muted: #8a8275; --line: #d8d1c1;
+    --good: #047857; --bad: #991b1b; --warn: #b45309;
+  }
+  body { font: 14px/1.55 Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); margin:0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 40px 80px; }
+  h1 { font: 700 28px/1.1 Georgia, serif; margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+  .summary { display: flex; gap: 14px; margin: 20px 0 28px; flex-wrap: wrap; }
+  .pill { font: 11px/1 Inter; letter-spacing: .1em; text-transform: uppercase;
+          padding: 6px 10px; border: 1px solid var(--line); border-radius: 2px; }
+  .pill.good { background: rgba(4,120,87,.08); color: var(--good); border-color: var(--good); }
+  .pill.bad { background: rgba(153,27,27,.08); color: var(--bad); border-color: var(--bad); }
+  .pill.warn { background: rgba(180,83,9,.08); color: var(--warn); border-color: var(--warn); }
+  table { width:100%; border-collapse: collapse; }
+  th { text-align: left; font: 600 11px/1 Inter; letter-spacing: .14em; text-transform: uppercase;
+       color: var(--muted); border-bottom: 2px solid var(--ink); padding: 8px 10px; }
+  td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr.row--unreachable td, tr.row--blocked td, tr.row--redirect td,
+  tr.row--mismatch td, tr.row--no-url td, tr.row--payload-fail td,
+  tr.row--low-sim td { background: rgba(153,27,27,.04); }
+  .status { font: 600 10px/1 Inter; letter-spacing: .12em; text-transform: uppercase;
+             padding: 4px 6px; border-radius: 2px; border: 1px solid currentColor; }
+  .status--match        { color: var(--good); }
+  .status--mismatch, .status--unreachable, .status--blocked,
+  .status--redirect, .status--no-url, .status--payload-fail
+                         { color: var(--bad); }
+  .status--low-sim      { color: var(--warn); }
+  .sec { font: 600 10px/1 JetBrains Mono, monospace; letter-spacing: .12em;
+         text-transform: uppercase; color: var(--muted); }
+  .title { font-weight: 600; line-height: 1.35; margin-bottom: 4px; }
+  .url { font: 11px/1.4 JetBrains Mono, monospace; color: var(--ink-soft);
+         text-decoration: none; word-break: break-all; }
+  .url:hover { text-decoration: underline; }
+  .reason { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .verdict { font: 600 11px/1 Inter; letter-spacing: .1em; text-transform: uppercase;
+              color: var(--warn); margin-left: 8px; }
+  .sim { font: 12px JetBrains Mono, monospace; color: var(--ink-soft); white-space: nowrap; }
+  .muted { color: var(--muted); font-size: 11px; margin-top: 4px; }
+  footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line);
+            color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Content Audit</h1>
+  <div class="meta">2026-09-13 · Issue №5 · 23 items checked</div>
+  <div class="summary">
+    <span class="pill good">9 match</span>
+    <span class="pill warn">14 low_sim</span>
+    <span class="pill bad">0 mismatch</span>
+    <span class="pill bad">0 unreachable</span>
+    <span class="pill bad">0 blocked</span>
+    <span class="pill bad">0 redirect</span>
+    <span class="pill bad">0 payload_fail</span>
+    <span class="pill bad">0 no_url</span>
+    <span class="pill">overall = 0.39</span>
+  </div>
+  <table>
+    <thead><tr>
+      <th>Status</th><th>Section</th><th>Item</th><th>Similarity</th>
+    </tr></thead>
+    <tbody>
+      
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">2026外滩大会闭幕：50余项科技成果首发首展， 80多个产业合作达成意向</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/2AopCWDkpGmBAL9L.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/2AopCWDkpGmBAL9L.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.60 · s=0.32</div>
+    <div class="muted">2026外滩大会闭幕：50余项科技成果首发首展， 80多个产业合作达成意向 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">从完成任务到自主发现，Agent后训练寻找下一个Scaling Law</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/e7IcZ05CQ6HtNZZ2.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/e7IcZ05CQ6HtNZZ2.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.85 · s=0.52</div>
+    <div class="muted">从完成任务到自主发现，Agent后训练寻找下一个Scaling Law | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">外滩大会三问具身智能： 模型、数据、生态如何突围？</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/7lsrguW2f4twY8wp.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/7lsrguW2f4twY8wp.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.88 · s=0.35</div>
+    <div class="muted">外滩大会三问具身智能： 模型、数据、生态如何突围？ | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">AI能否自主做研究？听听这些专家怎么说</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/Xlz0dFtywcRmmVfB.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/Xlz0dFtywcRmmVfB.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.82 · s=0.48</div>
+    <div class="muted">AI能否自主做研究？听听这些专家怎么说 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">从一台车出发到三百城，九识成为城市治理的「运力底座」</div>
+    <a class="url" href="https://www.leiphone.com/category/transportation/JXhS5Joxp68qFEmE.html" target="_blank" rel="noopener">https://www.leiphone.com/category/transportation/JXhS5Joxp68qFEmE.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.91 · s=0.00</div>
+    <div class="muted">从一台车出发到三百城，九识成为城市治理的「运力底座」 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">突破舱驾融合瓶颈，德赛西威给出「双优」新解法</div>
+    <a class="url" href="https://www.leiphone.com/category/transportation/cgxm7O53FRlftYwO.html" target="_blank" rel="noopener">https://www.leiphone.com/category/transportation/cgxm7O53FRlftYwO.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.88 · s=0.00</div>
+    <div class="muted">突破舱驾融合瓶颈，德赛西威给出「双优」新解法 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">不堆 Transformer，斯坦福吴佳俊如何用物理重新定义多模态融合？｜ECCV 2026</div>
+    <a class="url" href="https://www.leiphone.com/category/private/rSWX8JI9JPPBvt0j.html" target="_blank" rel="noopener">https://www.leiphone.com/category/private/rSWX8JI9JPPBvt0j.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.92 · s=0.00</div>
+    <div class="muted">不堆 Transformer，斯坦福吴佳俊如何用物理重新定义多模态融合？｜ECCV 2026 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">从“GPASS”到“灵影”，蚂蚁为AI终端铺设Agent基础设施</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/XOOL34t59O0TvCAQ.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/XOOL34t59O0TvCAQ.html</a>
+    <div class="reason">title_sim=0.50 (need ≥ 0.55); summary_sim=0.00 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.86</div>
+  </td>
+  <td class="sim">
+    <div>t=0.50 · s=0.00</div>
+    <div class="muted">从“GPASS”到“灵影”，蚂蚁为AI终端铺设Agent基础设施 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">从加油到高速服务，动口不动手：蚂蚁阿宝三大车载AI能力亮相2026外滩大会</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/JNsgMV0H4k0FbeXy.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/JNsgMV0H4k0FbeXy.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.86 · s=0.09</div>
+    <div class="muted">从加油到高速服务，动口不动手：蚂蚁阿宝三大车载AI能力亮相2026外滩大会 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">AGIBOT Releases GE</div>
+    <a class="url" href="https://www.agibot.com/article/231/detail/120.html" target="_blank" rel="noopener">https://www.agibot.com/article/231/detail/120.html</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;agibot&#x27;] cross-lang signals: strong=1 [&#x27;agibot&#x27;], slug=0.00, entity=0.22</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">AGIBOT Releases GE-AGIBOT Innovation (Shanghai) Technology Co., Ltd.</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">AI新经济走向真实商业，蚂蚁APASS构建Agent信任基础设施</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/gVe8AKc2ibKGewUO.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/gVe8AKc2ibKGewUO.html</a>
+    <div class="reason">title_sim=0.50 (need ≥ 0.55); summary_sim=0.11 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.86</div>
+  </td>
+  <td class="sim">
+    <div>t=0.50 · s=0.12</div>
+    <div class="muted">AI新经济走向真实商业，蚂蚁APASS构建Agent信任基础设施 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">让智能体自主探索而不越界，蚂蚁密算开源可信原生智能体HOP 3.0</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/3lj2fGLhrOPKY8OJ.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/3lj2fGLhrOPKY8OJ.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.86 · s=0.41</div>
+    <div class="muted">让智能体自主探索而不越界，蚂蚁密算开源可信原生智能体HOP 3.0 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">外滩大会观察：AI进入产业，数据正在成为新动能</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/A1m4SqClWZQDhIoO.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/A1m4SqClWZQDhIoO.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.88 · s=0.05</div>
+    <div class="muted">外滩大会观察：AI进入产业，数据正在成为新动能 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">2026服贸会期间 七国政要议员体验萝卜快跑 “取经”中国绿色出行新质生产力</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/Xp2MImq51mcwHJlL.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/Xp2MImq51mcwHJlL.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.92 · s=0.51</div>
+    <div class="muted">2026服贸会期间 七国政要议员体验萝卜快跑 “取经”中国绿色出行新质生产力 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">0团队、1台电脑、全球70国用户，外滩大会见证个人造风者登场</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/Elgap4KyV9VEWLce.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/Elgap4KyV9VEWLce.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.88 · s=0.32</div>
+    <div class="muted">0团队、1台电脑、全球70国用户，外滩大会见证个人造风者登场 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">师生激辩外滩大会：云谷学校论坛给出一份“教育AI使用说明书”</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/0i0LRe3Ohg0FXYk1.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/0i0LRe3Ohg0FXYk1.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.90 · s=0.40</div>
+    <div class="muted">师生激辩外滩大会：云谷学校论坛给出一份“教育AI使用说明书” | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">外滩大会蚂蚁集团吴敏芝谈AI时代组织价值：个体越强，组织越要回答凭什么留住人才</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/1kiVmZKNSYhfRDdS.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/1kiVmZKNSYhfRDdS.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.89 · s=0.30</div>
+    <div class="muted">外滩大会蚂蚁集团吴敏芝谈AI时代组织价值：个体越强，组织越要回答凭什么留住人才 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">AI重塑支付：从工具到生态，一场关于价值重估的产业对话</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/XVMBHPxkYkYLjpvy.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/XVMBHPxkYkYLjpvy.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.90 · s=0.60</div>
+    <div class="muted">AI重塑支付：从工具到生态，一场关于价值重估的产业对话 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">支付宝携手多方共建“一碰通行”生态联盟，推动智慧出行体验全面升级</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/ybhEq0EjaXTkYCGM.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/ybhEq0EjaXTkYCGM.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.93 · s=0.06</div>
+    <div class="muted">支付宝携手多方共建“一碰通行”生态联盟，推动智慧出行体验全面升级 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">半世纪前的AI画作到AI歌手线下开唱，2026外滩大会AI艺术节勾勒人机共创新图景</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/9kc5LWEjsnYINmQO.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/9kc5LWEjsnYINmQO.html</a>
+    <div class="reason">title_sim=0.50 (need ≥ 0.55); summary_sim=0.09 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.86</div>
+  </td>
+  <td class="sim">
+    <div>t=0.50 · s=0.09</div>
+    <div class="muted">半世纪前的AI画作到AI歌手线下开唱，2026外滩大会AI艺术节勾勒人机共创新图景 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">闲鱼反诈重拳出击：联手警方抓获涉诈人员40余人</div>
+    <a class="url" href="https://www.leiphone.com/category/industrynews/JOCrsWfvSRLatm7i.html" target="_blank" rel="noopener">https://www.leiphone.com/category/industrynews/JOCrsWfvSRLatm7i.html</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=0.80 · s=0.46</div>
+    <div class="muted">闲鱼反诈重拳出击：联手警方抓获涉诈人员40余人 | 雷峰网</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">v1.4.1</div>
+    <a class="url" href="https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.4.1" target="_blank" rel="noopener">https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.4.1</a>
+    <div class="reason">title_sim=0.00 (need ≥ 0.55); summary_sim=0.73 (need ≥ 0.35) cross-lang signals: strong=1 [&#x27;v1&#x27;], slug=0.00, entity=0.33</div>
+  </td>
+  <td class="sim">
+    <div>t=0.00 · s=0.73</div>
+    <div class="muted">Release v1.4.1 · Genesis-Embodied-AI/genesis-world</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">sponsors/asgeirtj</div>
+    <a class="url" href="https://github.com/sponsors/asgeirtj" target="_blank" rel="noopener">https://github.com/sponsors/asgeirtj</a>
+    <div class="reason">title_sim=0.50 (need ≥ 0.55); summary_sim=0.00 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.50 · s=0.00</div>
+    <div class="muted">Sponsor @asgeirtj on GitHub Sponsors</div>
+  </td>
+</tr>
+    </tbody>
+  </table>
+  <footer>
+    Generated by <code>lib/verify.py</code>. 14 items flagged.
+    <br>Error: none
+  </footer>
+</div>
+</body>
+</html>

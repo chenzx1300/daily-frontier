@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Frontier · Issue №4 · 2026-09-09</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── Journal palette (Nature/Science-inspired) ───────────── */
+      --paper:        #faf7f2;     /* warm cream */
+      --paper-deep:   #f0ebe1;
+      --paper-shade:  #ece5d6;
+      --ink:          #1a1815;
+      --ink-soft:     #3a3530;
+      --muted:        #8a8275;
+      --rule:         #1a1815;     /* heavy ink rule */
+      --line:         #d8d1c1;
+      --line-soft:    #e8e2d3;
+
+      /* brand — Nature-style crimson */
+      --brand:        #9b1c1f;
+      --brand-dark:   #7c1517;
+      --brand-tint:   rgba(155, 28, 31, 0.06);
+
+      /* section accents */
+      --companies:    #1f5fa3;     /* deep blue */
+      --papers:       #6b3fa0;     /* deep purple */
+      --tools:        #1e7a51;     /* deep green */
+
+      /* tier colors */
+      --tier-breaking: #9b1c1f;
+      --tier-major:    #b45309;
+      --tier-notable:  #1a1815;
+      --tier-mention:  #8a8275;
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
+    body {
+      font: 16px/1.62 "Source Serif 4", Georgia, "Source Han Serif SC",
+            "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei", serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* ═══ TOP SKU STRIP ════════════════════════════════════════ */
+    .sku-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sku-strip .left  { font-weight: 600 }
+    .sku-strip .right { display: flex; gap: 18px }
+    .sku-strip .right span strong { color: var(--ink); font-weight: 700; margin-left: 4px }
+
+    /* ═══ MASTHEAD ══════════════════════════════════════════════ */
+    .masthead {
+      padding: 28px 0 22px;
+      border-bottom: 4px double var(--rule);
+      text-align: center;
+    }
+    .masthead .name {
+      font-family: "Fraunces", "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144;
+      margin: 0;
+    }
+    .masthead .name em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .masthead .sub {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .masthead .meta {
+      margin-top: 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      align-items: center;
+    }
+    .masthead .meta strong { color: var(--brand); font-weight: 700 }
+    .masthead .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ TOC / TAB NAV ═════════════════════════════════════════ */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+      padding: 0;
+    }
+    .toc-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 24px 16px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      text-align: left;
+      transition: background .15s ease;
+      color: var(--ink-soft);
+    }
+    .toc-item:last-child { border-right: none }
+    .toc-item:hover { background: var(--paper-deep) }
+    .toc-item.active { background: var(--brand-tint) }
+    .toc-item .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .toc-item.active .roman { color: var(--brand) }
+    .toc-item .label {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .toc-item .meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ═══ SECTION PANELS ════════════════════════════════════════ */
+    .panel {
+      display: none;
+      padding-top: 36px;
+      border-top: 3px solid var(--line);
+      margin-top: 28px;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .panel.companies { border-top-color: var(--companies) }
+    .panel.papers    { border-top-color: var(--papers) }
+    .panel.tools     { border-top-color: var(--tools) }
+    .panel.active { display: block }
+    .panel-empty {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    /* ═══ SECTION HEADING ═══════════════════════════════════════ */
+    .section-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: end;
+      gap: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section-head .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 0.85;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+    }
+    .section-head .title {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .section-head .title em { font-style: italic; font-weight: 700; color: var(--brand); }
+    .section-head .meta {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    .section-head .meta strong { color: var(--ink); font-weight: 700 }
+
+    /* ═══ ARTICLE TYPE LABEL (used by lead + cards) ═════════════ */
+    .article-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .article-type .type { color: var(--brand); }
+    .article-type .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .article-type .tier-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      border-radius: 1px;
+      font-weight: 800;
+    }
+    .article-type .tier-tag.tier-breaking {
+      background: var(--tier-breaking); color: var(--paper); border: 1px solid var(--tier-breaking);
+    }
+    .article-type .tier-tag.tier-major {
+      background: transparent; color: var(--tier-major);
+      border: 1px solid var(--tier-major);
+    }
+    .article-type .tier-tag.tier-notable {
+      background: transparent; color: var(--tier-notable);
+      border: 1px solid var(--line);
+    }
+    .article-type .tier-tag.tier-mention {
+      background: transparent; color: var(--tier-mention);
+      border: 1px solid var(--line-soft);
+    }
+
+    /* ═══ LEAD STORY ════════════════════════════════════════════ */
+    .lead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 36px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lead h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      font-variation-settings: "opsz" 144;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .lead h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--brand) }
+    .lead .deck {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 60ch;
+      font-variation-settings: "opsz" 60;
+    }
+    /* Abstract blockquote — left red border, italic serif, indented */
+    .lead .abstract {
+      margin: 4px 0 0;
+      padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--brand);
+      font-family: "Source Serif 4", "Fraunces", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 64ch;
+    }
+    .lead .abstract strong { color: var(--ink); font-weight: 700 }
+    .lead .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .lead .byline strong { color: var(--ink-soft); font-weight: 700 }
+    .lead .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .lead .read {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .lead .read::before { content: "→ "; margin-right: 4px }
+
+    /* verify badge — shown when lead is flagged */
+    .verify-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+    }
+    .verify-badge.match  { color: var(--tools); background: rgba(30,122,81,.06) }
+    .verify-badge.flag   { color: var(--brand); background: var(--brand-tint) }
+    .verify-badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    }
+
+    /* ═══ CARD GRID ══════════════════════════════════════════════ */
+    .grid {
+      display: grid;
+      /* minmax(0, 1fr) lets columns shrink below min-content so a wide title
+         doesn't push the panel beyond the wrap (papers/tools had this bug). */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 32px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 0 22px;
+      border-top: 1px solid var(--ink);
+    }
+    .card .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+    .card .kicker strong { color: var(--brand); font-weight: 800 }
+    .card h3 {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
+      margin: 0;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px }
+    .card .deck {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .card .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ COMPANY GROUPS (sub-headers inside the news panel) ══════ */
+    .company-group {
+      margin-top: 32px;
+    }
+    .company-group:first-of-type { margin-top: 0 }
+    .company-group-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 0 0 10px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+    }
+    .company-group-head .dot-accent {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--companies);
+      display: inline-block;
+      flex: none;
+      transform: translateY(1px);
+    }
+    .company-group-head .name {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .company-group-head .count {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* ═══ BRIEF LIST (tools — DEPRECATED; kept responsive fallback) ═ */
+    .brief-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 40px;
+    }
+    .brief {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 18px 0 18px;
+      border-top: 1px solid var(--ink);
+    }
+    .brief .cat {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--brand);
+      align-self: start;
+      padding-top: 4px;
+    }
+
+    /* ═══ TOOL CARD (same width as companies/papers cards) ══════ */
+    .card .repo {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin: -2px 0 2px;
+    }
+    .cat-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      font-family: "Inter", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 2px;
+      color: var(--paper);
+      background: var(--tools);
+      border: 1px solid var(--tools);
+    }
+    .cat-tag.cat-foundation-model { background: #1f5fa3; border-color: #1f5fa3 }
+    .cat-tag.cat-learning         { background: #1e7a51; border-color: #1e7a51 }
+    .cat-tag.cat-policy           { background: #6b3fa0; border-color: #6b3fa0 }
+    .cat-tag.cat-benchmark        { background: #b45309; border-color: #b45309 }
+    .cat-tag.cat-release          { background: var(--ink); border-color: var(--ink) }
+
+    /* ═══ FOOTER ═════════════════════════════════════════════════ */
+    footer {
+      margin-top: 64px;
+      padding: 28px 0 16px;
+      border-top: 4px double var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer .left  {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink-soft);
+    }
+    footer .right { display: flex; gap: 18px }
+    footer .right a { color: var(--ink-soft) }
+    footer .right a:hover { color: var(--brand) }
+
+    /* ═══ AUDIT STRIP ════════════════════════════════════════════ */
+    .audit-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--paper-shade);
+      border-left: 3px solid var(--brand);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+    .audit-strip strong { color: var(--ink); font-weight: 700 }
+    .audit-strip .pills { display: flex; gap: 10px }
+    .audit-strip .pill {
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+    }
+    .audit-strip .pill.good  { color: var(--tools); border-color: var(--tools) }
+    .audit-strip .pill.warn  { color: var(--tier-major); border-color: var(--tier-major) }
+    .audit-strip .pill.bad   { color: var(--brand); border-color: var(--brand) }
+    .audit-strip a { font-weight: 700; color: var(--brand) }
+
+    /* ═══ RESPONSIVE ═════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .wrap { padding: 0 24px 64px }
+      .masthead .name { font-size: 48px }
+      .masthead .meta { flex-wrap: wrap; gap: 12px }
+      .toc { grid-template-columns: 1fr; }
+      .toc-item { border-right: none; border-bottom: 1px solid var(--line) }
+      .toc-item:last-child { border-bottom: none }
+      .section-head { grid-template-columns: 60px 1fr; gap: 16px }
+      .section-head .meta { grid-column: 1 / -1; text-align: left }
+      .section-head .title { font-size: 28px }
+      .section-head .roman { font-size: 48px }
+      .grid { grid-template-columns: 1fr 1fr }
+      .brief-list { grid-template-columns: 1fr }
+      .lead h2 { font-size: 34px }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px 48px }
+      .masthead { padding: 18px 0 16px }
+      .masthead .name { font-size: 36px }
+      .grid { grid-template-columns: 1fr }
+      .brief { grid-template-columns: 1fr; gap: 4px }
+      .lead h2 { font-size: 28px }
+      .lead .deck { font-size: 18px }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ═══ SKU strip ═══ -->
+    <div class="sku-strip">
+      <div class="left">Daily Frontier — The Embodied AI Daily</div>
+      <div class="right">
+        <span><strong>2026-09-09</strong></span>
+        <span>Vol. 4 · No. 4</span>
+        <span>26 stories</span>
+      </div>
+    </div>
+
+    <!-- ═══ Masthead ═══ -->
+    <header class="masthead">
+      <h1 class="name">Daily <em>Frontier</em></h1>
+      <div class="sub">每日具身智能动态 · A daily reading of the embodied-AI industry</div>
+      <div class="meta">
+        <span><strong>Issue №4</strong></span>
+        <span class="dot"></span>
+        <span>2026-09-09</span>
+        <span class="dot"></span>
+        <span>30d window</span>
+        <span class="dot"></span>
+        <span>Compiled 2026-09-08</span>
+      </div>
+    </header>
+
+    <!-- ═══ TOC strip ═══ -->
+    <nav class="toc" role="tablist">
+      <button type="button"
+              class="toc-item active"
+              data-sec="companies"
+              role="tab"
+              aria-selected="true">
+        <span class="roman">I</span>
+        <span class="label">公司动态</span>
+        <span class="meta">26 stories · n=26</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="papers"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">II</span>
+        <span class="label">学术前沿</span>
+        <span class="meta">0 stories · n=0</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="tools"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">III</span>
+        <span class="label">工具链进展</span>
+        <span class="meta">0 stories · n=0</span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="panel companies active"
+               id="panel-companies"
+               data-sec="companies"
+               role="tabpanel"
+               aria-labelledby="tab-companies">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">I</div>
+            <div class="title"><em>§ I.</em> 公司动态</div>
+            <div class="meta">
+              <strong>26</strong> stories
+            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-breaking">BREAKING</span>
+              </span>
+              <h2><a href="https://www.leiphone.com/category/industrynews/PxJP8yUXOgv9VMnb.html" target="_blank" rel="noopener">“ONE FOR ALL”背后，帕西尼正在构建怎样的物理AI闭环？</a></h2>
+              <p class="deck"><p>过去一个月，帕西尼（PaXini AI）的战略进程明显提速：发布搭载GEN4 FUSE真6D触觉感知芯片的PX6AX GEN4产品矩阵；北京总部落地，形成北京战略研发与深圳制造交付的双城协同；完成股份制改革及10亿元新一轮融资。</p><p>新品、总部、融资与股改，看似分属不同维度，实则指向同一个变化：帕西尼正从技术积累期进入规模化产业推进期。</p><p>为什么这些动作会在同一阶段密集发生</p>
+              <blockquote class="abstract">
+                <p>过去一个月，帕西尼（PaXini AI）的战略进程明显提速：发布搭载GEN4 FUSE真6D触觉感知芯片的PX6AX GEN4产品矩阵；北京总部落地，形成北京战略研发与深圳制造交付的双城协同；完成股份制改革及10亿元新一轮融资。</p><p>新品、总部、融资与股改，看似分属不同维度，实则指向同一个变化：帕西尼正从技术积累期进入规模化产业推进期。</p><p>为什么这些动作会在同一阶段密集发生
+              </blockquote>
+              <div class="byline">
+<strong>中文AI/机器人资讯</strong>                <span class="dot"></span>
+                <span>16h ago</span>
+                <span class="dot"></span>
+                <a class="read" href="https://www.leiphone.com/category/industrynews/PxJP8yUXOgv9VMnb.html" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+              <!-- Companies: grouped by source — each publisher gets its own block -->
+              <section class="company-group" data-company="中文AI/机器人资讯">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">中文AI/机器人资讯</span>
+                  <span class="count">19 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/tqVYWZS1cn9pc9eZ.html" target="_blank" rel="noopener">AI电影即将首次登陆全国院线 万兴科技AI影视全链路闭环生态引关注</a></h3>
+                    <p class="deck"><p style="text-align: justify; margin-top: 0; margin-bottom: 0;"><span style="font-family: &#39;宋体&#39;;">9月8日，A股影视概念再次走高，上海电影再度盘中涨停,万兴科技等大幅上涨。消息面上，近期由AI全程赋能制作的长剧、电影等纷纷走上大荧幕。一周之内，AI影视先后叩开卫视黄金档、全国院线、网络</p>
+                    <div class="byline">
+                      <span>9h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/Sx5FX3SdH4cZd0nk.html" target="_blank" rel="noopener">华为Mate XT 2 非凡大师发布：刘德华现身发布会再叙非凡精神</a></h3>
+                    <p class="deck"><p style="margin-top: 8pt; margin-bottom: 8pt;"><span style="font-family: &#39;微软雅黑&#39;; font-size: 10.5pt; color: #0F1115;">9月7日，HarmonyOS 7 | HUAWEI Mate XT 2 及全场景新品发布会举行，华为Mate XT 2 非凡大师正式亮相。在发布会上</p>
+                    <div class="byline">
+                      <span>13h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/weiwu/n2l3zx3Xv4mZK2Cr.html" target="_blank" rel="noopener">中国品牌出海的「清洁机器人答案」</a></h3>
+                    <p class="deck"><p>2026年9月4日，柏林，IFA展馆。</p><p>9号馆里，一池碧水被搬进展厅。池子里游动的不是鱼，是一台正在自主巡航的泳池清洁机器人——这是石头科技全球首发的RockAqua P1。正对着泳池的，是新一代智能割草机器人RockNeo Q2 LiDAR，正在演示如何让草坪修剪像扫地一样轻盈。</p><p style="text-align: center;"><img src="https</p>
+                    <div class="byline">
+                      <span>13h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/pCuoyLeIaqbo1J0L.html" target="_blank" rel="noopener">百度搭子全面接入小度硬件，百度智能体进驻家庭空间</a></h3>
+                    <p class="deck"><p>9月8日，在北京举行的百度AI Day小度新品发布会上，小度宣布超能小度完成智能体化升级，并发布多款全新的家庭场景智能体应用。百度搭子作为小度智能体能力的底座，全面落地小度智能屏、闺蜜机、智能摄像机、智能音箱等硬件新品，推动智能体进驻家庭空间。</p><p>此次升级后，超能小度不再止于接收和响应指令，而是能够自主拆解目标、统筹调度工具、闭环交付任务。面向家庭日程管理场景，家长通过微信一句话即</p>
+                    <div class="byline">
+                      <span>14h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/smarthome/lFpY44Qc1OIof1I6.html" target="_blank" rel="noopener">IFA观察：智能IoT进入「精耕」时代，萤石的技术储备开始兑现</a></h3>
+                    <p class="deck"><section data-mpa-action-id="mtq02iju10q0"><section data-mpa-action-id="mtq0414qsp8" data-pm-slice="0 0 []"><p style="text-align: center; margin-bottom: 24px; line-height: 1.75em; margin-top: 24px;"></p>
+                    <div class="byline">
+                      <span>21h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/weiwu/cz6jZP7DUUYFEcSl.html" target="_blank" rel="noopener">在IFA重新认识安克：从技术底座到场景贯通</a></h3>
+                    <p class="deck"><p style="text-align: center; line-height: 1.75em; margin-bottom: 20px;"><img src="https://static.leiphone.com/uploads/new/images/20260908/6a9f702440ee6.jpg?imageView2/2/w/740"/></p><p style="line-hei</p>
+                    <div class="byline">
+                      <span>21h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/zaobao/e43ASUgZh0Gr71YK.html" target="_blank" rel="noopener">套现百亿？曝闻泰科技创始人张学政跑路海外，公司回应；星宇股份：总经理周晓萍扣薪1年，人力资源总监免职；华为时隔六年再发高性能芯片</a></h3>
+                    <p class="deck"><section data-mpa-powered-by="yiban.io" data-pm-slice="0 0 []" nodeleaf=""></section><section data-mpa-template="t" mpa-from-tpl="t"><section data-mpa-template="t" mpa-from-tpl="t"><section mpa-from-t</p>
+                    <div class="byline">
+                      <span>22h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/7NDbKTW4jo1GR7dJ.html" target="_blank" rel="noopener">0.4mm弯折半径、96%量产良率：伯恩光学UTG的应力重构与工艺路径</a></h3>
+                    <p class="deck"><p>折叠屏盖板材料正经历从CPI（透明聚酰亚胺）向UTG（超薄柔性玻璃）的确定性升级，核心驱动力是盖板在弯折寿命、折痕控制与光学性能上的综合表现。近日，伯恩光学公布其UTG最新量产技术指标：弯折半径低至0.4毫米，50万次动态弯折无折痕、无性能衰减，极限弯折最高达200万次，量产良率稳定在96%以上。</p><p><img   src="https://static.leiphone.com/u</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/bv6uP9homPcjjRHl.html" target="_blank" rel="noopener">业内首个！“千问办公”推出“多人工作台”</a></h3>
+                    <p class="deck"><p>近日，阿里巴巴旗下Agent产品“千问办公”推出业内首个“多人工作台”。用户简单描述需求，即可生成并发布一个最多支持百人同时在线协作的网页，承载复杂的业务流程。该功能适用于活动组织、家校协同和企业协作等场景，可解决SaaS软件采购成本高、定制软件开发耗时高的难题。目前，用户可从“千问办公”首页下方功能入口直接体验。</p><p style="text-align: center;"><img</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/DEylZOEEZ448IHK3.html" target="_blank" rel="noopener">起步即搭载L3架构，阔五座开创者启境GX7正式预售24.99-31.19万</a></h3>
+                    <p class="deck"><p style="margin-top: 19pt; margin-bottom: 7pt;"><span style="font-family: Arial;">湾区钜作，阔启南沙！</span><span style="font-family: Arial;">9</span><span style="font-family: Arial;">月</span><span style="fon</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/E7j0Qq5zBynzWv64.html" target="_blank" rel="noopener">基元律动发布模型NeoHorse，探索Harness驱动的RSI路径</a></h3>
+                    <p class="deck"><p>在一次项目排期测试中，一个4B基础模型找到了工作目录中的文件，却漏读了一封包含最新依赖约束的邮件。它按照过时信息生成计划，并把文件写到了错误位置。</p><p>这一案例来自基元律动（TokenRhythm）近日发布的技术报告。该公司联合无问芯穹、清华大学、北京大学、阿里巴巴等机构，推出首个Agent-Native模型NeoHorse-1，包含4B和9B两个版本，探索将Agent使用工具、接收</p>
+                    <div class="byline">
+                      <span>17h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/m9VdZr4bvHYmlA7s.html" target="_blank" rel="noopener">IFA新面孔：速卖通Brand+携中国品牌登场，解锁品牌出海新路径</a></h3>
+                    <p class="deck"><p>上周末，柏林国际消费电子展IFA开幕。阿里旗下跨境电商平台速卖通Brand+携9大中国品牌亮相，加速从“卖货渠道”向“品牌出海全新主场”跃迁。这是“出海四小龙”首次参加全球顶级消费电子展。</p><p>&nbsp;</p><p>从人形机器人到AI眼镜，IFA展馆里的热度与速卖通交易端的数据形成呼应。数据显示，今年1-7月，速卖通AI硬件品类出海同比增长100%，正在成为AI硬件出海首选平台。</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/chipdesign/E3ZbypZiS817Q2G8.html" target="_blank" rel="noopener">CPU加速AI普及，GPU首次加AI，Arm为何把NPU留给伙伴？</a></h3>
+                    <p class="deck"><p style="margin-bottom: 15px; margin-top: 15px; line-height: 2em;"><span style="font-family: &quot;微软雅黑 Light&quot;;">个人AI的实现，到底需要一套怎样的计算底座？当手机开始理解用户意图、调用工具并连续完成任务，计算平台要支撑的已不只是一次模型推理，而是完整的个人AI体验。</sp</p>
+                    <div class="byline">
+                      <span>13h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/IfTsnhdqbaxeTEu6.html" target="_blank" rel="noopener">独家丨AI人才3次大迁徙：百度先行、六小虎分化、腾讯「腾笼换鸟」</a></h3>
+                    <p class="deck"><section data-mpa-powered-by="yiban.io" data-pm-slice="0 0 []" style="-webkit-tap-highlight-color: transparent;margin: 0px 0px 24px;padding: 0px;outline: 0px;max-width: 100%;box-sizing: border-box !im</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/chips/tt18KRcmh53DjhLO.html" target="_blank" rel="noopener">燧原科技发行结果出炉！募资61.19亿元，国产AI芯片龙头即将登陆科创板</a></h3>
+                    <p class="deck"><p>9月7日晚间，燧原科技（688801.SH）正式公布发行结果。本次发行价格为142.18元/股，发行数量为4303.5173万股，募集资金总额为61.19亿元。网上投资者认购数量为1031.1626万股，网下投资者认购数量为2409.9639万股。此前，燧原科技网上发行有效申购户数达703.20万户，最终中签率为0.02455315%，市场认购火热。</p><p>燧原科技长期专注于云端AI芯</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/j0Vn5Zjbs3tKiA2k.html" target="_blank" rel="noopener">高端智能手表怎么选，华为WATCH Ultimate 2 非凡探索雪域白、迪桑特联名款发布</a></h3>
+                    <p class="deck"><p style="text-align: left; margin-top: 0px; margin-bottom: 0px;"><span style="text-align: left; font-family: 微软雅黑; font-size: 10.5pt;">高端腕表市场正在悄然生变——越来越多消费者不再满足于单纯的机械美学，而是希望一枚手表，既能撑起商务通勤场合的高级质感，又能陪伴潜</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/1fUYK0dGQLzXssbl.html" target="_blank" rel="noopener">硅谷AI独角兽转投阿里千问：Perplexity基于Qwen3.8打造本地Agent</a></h3>
+                    <p class="deck"><p>9月8日消息，据美国科技媒体Siliconangle报道，硅谷AI独角兽公司Perplexity新推出一款本地Agent产品Portable Computer，采用的正是阿里最新开源模型Qwen3.8-27B。在英伟达DGX Spark硬件上，Perplexity特意优化了PPLX 27B系列算法，让Qwen模型能更好地在本地硬件上帮助用户完成文件处理、数据分析和编程等工作。</p><p><</p>
+                    <div class="byline">
+                      <span>17h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/vAtQUjcohTzgRhHG.html" target="_blank" rel="noopener">创想三维亮相IFA 2026，SPARKX i8全球首秀、旗舰K3获两项荣誉！</a></h3>
+                    <p class="deck"><p>近日，在柏林IFA 2026现场，创想三维展位化身为极具人气的“数字造物游乐场”。排起长队的“创想奇妙抓娃娃机”前，观众转动摇杆抓取精巧的3D打印手办；展区另一侧，一套由Ender-3 V3 Mega打印的架子鼓正伴随节拍演奏。在这里，3D打印褪去冰冷的工业外壳，成为现场观众触手可及的造物狂欢。</p><p style="text-align: center;">&nbsp;<img src</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrycloud/UUg7N19pHCCMjnMD.html" target="_blank" rel="noopener">独家丨微软云亚太「一拆为二」，侯阳接掌东南亚、印度与大中华区</a></h3>
+                    <p class="deck"><section data-mpa-powered-by="yiban.io" data-pm-slice="0 0 []" style="-webkit-tap-highlight-color: transparent;margin: 0px 0px 24px;padding: 0px;outline: 0px;max-width: 100%;box-sizing: border-box !im</p>
+                    <div class="byline">
+                      <span>1d ago</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section class="company-group" data-company="银河通用 (Google News)">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">银河通用 (Google News)</span>
+                  <span class="count">5 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE0yVXpxSjRKZy0xX2pxaTBmOXo0UEJPVzE0R3BJMDhCekQ4aDNrUEFnOHhkOXRKZC1naFhzWWFHSVB1bl9wY0pXNW1RZC11UFRWeEItTFZlNjVILXd3V1poekRWZ2s?oc=5" target="_blank" rel="noopener">银河通用发布双足人形机器人，目前正在学习打网球 - 新京报</a></h3>
+                    <p class="deck"><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE0yVXpxSjRKZy0xX2pxaTBmOXo0UEJPVzE0R3BJMDhCekQ4aDNrUEFnOHhkOXRKZC1naFhzWWFHSVB1bl9wY0pXNW1RZC11UFRWeEItTFZlNjVILXd3V1poekRWZ2s?oc=5" target="</p>
+                    <div class="byline">
+                      <span>20d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE90RGt6d2RQSk4tVC03bHVqd2FESm40VDNLVGJBbkRTeXQxb0NDeWNhYVkwMG9rek5VdXNFMDJ2SF9udGY2ZEhYbjA0eUtvZnJSNXhHVw?oc=5" target="_blank" rel="noopener">人形机器人“入职”药品销售员 - Sohu</a></h3>
+                    <p class="deck"><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE90RGt6d2RQSk4tVC03bHVqd2FESm40VDNLVGJBbkRTeXQxb0NDeWNhYVkwMG9rek5VdXNFMDJ2SF9udGY2ZEhYbjA0eUtvZnJSNXhHVw?oc=5" target="_blank">人形机器人“入职”药品销售</p>
+                    <div class="byline">
+                      <span>2026-03-19</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1nbDdoN1dhckZXb3VQUlhCY0N6ZlNmZ29fOENwa053QkNQaFh4OVg4UGVTYi1QSmFsQnQtOXF2M2VFMFlHTmd2VnpQTXRHUEJrb1A1RTh0MEdvNHREdXV5d2tYUTY2c1FKZHNkbl9tX0JXMFBSRTlDRThhVQ?oc=5" target="_blank" rel="noopener">机器人在真实场景的学习适应能力显著提升 北京具身智能迈入全身协同新范式 - 北京市人民政府门户网站</a></h3>
+                    <p class="deck"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE1nbDdoN1dhckZXb3VQUlhCY0N6ZlNmZ29fOENwa053QkNQaFh4OVg4UGVTYi1QSmFsQnQtOXF2M2VFMFlHTmd2VnpQTXRHUEJrb1A1RTh0MEdvNHREdXV5d2tYUTY2c1FKZHNkbl9tX0</p>
+                    <div class="byline">
+                      <span>2026-08-03</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE81OEUzVmZ3TGFoUzRqOWNkdkljUzdoY2RaaXVaZWNEV185OU05MmF2WXQtcnlSRE83Mm4xSDN2WDE4TGhBVE5aTkNGX1JXYmNTd1NXXzRGdV9BV1FDcEVxR0MxY20wU1FjdGFMRk9kRk40V3BQN2IycXRWNFZtSEU?oc=5" target="_blank" rel="noopener">银河通用超级大脑筑基，中国具身智能站上全球创新潮头|机器人|数据|模型|环境|特斯拉_手机新浪网 - 新浪财经</a></h3>
+                    <p class="deck"><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE81OEUzVmZ3TGFoUzRqOWNkdkljUzdoY2RaaXVaZWNEV185OU05MmF2WXQtcnlSRE83Mm4xSDN2WDE4TGhBVE5aTkNGX1JXYmNTd1NXXzRGdV9BV1FDcEVxR0MxY20wU1FjdGFMRk9kRk</p>
+                    <div class="byline">
+                      <span>2026-03-12</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE9qLXdhV0NDNFJjVW9nWXp1UTg0cEtvQm5SUExCRE05UkRZOWV6UHEwSjV0U2pwWjRxa2JTai11MGx2d0tGWHk1R3FLMTBxbHQ5U1FuQ1lWVnJrWmRXQV82ODF3NnVEUQ?oc=5" target="_blank" rel="noopener">"春晚顶流"引爆资本新局 银河通用、松延动力吸金35亿元打响人形机器人决胜局 - 每日经济新闻</a></h3>
+                    <p class="deck"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE9qLXdhV0NDNFJjVW9nWXp1UTg0cEtvQm5SUExCRE05UkRZOWV6UHEwSjV0U2pwWjRxa2JTai11MGx2d0tGWHk1R3FLMTBxbHQ5U1FuQ1lWVnJrWmRXQV82ODF3NnVEUQ?oc=5" targe</p>
+                    <div class="byline">
+                      <span>2026-03-03</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section class="company-group" data-company="智元机器人">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">智元机器人</span>
+                  <span class="count">1 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>智元机器人</strong>
+                    </div>
+                    <h3><a href="https://www.agibot.com/article/231/detail/98.html" target="_blank" rel="noopener">AGIBOT 人形机器人在 IFA 2026 获 IFA 创新奖及全球科技媒体认可</a></h3>
+                    <p class="deck">AGIBOT 人形机器人在 IFA 2026 获 IFA 创新奖及全球科技媒体认可</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+      </section>
+      <section class="panel papers "
+               id="panel-papers"
+               data-sec="papers"
+               role="tabpanel"
+               aria-labelledby="tab-papers">
+
+          <div class="panel-empty">今日这一栏暂无新内容。</div>
+
+      </section>
+      <section class="panel tools "
+               id="panel-tools"
+               data-sec="tools"
+               role="tabpanel"
+               aria-labelledby="tab-tools">
+
+          <div class="panel-empty">今日这一栏暂无新内容。</div>
+
+      </section>
+    </main>
+
+    <!-- ═══ Audit strip ═══ -->
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+      <div class="left">Compiled daily from RSS feeds, official blogs, arXiv, and GitHub.</div>
+      <div class="right">
+        <a href="data/digest.json">digest.json</a>
+        <a href="content-audit.html">audit</a>
+        <a href="https://github.com/chenzx1300/daily-frontier" target="_blank" rel="noopener">source</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab switching — show one panel at a time
+    (function () {
+      var tabs = document.querySelectorAll('.toc-item');
+      var panels = document.querySelectorAll('.panel');
+      function activate(sec) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute('data-sec') === sec;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-sec') === sec);
+        });
+        try {
+          history.replaceState(null, '', '#' + sec);
+        } catch (e) { /* ignore */ }
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { activate(t.getAttribute('data-sec')); });
+      });
+      // Restore from hash on load
+      var hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash && document.getElementById('panel-' + hash)) {
+        activate(hash);
+      }
+    })();
+  </script>
+</body>
+</html>

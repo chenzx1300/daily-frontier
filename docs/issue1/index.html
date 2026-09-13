@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Frontier · Issue №1 · 2026-08-24</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── Journal palette (Nature/Science-inspired) ───────────── */
+      --paper:        #faf7f2;     /* warm cream */
+      --paper-deep:   #f0ebe1;
+      --paper-shade:  #ece5d6;
+      --ink:          #1a1815;
+      --ink-soft:     #3a3530;
+      --muted:        #8a8275;
+      --rule:         #1a1815;     /* heavy ink rule */
+      --line:         #d8d1c1;
+      --line-soft:    #e8e2d3;
+
+      /* brand — Nature-style crimson */
+      --brand:        #9b1c1f;
+      --brand-dark:   #7c1517;
+      --brand-tint:   rgba(155, 28, 31, 0.06);
+
+      /* section accents */
+      --companies:    #1f5fa3;     /* deep blue */
+      --papers:       #6b3fa0;     /* deep purple */
+      --tools:        #1e7a51;     /* deep green */
+
+      /* tier colors */
+      --tier-breaking: #9b1c1f;
+      --tier-major:    #b45309;
+      --tier-notable:  #1a1815;
+      --tier-mention:  #8a8275;
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
+    body {
+      font: 16px/1.62 "Source Serif 4", Georgia, "Source Han Serif SC",
+            "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei", serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* ═══ TOP SKU STRIP ════════════════════════════════════════ */
+    .sku-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sku-strip .left  { font-weight: 600 }
+    .sku-strip .right { display: flex; gap: 18px }
+    .sku-strip .right span strong { color: var(--ink); font-weight: 700; margin-left: 4px }
+
+    /* ═══ MASTHEAD ══════════════════════════════════════════════ */
+    .masthead {
+      padding: 28px 0 22px;
+      border-bottom: 4px double var(--rule);
+      text-align: center;
+    }
+    .masthead .name {
+      font-family: "Fraunces", "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144;
+      margin: 0;
+    }
+    .masthead .name em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .masthead .sub {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .masthead .meta {
+      margin-top: 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      align-items: center;
+    }
+    .masthead .meta strong { color: var(--brand); font-weight: 700 }
+    .masthead .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ TOC / TAB NAV ═════════════════════════════════════════ */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+      padding: 0;
+    }
+    .toc-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 24px 16px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      text-align: left;
+      transition: background .15s ease;
+      color: var(--ink-soft);
+    }
+    .toc-item:last-child { border-right: none }
+    .toc-item:hover { background: var(--paper-deep) }
+    .toc-item.active { background: var(--brand-tint) }
+    .toc-item .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .toc-item.active .roman { color: var(--brand) }
+    .toc-item .label {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .toc-item .meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ═══ SECTION PANELS ════════════════════════════════════════ */
+    .panel { display: none; padding-top: 36px }
+    .panel.active { display: block }
+    .panel-empty {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    /* ═══ SECTION HEADING ═══════════════════════════════════════ */
+    .section-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: end;
+      gap: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section-head .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 0.85;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+    }
+    .section-head .title {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .section-head .title em { font-style: italic; font-weight: 700; color: var(--brand); }
+    .section-head .meta {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    .section-head .meta strong { color: var(--ink); font-weight: 700 }
+
+    /* ═══ ARTICLE TYPE LABEL (used by lead + cards) ═════════════ */
+    .article-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .article-type .type { color: var(--brand); }
+    .article-type .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .article-type .tier-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      border-radius: 1px;
+      font-weight: 800;
+    }
+    .article-type .tier-tag.tier-breaking {
+      background: var(--tier-breaking); color: var(--paper); border: 1px solid var(--tier-breaking);
+    }
+    .article-type .tier-tag.tier-major {
+      background: transparent; color: var(--tier-major);
+      border: 1px solid var(--tier-major);
+    }
+    .article-type .tier-tag.tier-notable {
+      background: transparent; color: var(--tier-notable);
+      border: 1px solid var(--line);
+    }
+    .article-type .tier-tag.tier-mention {
+      background: transparent; color: var(--tier-mention);
+      border: 1px solid var(--line-soft);
+    }
+
+    /* ═══ LEAD STORY ════════════════════════════════════════════ */
+    .lead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 36px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lead h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      font-variation-settings: "opsz" 144;
+    }
+    .lead h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--brand) }
+    .lead .deck {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 60ch;
+      font-variation-settings: "opsz" 60;
+    }
+    /* Abstract blockquote — left red border, italic serif, indented */
+    .lead .abstract {
+      margin: 4px 0 0;
+      padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--brand);
+      font-family: "Source Serif 4", "Fraunces", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 64ch;
+    }
+    .lead .abstract strong { color: var(--ink); font-weight: 700 }
+    .lead .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .lead .byline strong { color: var(--ink-soft); font-weight: 700 }
+    .lead .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .lead .read {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .lead .read::before { content: "→ "; margin-right: 4px }
+
+    /* verify badge — shown when lead is flagged */
+    .verify-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+    }
+    .verify-badge.match  { color: var(--tools); background: rgba(30,122,81,.06) }
+    .verify-badge.flag   { color: var(--brand); background: var(--brand-tint) }
+    .verify-badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    }
+
+    /* ═══ CARD GRID ══════════════════════════════════════════════ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px 32px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 0 22px;
+      border-top: 1px solid var(--ink);
+    }
+    .card .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+    .card .kicker strong { color: var(--brand); font-weight: 800 }
+    .card h3 {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px }
+    .card .deck {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .card .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ BRIEF LIST (tools) ═════════════════════════════════════ */
+    .brief-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 40px;
+    }
+    .brief {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 18px 0 18px;
+      border-top: 1px solid var(--ink);
+    }
+    .brief .cat {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--brand);
+      align-self: start;
+      padding-top: 4px;
+    }
+    .brief h3 {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.32;
+      margin: 0 0 4px;
+      color: var(--ink);
+    }
+    .brief h3 a:hover { text-decoration: underline }
+    .brief .repo {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .brief .desc {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin: 0 0 4px;
+    }
+    .brief .when {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ═══ FOOTER ═════════════════════════════════════════════════ */
+    footer {
+      margin-top: 64px;
+      padding: 28px 0 16px;
+      border-top: 4px double var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer .left  {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink-soft);
+    }
+    footer .right { display: flex; gap: 18px }
+    footer .right a { color: var(--ink-soft) }
+    footer .right a:hover { color: var(--brand) }
+
+    /* ═══ AUDIT STRIP ════════════════════════════════════════════ */
+    .audit-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--paper-shade);
+      border-left: 3px solid var(--brand);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+    .audit-strip strong { color: var(--ink); font-weight: 700 }
+    .audit-strip .pills { display: flex; gap: 10px }
+    .audit-strip .pill {
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+    }
+    .audit-strip .pill.good  { color: var(--tools); border-color: var(--tools) }
+    .audit-strip .pill.warn  { color: var(--tier-major); border-color: var(--tier-major) }
+    .audit-strip .pill.bad   { color: var(--brand); border-color: var(--brand) }
+    .audit-strip a { font-weight: 700; color: var(--brand) }
+
+    /* ═══ RESPONSIVE ═════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .wrap { padding: 0 24px 64px }
+      .masthead .name { font-size: 48px }
+      .masthead .meta { flex-wrap: wrap; gap: 12px }
+      .toc { grid-template-columns: 1fr; }
+      .toc-item { border-right: none; border-bottom: 1px solid var(--line) }
+      .toc-item:last-child { border-bottom: none }
+      .section-head { grid-template-columns: 60px 1fr; gap: 16px }
+      .section-head .meta { grid-column: 1 / -1; text-align: left }
+      .section-head .title { font-size: 28px }
+      .section-head .roman { font-size: 48px }
+      .grid { grid-template-columns: 1fr 1fr }
+      .brief-list { grid-template-columns: 1fr }
+      .lead h2 { font-size: 34px }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px 48px }
+      .masthead { padding: 18px 0 16px }
+      .masthead .name { font-size: 36px }
+      .grid { grid-template-columns: 1fr }
+      .brief { grid-template-columns: 1fr; gap: 4px }
+      .lead h2 { font-size: 28px }
+      .lead .deck { font-size: 18px }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ═══ SKU strip ═══ -->
+    <div class="sku-strip">
+      <div class="left">Daily Frontier — The Embodied AI Daily</div>
+      <div class="right">
+        <span><strong>2026-08-24</strong></span>
+        <span>Vol. 1 · No. 1</span>
+        <span>59 stories</span>
+      </div>
+    </div>
+
+    <!-- ═══ Masthead ═══ -->
+    <header class="masthead">
+      <h1 class="name">Daily <em>Frontier</em></h1>
+      <div class="sub">每日具身智能动态 · A daily reading of the embodied-AI industry</div>
+      <div class="meta">
+        <span><strong>Issue №1</strong></span>
+        <span class="dot"></span>
+        <span>2026-08-24</span>
+        <span class="dot"></span>
+        <span>30d window</span>
+        <span class="dot"></span>
+        <span>Compiled 2026-08-25</span>
+      </div>
+    </header>
+
+    <!-- ═══ TOC strip ═══ -->
+    <nav class="toc" role="tablist">
+      <button type="button"
+              class="toc-item active"
+              data-sec="companies"
+              role="tab"
+              aria-selected="true">
+        <span class="roman">I</span>
+        <span class="label">公司动态</span>
+        <span class="meta">23 stories · n=23</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="papers"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">II</span>
+        <span class="label">学术前沿</span>
+        <span class="meta">30 stories · n=30</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="tools"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">III</span>
+        <span class="label">工具链进展</span>
+        <span class="meta">6 stories · n=6</span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="panel companies active"
+               id="panel-companies"
+               data-sec="companies"
+               role="tabpanel"
+               aria-labelledby="tab-companies">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">I</div>
+            <div class="title"><em>§ I.</em> 公司动态</div>
+            <div class="meta">
+              <strong>23</strong> stories
+            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-breaking">BREAKING</span>
+                <span class="dot"></span>
+                <span class="verify-badge match">Verified</span>
+              </span>
+              <h2><a href="https://ai2.work/blog/inside-botq-how-figure-ai-reached-one-humanoid-robot-per-hour" target="_blank" rel="noopener">BotQ 工厂实现每小时 1 台人形机器人量产</a></h2>
+              <p class="deck">Figure AI 位于加州圣何塞的 BotQ 工厂将人形机器人产能提升至每小时 1 台（此前为每天 1 台），增幅约 24 倍。Figure 03 累计产量突破 1,000 台，已向企业客户交付超 350 台，公司目标年产 12,000 台，4 年内扩展至 10 万台。</p>
+              <blockquote class="abstract">
+                Figure AI 位于加州圣何塞的 BotQ 工厂将人形机器人产能提升至每小时 1 台（此前为每天 1 台），增幅约 24 倍。Figure 03 累计产量突破 1,000 台，已向企业客户交付超 350 台，公司目标年产 12,000 台，4 年内扩展至 10 万台。
+              </blockquote>
+              <div class="byline">
+<strong>Figure AI</strong>                <span class="dot"></span>
+                <span>17d ago</span>
+                <span class="dot"></span>
+                <a class="read" href="https://ai2.work/blog/inside-botq-how-figure-ai-reached-one-humanoid-robot-per-hour" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+            <div class="grid">
+                <article class="card">
+                  <div class="kicker">
+<strong>Figure AI</strong>                  </div>
+                  <h3><a href="https://interestingengineering.com/ai-robotics/figures-new-humanoid-scales-ladder-autonomously-marking-ai-mobility-advancement" target="_blank" rel="noopener">Figure 03 自主爬梯演示</a></h3>
+                  <p class="deck">Figure AI CEO Brett Adcock 分享 Figure 03 在实验室环境中自主攀爬梯子的视频，无远程控制、无脚本编排。该任务需同时耦合视觉（立体相机）、抓取（手）与动态平衡（腿），由升级版 Helix System 0 全身运动控制模型驱动，被视为 'loco-manipulation' 突破。</p>
+                  <div class="byline">
+                    <span>24d ago</span>
+                    <span class="dot"></span>
+                    <span>Helix · loco-manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Figure AI</strong>                  </div>
+                  <h3><a href="https://www.frontiernews.ai/news/article/figure-ais-675m-bet-on-humanoid-robots-is-starting-0cfaee4d" target="_blank" rel="noopener">Adcock: 轮式机器人是'死胡同'，双足才是未来</a></h3>
+                  <p class="deck">Figure AI CEO Brett Adcock 公开表态称轮式机器人是 'completely dead end'（彻底死胡同），公司将继续押注双足人形机器人路线，并否认肌腱驱动手方案，称之为 'complete local maximum'。</p>
+                  <div class="byline">
+                    <span>11d ago</span>
+                    <span class="dot"></span>
+                    <span>strategy · opinion</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Figure AI</strong>                  </div>
+                  <h3><a href="https://robotwale.com/news/figure-ai-tesla-advance-humanoid-robotics-new-benchmarks-pricing" target="_blank" rel="noopener">Figure 03 在宝马 Spartanburg 工厂持续部署</a></h3>
+                  <p class="deck">Figure 03 人形机器人继续在宝马南卡罗来纳州 Spartanburg 工厂执行物流排序与物料分拣任务，此前 Figure 02 已在该工厂累计支持超 3 万辆 BMW X3 车辆生产（11 个月）。</p>
+                  <div class="byline">
+                    <span>9d ago</span>
+                    <span class="dot"></span>
+                    <span>BMW · deployment</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>1X Technologies</strong>                  </div>
+                  <h3><a href="https://robotd.net/article/1x-neo-mass-production-2026" target="_blank" rel="noopener">1X NEO Hayward 工厂正式投产</a></h3>
+                  <p class="deck">1X Technologies 启用位于加州 Hayward 的全美首座完全垂直整合的人形机器人工厂（5.8 万平方英尺，200+ 员工），初期年产 1 万台，目标 2027 年底扩至 10 万台以上，第二座更大工厂已在 San Carlos 建设中。</p>
+                  <div class="byline">
+                    <span>7d ago</span>
+                    <span class="dot"></span>
+                    <span>factory · manufacturing</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>1X Technologies</strong>                  </div>
+                  <h3><a href="https://www.1x.tech/discover/neos-hands" target="_blank" rel="noopener">1X 推出 25 自由度灵巧手并展示精细操作</a></h3>
+                  <p class="deck">1X 发布 NEO 新型肌腱驱动灵巧手，25 自由度（22 主动），IP68 防水、可机洗、食品级安全。演示任务包括接住下落的物体、采摘葡萄、插入 USB-C、手语识别，2026 年产能目标 1 万只。</p>
+                  <div class="byline">
+                    <span>20d ago</span>
+                    <span class="dot"></span>
+                    <span>dexterous-hand · hardware</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Tesla Optimus</strong>                  </div>
+                  <h3><a href="https://optimusk.blog/blog/tesla-optimus-plant-cube-production" target="_blank" rel="noopener">Tesla Optimus V3 启动量产</a></h3>
+                  <p class="deck">特斯拉宣布 Optimus V3 于 7-8 月在加州 Fremont 工厂启动量产，配备 37 自由度（手部 22 DoF）、AI4.0 四芯片双模组（1000-1200 TOPS），续航约 10 小时。Q3 目标产量从 100 台/周爬坡至 1,000 台/周，Q4 突破 2,000 台/周。</p>
+                  <div class="byline">
+                    <span>6d ago</span>
+                    <span class="dot"></span>
+                    <span>Optimus-V3 · production</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Tesla Optimus</strong>                  </div>
+                  <h3><a href="https://m.cls.cn/detail/2141354" target="_blank" rel="noopener">马斯克敲定 Optimus V3 灵巧手设计</a></h3>
+                  <p class="deck">特斯拉 CEO 马斯克透露正在敲定 Optimus V3 灵巧手最终设计，预计下半年量产时将迎来重大升级；供应链 70% 核心零部件来自中国供应商（拓普集团、三花智控、旭升集团、容忆精密等）。</p>
+                  <div class="byline">
+                    <span>13d ago</span>
+                    <span class="dot"></span>
+                    <span>dexterous-hand · supply-chain</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Boston Dynamics</strong>                  </div>
+                  <h3><a href="https://bostondynamics.com/blog/large-behavior-models-atlas-find-new-footing/" target="_blank" rel="noopener">Atlas 通过强化学习训练完成重物搬运</a></h3>
+                  <p class="deck">Boston Dynamics 与 Toyota Research Institute 联合开发的 Large Behavior Models（LBM）使 Atlas 学会搬运迷你冰箱等重型物体，策略在仿真中经过约 1.5 亿次迭代训练，实现 zero-shot 迁移到真机。</p>
+                  <div class="byline">
+                    <span>15d ago</span>
+                    <span class="dot"></span>
+                    <span>Atlas · LBM</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Boston Dynamics</strong>                  </div>
+                  <h3><a href="https://globalnewsly.com/boston-dynamics-atlas-enters-the-real-world/" target="_blank" rel="noopener">Atlas 在 Hyundai RMAC 与 Google DeepMind 部署</a></h3>
+                  <p class="deck">Boston Atlas 全部 2026 年产能已被现代汽车 Robotics Metaplant Application Center（乔治亚州）与 Google DeepMind 设施锁定，首批应用为汽车制造中的部件排序；现代规划 2028 年年产 3 万台。</p>
+                  <div class="byline">
+                    <span>10d ago</span>
+                    <span class="dot"></span>
+                    <span>Atlas · Hyundai</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Apptronik</strong>                  </div>
+                  <h3><a href="https://apptronik.com/news-collection/welcome-to-robot-park-where-apptroniks-apollo-goes-to-work" target="_blank" rel="noopener">Apptronik 启用 9 万平方英尺 Robot Park 训练场</a></h3>
+                  <p class="deck">Apptronik 在德州奥斯汀启用占地约 9 万平方英尺的 'Robot Park' 训练设施，用于 Apollo 人形机器人在真实世界任务的训练；公司估值约 55 亿美元，由 Google、Mercedes-Benz、AT&T Ventures、John Deere 等支持。</p>
+                  <div class="byline">
+                    <span>13d ago</span>
+                    <span class="dot"></span>
+                    <span>Robot-Park · training</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Physical Intelligence</strong>                  </div>
+                  <h3><a href="https://www.sohu.com/a/1002851374_122063396" target="_blank" rel="noopener">Physical Intelligence 估值达 110 亿美元</a></h3>
+                  <p class="deck">Physical Intelligence 完成约 10 亿美元 C 轮融资，投后估值 110-115 亿美元，由 Founders Fund、Lightspeed、Lux Capital、Situational Awareness 领投，Accel、Kleiner Perkins、Iconiq、Thrive、贝索斯、OpenAI、Sequoia、Khosla 跟投；累计融资超 10 亿美元。</p>
+                  <div class="byline">
+                    <span>8d ago</span>
+                    <span class="dot"></span>
+                    <span>Series-C · funding</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Physical Intelligence</strong>                  </div>
+                  <h3><a href="https://tradeflock.com/physical-intelligence-one-brain-for-every-robot/" target="_blank" rel="noopener">Physical Intelligence：从 π0 到 π0.7 的通用机器人基础模型路线图</a></h3>
+                  <p class="deck">Physical Intelligence (PI) 由前 Google DeepMind 研究员 Karol Hausman 领衔创立。2024 年 10 月发布 π0（3B 参数，基于 PaliGemma 扩展），在 7 个机器人平台、68 类任务、超过 1 万小时真实数据上训练；2025 年 4 月迭代至 π0.5 实现开放世界泛化，5 月发布 π0.6 （RECAP 自学习范式），2026 年 4 月推出 π0.7 zero-shot 学习能力。PI 在不到两年内累计融资 11 亿美元（2024 年 11 月 A 轮 4 亿、估值 24 亿；2025 年 11 月 B 轮 6 亿、CapitalG 领投、估值 56 亿），投资方包括 OpenAI、Jeff Bezos、Thrive、Lux、Sequoia、Khosla、NVIDIA NVentures、T. Rowe Price 等。</p>
+                  <div class="byline">
+                    <span>8d ago</span>
+                    <span class="dot"></span>
+                    <span>pi0.7 · foundation-model</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Agility Robotics</strong>                  </div>
+                  <h3><a href="https://robot.ofweek.com/2026-08/ART-898890-8460-30696752.html" target="_blank" rel="noopener">Agility Robotics 与 Churchill Capital 达成 SPAC 合并</a></h3>
+                  <p class="deck">Agility Robotics 宣布与 Churchill Capital Corp XI 达成 SPAC 合并协议，pre-money 估值 25 亿美元，将在 Nasdaq 以 'AGLT' 代码交易，预计募资 6.2 亿美元（含富士康领投的 2 亿美元 PIPE），交易目标秋季完成。</p>
+                  <div class="byline">
+                    <span>7d ago</span>
+                    <span class="dot"></span>
+                    <span>SPAC · IPO</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Agility Robotics</strong>                  </div>
+                  <h3><a href="https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi" target="_blank" rel="noopener">Agility Robotics 通过与 Churchill Capital Corp XI 合并上市，代号 AGLT</a></h3>
+                  <p class="deck">Agility Robotics 与 SPAC Churchill Capital Corp XI (NASDAQ:CCXI) 达成合并协议，交易后股票代码 AGLT，预期总收益超 6.2 亿美元（Churchill XI 信托 4.2 亿 + 富士康领投 2 亿 PIPE，每股 10 美元），合并前股权估值 25 亿美元。公司声称将成为美国唯一上市的纯人形机器人公司；订单簿上已有 3 亿美元以上多年期 Digit v5 承诺，65,000+ 小时运行记录覆盖 9 个客户设施。投资者包括 DCVC、NVIDIA、亚马逊、软银愿景基金 2、富士康、Schaeffler、Abico、Playground Global；商业部署在 Schaeffler、GXO、Toyota MMI、Mercado Libre。交易预计 2026 年内完成。</p>
+                  <div class="byline">
+                    <span>5d ago</span>
+                    <span class="dot"></span>
+                    <span>Digit · RaaS</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Skild AI</strong>                  </div>
+                  <h3><a href="https://www.skild.ai/blogs/reindustrial-revolution" target="_blank" rel="noopener">Skild Brain 进驻 LaGuardia 机场 T2 巡检</a></h3>
+                  <p class="deck">Skild AI 与 ABM Industries、LaGuardia Gateway Partners 合作（2026 年 7 月 28 日），将 Skild Brain 驱动的四足巡检机器人部署到纽约 LaGuardia 机场 B 航站楼，标志着进入公共设施巡检领域。</p>
+                  <div class="byline">
+                    <span>20d ago</span>
+                    <span class="dot"></span>
+                    <span>Skild-Brain · airport</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>AGIBOT 智元机器人</strong>                  </div>
+                  <h3><a href="https://www.agibot.com.cn/article/315/detail/171.html" target="_blank" rel="noopener">智元机器人累计交付突破 1.5 万台</a></h3>
+                  <p class="deck">智元机器人第 1.5 万台具身机器人下线，距 3 月 28 日突破 1 万台不足 3 个月，再次刷新全球量产纪录。第 1.5 万台产品为精灵 G2（Genie G2），已交付龙旗科技工厂；公司 2026 H2 进入千台级批量交付阶段，2027 年目标万台落地。</p>
+                  <div class="byline">
+                    <span>2026-06-28</span>
+                    <span class="dot"></span>
+                    <span>production · Genie-G2</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>AGIBOT 智元机器人</strong>                  </div>
+                  <h3><a href="https://www.agibot.com.cn/article/315/detail/170.html" target="_blank" rel="noopener">智元 Genie G2 在龙旗 3C 产线 8 小时作业成功率 99.5%</a></h3>
+                  <p class="deck">智元精灵 G2 在龙旗科技 3C 精密产线完成全球首个连续 8 小时作业验证，成功率超 99.5%，覆盖手机/平板组装的关键装配任务，已进入工厂批量使用阶段。</p>
+                  <div class="byline">
+                    <span>11d ago</span>
+                    <span class="dot"></span>
+                    <span>Genie-G2 · 3C-manufacturing</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>宇树科技 Unitree</strong>                  </div>
+                  <h3><a href="https://airoboticdaily.com/ai-robotic-products/unitree-superman-humanoid-robot-2661" target="_blank" rel="noopener">宇树 'Superman' 原型机器人刷新速度纪录</a></h3>
+                  <p class="deck">宇树科技发布 'Superman' 原型机器人，sprint 速度达 12.66 m/s，较 H1 在 4 月的 10 m/s 纪录提升 26%，尽管腿部比 H1 短 0.05 米，体现了运动控制算法与高功率密度关节的快速迭代。</p>
+                  <div class="byline">
+                    <span>8d ago</span>
+                    <span class="dot"></span>
+                    <span>Superman · speed-record</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>宇树科技 Unitree</strong>                  </div>
+                  <h3><a href="https://yangtzeer.com/news/startups/unitree-humanoid-output-18000" target="_blank" rel="noopener">宇树人形机器人累计产量突破 1.8 万台</a></h3>
+                  <p class="deck">宇树科技累计人形机器人产量达 18,000 台（3 个月前为 11,000 台）；2026 H1 出货约 5,900 台（全球市占率 31%），被智元以 8,400 台（44%）反超；中国厂商合计占全球人形机器人出货量 97%。</p>
+                  <div class="byline">
+                    <span>13d ago</span>
+                    <span class="dot"></span>
+                    <span>production · market-share</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>优必选 UBTech</strong>                  </div>
+                  <h3><a href="https://www.aastocks.com/tc/stocks/news/aafn-news/NOW.1486029" target="_blank" rel="noopener">优必选中标 2.64 亿元广西边境口岸项目</a></h3>
+                  <p class="deck">优必选中标广西防城港 2.64 亿元人民币人形机器人项目，以 Walker S2 为主，聚焦边境口岸旅客疏导、岗哨巡检与物流场景，预计 12 月交付；同时与某 A 股车企签订超 3,200 万元采购合同。</p>
+                  <div class="byline">
+                    <span>14d ago</span>
+                    <span class="dot"></span>
+                    <span>Walker-S2 · order</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>优必选 UBTech</strong>                  </div>
+                  <h3><a href="https://aastocks.com/en/stocks/news/aafn-con/NOW.1515719/popular-news/AAFN" target="_blank" rel="noopener">摩根大通上调优必选 Walker S 系列出货目标至 5,000 台</a></h3>
+                  <p class="deck">摩根大通将 Walker S 系列出货目标从 2,000-3,000 台大幅上调至 5,000 台，产能规划向 10,000 台迈进，维持 '增持' 评级；公司管理层将 2026 年定位为 '大规模商业化' 之年，目标毛利率 43-44%。</p>
+                  <div class="byline">
+                    <span>6d ago</span>
+                    <span class="dot"></span>
+                    <span>JPM · analyst</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+<strong>Industry Overview</strong>                  </div>
+                  <h3><a href="https://www.globaltimes.cn/page/202608/1367923.shtml?id=12" target="_blank" rel="noopener">中国 H1 出货占全球人形机器人 97%</a></h3>
+                  <p class="deck">2026 世界机器人大会发布数据：中国 H1 2026 出货 19,100 台（同比 +272%），占全球 97% 份额；全球前 6 大人形机器人厂商全部为中国公司，合计份额 87.87%。</p>
+                  <div class="byline">
+                    <span>5d ago</span>
+                    <span class="dot"></span>
+                    <span>market-share · China</span>
+                  </div>
+                </article>
+            </div>
+      </section>
+      <section class="panel papers "
+               id="panel-papers"
+               data-sec="papers"
+               role="tabpanel"
+               aria-labelledby="tab-papers">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">II</div>
+            <div class="title"><em>§ II.</em> 学术前沿</div>
+            <div class="meta">
+              <strong>30</strong> stories
+· top venue <strong>arXiv</strong>            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-breaking">BREAKING</span>
+                <span class="dot"></span>
+                <span class="verify-badge match">Verified</span>
+              </span>
+              <h2><a href="https://arxiv.org/abs/2608.21032" target="_blank" rel="noopener">路侧协同自动驾驶：从数据平台到视觉-语言端到端推理</a></h2>
+              <p class="deck">Vehicle-to-Everything（V2X）协同可实现超视距感知，缓解单车感知中的遮挡问题。然而，现有的 V2X 基准对闭环评估和语言监督的支持有限，阻碍了用于端到端协同驾驶的视觉-语言模型（VLMs）的发展。为解决这些局限性，我们推出了 V2XBench——一个具备同步自车-路侧感知和闭环评估能力的仿真平台，以及 Chat-V2XBench——一个面向协同推理的渐进式结构化 VQA 数据…</p>
+              <blockquote class="abstract">
+                Vehicle-to-Everything（V2X）协同可实现超视距感知，缓解单车感知中的遮挡问题。然而，现有的 V2X 基准对闭环评估和语言监督的支持有限，阻碍了用于端到端协同驾驶的视觉-语言模型（VLMs）的发展。为解决这些局限性，我们推出了 V2XBench——一个具备同步自车-路侧感知和闭环评估能力的仿真平台，以及 Chat-V2XBench——一个面向协同推理的渐进式结构化 VQA 数据集。在此基准基础设施之上，我们提出了 AURORA，一个端到端协同驾驶框架。配备双视角感知架构，AURORA 通过一个查询级跨视角查询对齐与融合（CQAF）模块，缓解了自车与路侧视角之间的空间与语义差异。利用由此得到的统一 token，一个 LoRA 适配的 VLM 桥接语义推理与生成式轨迹规划。在 V2XBench 上进行的广泛闭环评估表明，AURORA 在严重遮挡场景中实现了最先进的性能，路线完成率达 98.21%、驾驶得分为 76.02，同时仅需较低的路侧通信带宽。最终，本工作开创了一种可扩展的 V2X-VLM 范式，为下一代协同自动驾驶铺平了道路。
+              </blockquote>
+              <div class="byline">
+<strong>Yitao Xu</strong><strong>arXiv</strong>                <span class="dot"></span>
+                <span>4d ago</span>
+                <span class="dot"></span>
+                <a class="read" href="https://arxiv.org/abs/2608.21032" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+            <div class="grid">
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21358" target="_blank" rel="noopener">超越地球的太空机器人采矿：勘探、采样与提取</a></h3>
+                  <p class="deck">空间资源获取与利用，通常被称为太空采矿（Space Mining），是实现持续人类探索并释放太空商业机遇的关键路径。这些资源主要包括氦-3、月球和火星上的水与矿产资源，以及小行星上丰富的矿藏。由于太空的严苛环境、通信延迟和高昂的发射成本，开发自主机器人系统对于实现高效、成本可控的太空采矿至关重要。本文对太空采矿机器人及相关技术进行了全面综述。首先，我们回顾了太空采矿的背景，包括国际政策、商业实体和近期进展。我们定义了一个系统化的太空采矿六阶段架构：勘探阶段包括（1）目标识别的遥感与（2）原位精准机器人探测；采样阶段从（3）单机器小规模采样推进到（4）多机器大规模挖掘；提取阶段整合了（5）自主资源提取与（6）最终集成至原位建造或地面运输。此外，我们回顾并整理了现有的太空采矿研究资源，包括真实任务数据、地面类比数据集以及高保真仿真环境。最后，我们识别了自主太空采矿中的关键开放挑战，并勾勒出一份战略性研究路线图，以弥合当前的技术鸿沟，推动向可持续的地外经济转型。为追踪太空采矿领域的持续进展，我们维护一个持续更新的项目页面：https://github.com/OpenSpace-Lab/Space-Mining-with-Robotics-List。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21355" target="_blank" rel="noopener">ViTacPhys：基于人类视觉-触觉示教的物理属性感知抓取</a></h3>
+                  <p class="deck">近期基于视觉的动作模型在复杂操作中展现了强大能力，但它们很少利用显式的物体物理属性来调整策略。我们提出了 ViTacPhys，一个视觉-触觉框架及数据采集系统，可从人类操作示教中估计物体的质量与摩擦系数类别，以及连续的刚度。ViTacPhys 在涵盖 60 个刚体与可形变物体的数据上进行训练，结合了时序视觉-触觉建模、跨注意力多模态融合，以及源自视觉-语言模型的语义先验。在已见物体上，其质量分类准确率达到 97.2%，摩擦系数分类准确率达到 98.8%，刚度平均绝对百分比误差（MAPE）为 5.51%。在来自已知类别的未见物体上，其质量准确率达到 87.5%，摩擦系数准确率达到 97.5%，刚度 MAPE 为 9.08%。我们使用有限的机器人遥操作数据、机器人风格视频增强以及动作匹配的人类示教，将 ViTacPhys 从人类域迁移到机器人域，并将其部署为自适应抓取的在线模块。由此得到的物理属性条件策略在分布内物体上的抓取总成功率为 95.0%，在分布外物体上为 83.4%。对于两种方法均成功抓取的分布外物体，其力曲线相比 ACT 生成的曲线更接近人类遥操作。这些结果证明了在现实世界自适应抓取中显式估计并以物体物理属性为条件的可行性。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation · teleop</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21332" target="_blank" rel="noopener">解剖学信息神经网络：在损失与架构中编码解剖学先验，并给出导丝诱发动静脉髂变形的 SE(3) 公式化</a></h3>
+                  <p class="deck">解剖学的深度学习模型可能在数值上合理却在解剖学上不可能，并且在数据稀缺时泛化能力较差。我们提出了解剖学信息神经网络（AINN），其中软性解剖学先验以惩罚项的形式进入损失函数（例如，将移植肾动脉偏离主动脉而搭在髂动脉上视为反常但非不可能的分支惩罚），这直接类比于物理信息神经网络；而硬性解剖学先验（如血管的连续性）则内置于架构与状态表示之中，使得此类无效预测在先验允许架构强加之处通过构造变得不可能。我们在一个数据有限的临床测试用例上展开研究：一根刚性导丝经腔内引入时，主-髂动脉树如何发生形变。这对当代主动脉外科手术至关重要，也将影响自主血管内导航。我们将血管中心线和导丝路径从 R^3 提升到李群 SE(3) 中的曲线框架，并将 Cosserat 杆导丝通过一个单侧管腔接触不等式耦合到一条迂曲度调制、解剖学锚定的血管。预测结果是耦合弹性能的约束极小值，接触力为其拉格朗日乘子。监督信号是预测投影（经过 C-arm 几何）与观察到的血管造影图像之间的 Wasserstein-2 最优传输损失，因此一张 2D 血管造影图像即可训练 3D 预测。运动学、损失和投影已对照已知真值进行了验证；力学求解器仅对其自身的最优性条件进行了验证，预测位移尚未达到网格收敛。此处未训练任何网络。未来工作将把这一硅基模型迁移到真实 CT 扫描数据上，并检验其是否能提升预测精度、减少所需的训练数据量。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21330" target="_blank" rel="noopener">NeSAM：面向越野移动性的、具备土壤适应能力的神经-符号运动动力学</a></h3>
+                  <p class="deck">在可变形地形上准确预测越野车辆运动仍具挑战性，因为沉陷、滑移与牵引力随局部土壤条件而变化。现有基于学习的运动动力学模型直接从数据近似车辆-地形交互，但未显式表征土壤力学，且物理可解释性有限。为解决这些局限，我们提出了 NeSAM，一个神经-符号框架，将可微的 Bekker-Wong 地面力学与学习得到的地形表征相结合，并配以基于 Transformer 的残差动力学模型，用于长时域、六自由度运动动力学预测。地面力学组件建模依赖土壤的交互力，残差模型则修正解析预测与观测车辆动力学之间的偏差。NeSAM 进一步从地形观测中估计物理意义明确的土壤参数，并使用扩展卡尔曼滤波器在线更新这些参数。我们在基于 Chrono 多物理引擎构建的 Verti-Bench 仿真器中对 NeSAM 进行了评估，并在实物 Verti-4-Wheeler 平台上验证其性能。相对于最强的对比基线，NeSAM 在仿真中将预测精度提升高达 30%，在真实世界数据上提升 29%。当与闭环导航控制器集成时，NeSAM 通过在线土壤适应进一步提升了通行成功率，同时将参考轨迹的 Hausdorff 距离减小了 69.4%，表明轨迹跟踪精度有所改善。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>imitation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21319" target="_blank" rel="noopener">凸集图上 Steiner 旅行商问题的统一分支定界搜索</a></h3>
+                  <p class="deck">我们在凸集图（Graphs of Convex Sets, GCS）上形式化了 Steiner 旅行商问题（Steiner-TSP），该问题寻求一条穿过必需凸集的最小代价闭合轨迹，同时允许可选的过境顶点与重访。为探索由此产生的无穷解空间，我们提出对有根游走前缀进行统一的分支定界搜索。可加性的下界图代价约束已承诺的前缀，而一种割分离的连通流松弛则对访问每个剩余目标并返回根的剩余代价给出下界。在一致的正代价假设下，无初始 incumbent 时最佳优先遍历可在每个可行实例上经有限次展开后终止，而深度优先遍历在获得有限 incumbent 后即可终止。对于用户指定的因子 ε ≥ 1，一个全局下界可证明任一策略的 incumbent 代价至多为全局最优的 ε 倍。我们进一步展示了面向移动操作器检查任务的联合感知模式、访问顺序与连续轨迹选择，包括以有限迹上的线性时序逻辑（LTL_f）表达的动作优先约束。两种遍历策略在 30 秒内对所有基准实例均找到可行解，平均已认证最优性差距分别为 28.1% 与 29.7%，而两个近期基线仅在约一半的实例上取得成功。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21290" target="_blank" rel="noopener">VT-MUSE：面向操作任务的多模态统一序列视觉-触觉表示学习</a></h3>
+                  <p class="deck">我们提出 VT-MUSE，一个用于视觉-触觉操作的多模态统一序列表示学习框架。现有方法通常在融合前对视觉和触觉观测进行独立编码，限制了捕捉细粒度跨模态依赖关系的能力。此外，大多数方法聚焦于当前时间步的观测，而忽略了接触的时序演化。VT-MUSE 通过两阶段表示学习框架同时解决上述两个局限。在 Stage I 中，通过跨模态时序对齐和掩码视图一致性联合适配各模态专用编码器。在 Stage II 中，条件变分潜变量模型同时处理被掩码的视觉序列与完整的触觉历史。辅助解码器重建被掩码的近期视觉观测并预测触觉深度变化，促使潜变量表示同时保留全局视觉上下文与局部接触动力学。习得的表示随后通过门控交叉注意力集成到轻量级 Transformer 策略中。在仿真基准测试中，VT-MUSE 在所有任务上以 11 个百分点的优势超越最强基线，并在真实世界实验中取得显著提升。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation · imitation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21276" target="_blank" rel="noopener">海岸线作为结构约束：利用场景几何实现自主水面艇定位</a></h3>
+                  <p class="deck">沿海环境蕴含丰富却尚未充分利用的几何结构，能够提供全局参考的定位线索。在本研究中，我们提出两种互补的定位框架，利用海岸线与水面几何实现GPS拒止条件下的自主水面艇定位。第一种框架利用对水面的LiDAR观测来估计横摇、纵摇与升沉（垂向运动），同时通过对海岸线观测与卫星遥感海岸线地图的直接配准，恢复全局位置与航向。第二种框架仅依赖被动图像，通过语义分割检测海岸线与地平线。基于所提沿海场景几何，从单目图像推断海岸线距离。海岸线观测被累积为短时局部子地图，与同一卫星遥感海岸线地图配准，并在分层因子图中融合。在三个真实沿海数据集上评估，LiDAR流水线在轨迹精度上始终优于标准基线，而单目架构保持有界长期漂移。此外，我们证明现代零样本基础模型能够在多样化沿海环境中可靠地提取海岸线观测。综上，这些结果表明，沿海几何为GPS拒止海事定位提供了强大且可靠的全局参考信息源。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21247" target="_blank" rel="noopener">面向视觉-语言-动作模型中 Token 压缩的最小可觉差异建模</a></h3>
+                  <p class="deck">Token 压缩已成为降低大型基础模型推理成本的关键技术,token 剪枝与 KV-cache 复用等方法已广泛应用于视觉-语言模型,近期也被探索用于具身智能体。在具身智能体中,token 不仅支持感知和语义理解,还直接影响对时延敏感的闭环机器人动作预测。现有方案通常借助冗余度或重要性线索(如视觉相似度、注意力分数和显著性)来指导压缩。然而,这些线索仅间接衡量安全压缩的关键因素:token 在导致下游动作出现不可接受偏差前可以改变多少。这种与接收方相关的容差与最小可觉差异(JND)原理密切相关。经典 JND 刻画人类视觉系统中的信号容差,而面向机器的 JND 将该概念扩展到下游机器响应。在此基础上,我们引入 Action-JND,将 JND 建模扩展到具身感知,通过视觉-语言-动作(VLA)策略在闭环控制中的语言条件动作响应来定义可觉性。仅当所引发的动作偏差保持在可容忍范围内时,token 变化才被视为可接受。为了实现这一概念,我们在深度视觉特征空间中开发了一个轻量级的逐 token JND 估计器,以预测在保持策略响应前提下的最大可容忍扰动。由此得到的动作容差分数可作为 VLA 压缩范式(包括 stale-KV 复用和 token 剪枝)的即插即用准则,优先对动作容差较高的 token 进行压缩。在 LIBERO 基准上使用 OpenVLA 和 OpenVLA-OFT 进行的实验表明,Action-JND 持续提升压缩可靠性,尤其在高压缩比条件下效果显著。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>vla · embodied</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21204" target="_blank" rel="noopener">超越模仿：通过离策略 Q-Planning 实现机器人策略的自改进</a></h3>
+                  <p class="deck">行为克隆（Behaviour Cloning, BC）推动了机器人操作的显著进步，但由于无法自我改进而存在根本性局限：一旦策略失败，在没有额外人类演示的情况下，它无法从失败中学习。强化学习微调提供了一条自我改进路径，但已被证明难以扩展到支撑现代机器人策略的多亿参数模型。我们提出 Q-Planning，它为大型视觉运动 BC 策略配备一个小型离策略 Q 函数。由于 Q 函数估计的是价值而非模仿动作，因此它可以在与 BC 策略相同的成功演示上进行训练，并随后吸收成功和失败的部署滚动数据——这是一种 BC 所不具备的不对称性。我们利用这种不对称性，在推理时实现价值引导的动作选择（对 BC 采样进行单步 Q 加权平均），以及在线自改进——仅微调 Q 函数，不改动 BC 权重。在 LIBERO 和双臂 RoboTwin 上，十轮自改进提升了我们测试的所有基准分数（LIBERO-10 从 93% 提升至 99%，RoboTwin 从 83.8% 提升至 91.4%），并缩短了接近上限套件（LIBERO-Object、LIBERO-Global）的成功回合时间。在两项接触丰富的双臂真实机器人任务中，同样的循环（BC 冻结、无人工干预）完全依靠自身的部署滚动数据进行改进：stack-cups 在五轮迭代内从 40% 提升至 90%，insert-wallet 从 25% 提升至 80%；而仅在成功滚动数据上进行 SFT 的方法分别停滞在 55% 和 30%。在相同的在线预算下，Q-Planning 是 Best-of-N、filtered SFT、IBRL、DSRL 和 DAWR 中唯一能够在不训练辅助执行器的情况下，从失败中稳定改进的方法。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation · imitation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21175" target="_blank" rel="noopener">SRL-MPC：形状感知强化学习模型预测控制</a></h3>
+                  <p class="deck">在异构人群和机器人队列中实现安全高效的形状感知导航仍具挑战性。传统方法通常假设机器人为同构、工作空间稀疏、几何形状简化、依赖离线计算或手工调参来使问题可求解，这限制了它们在密集人群场景中的部署。为此，我们提出了形状感知强化学习模型预测控制（Shape-Aware Reinforcement Learned Model Predictive Control，SRL-MPC），该方法可在不进行几何简化的前提下，对具有异构形状的人群实现安全、高效且自适应的导航。为了编码形状感知安全性，我们基于支撑函数变换，从几何分离特征（geometric separation features，GSFs）构建了高阶控制屏障函数（high-order control barrier function，HOCBF）约束。随后，一个强化学习（RL）框架学习一个神经网络策略，该策略读取 GSFs 并实时输出 MPC 参数更新，使 MPC 求解器能够适应邻近人群的几何形状。SRL-MPC 的关键优势在于，在保留 MPC 的安全性结构与泛化能力的同时，集成了 RL 的适应性与智能。在任意形状机器人队列的随机化人群场景中的实验证明了 SRL-MPC 的有效性、可扩展性与鲁棒性。实验结果表明，SRL-MPC 在安全性与适应性方面显著优于代表性基线方法。项目网站：https://hanruihua.github.io/srl_mpc_project/</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21083" target="_blank" rel="noopener">教学是一个过程：用于建模人机交互式机器人学习中人类教学决策的 TOSS 框架</a></h3>
+                  <p class="deck">成功的人机教学假设机器人处理需求与人类教学意图之间存在一致性。为了更好地理解这种一致性，本工作旨在揭示人类在教学时直觉运用的底层逻辑。通过一项探索性的自底向上研究（N=34），让参与者观察两种不同的机器人强化学习（RL）场景，我们分析了横跨早期、中期和晚期学习阶段的 204 条直觉性教学响应。结果显示，教学决策由一个错综复杂、相互关联的网络组成，包括触发器（情境催化剂）、目标（主观教学标的）、信号（交际行为）和策略（高级治理），其中教师会自发地扮演不同角色——教练、工程师或设计师——并优先考虑不同的目标。基于这些结果，我们提出了 TOSS 框架，将人机教学概念化为机器人行为与人类教学动作之间的程序化循环，其中人类教学决策被建模为由教学目标和策略调节的触发—信号响应。它为未来研究提供了一个开放可访问的数据集和理论基础，用于：a) 理解教学决策；b) 仿真现实的神谕（oracle）；以及 c) 设计以人为本的教学环境和超越当前机器人学习环境约束的新型机器人学习算法。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21056" target="_blank" rel="noopener">FF-MPCC：基于模型预测轮廓控制的高速敏捷编队飞行</a></h3>
+                  <p class="deck">以敏捷方式按预定编队飞行在无人机（UAV）领域仍然是一个具有挑战性的问题，尤其在跟随要求极高、需在平台极限下飞行的轨迹时。为解决此问题，我们提出了一种新颖的分布式编队飞行方法，将编队保持集成进 MPCC 框架中，使无人机能够在遵循复杂路径的同时尊重各自的动力学约束并保持期望编队。为此，我们引入了一种针对动态编队几何的新型重参数化与同步方法，以及一种确定各无人机期望位置的分布式方法。所提方法使编队能够在不影响编队完整性的前提下协调高速路径跟随。通过大量仿真和真实世界实验（涵盖不同复杂度的路径以及飞行中所需编队形状的变更）验证了该方法。与时间参数化的轨迹跟踪相比，我们在速度高达 21 m/s 的高速飞行中将编队保持性能提升了 65%，同时达到目标点所需时间相当。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21035" target="_blank" rel="noopener">TaPeR：从少量示教中概率化恢复稀疏任务优先级图</a></h3>
+                  <p class="deck">长时序操作任务通常只是部分有序的。例如，在组装电子设备时，电池和电路板可以按任意顺序安装，但两者都必须在合上外壳之前就位。恢复此类依赖关系使机器人能够灵活地对子任务重新排序，同时保持任务有效性。现有方法通常利用时序和符号监督从人类示教中推断任务结构。然而，符号谓词需要明确的 grounding（基础对齐），这在现实场景中难以获得。在本工作中，我们提出了一种仅使用简单运动学图和相对于物体位姿的分布，从示教中提取任务依赖结构的方法。基于这些表示，我们的方法估计成对的任务步骤依赖概率，并用其初始化优先级图的边权重。随后，我们引入一条过滤流水线，将该概率估计图转换为最终的任务依赖图。我们在一个现有基准以及一个包含更长任务、更复杂依赖关系的新数据集上评估了我们的方法。我们发现，与基线方法相比，我们的方法能用更少的示教恢复出更准确的任务结构。最后，我们展示了推断出的图可用于为同一任务生成多个有效的机器人执行顺序。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.21031" target="_blank" rel="noopener">PhysCaP：将代码即策略智能体扎根于物理信息驱动的探索</a></h3>
+                  <p class="deck">我们提出了 PhysCaP，一种用于机器人操作中主动感知的、物理信息驱动的代码即策略（Code-as-Policy）智能体。尽管视觉-语言-动作策略擅长模仿示教，但它们依赖被动观察，无法推断对操作至关重要的潜在物理属性。PhysCaP 通过一个物理信息驱动的探索层增强代码即策略框架，使其能够通过交互进行显式的信息寻求。它引入了免训练（training-free）的物理属性提取模块，可从机器人本体感知中估计物体质量和刚度，无需额外传感器。为平衡探索成本与所获信息的效率，PhysCaP 采用双智能体设计：一个 Planner（规划器）决定何时探索以及何时停止，一个 Prioritizer（优先级排序器）则过滤不合理的交互并使用启发式优先级分数对其余交互进行排序，从而实现高效且有针对性的探索。我们在现实世界桌面操作任务（寻找隐藏物体、检测空罐、找到成熟牛油果）以及 LIBERO 中的一个仿真任务上评估了 PhysCaP。结果显示，现有被动和朴素的交互式基线方法在物理属性被隐藏时会失败或过度探索，而 PhysCaP 以更少的交互次数和更短的执行时间实现了相当的性能。消融研究进一步验证了所提物理属性提取模块的有效性。项目主页：https://physcap.github.io</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20975" target="_blank" rel="noopener">无行为的心智：衡量视觉-语言模型中心智理论向协调社交行为的转化</a></h3>
+                  <p class="deck">有效的社交互动要求智能体同时将心智状态推断转化为跨言语与非言语通道的协调行为信号。然而现有基准分别孤立评估心智理论(ToM)推理与具身行为,留下了社交推断与社交行动之间未被度量的鸿沟。我们提出MOSAIC(多模态社交行动、推断与通信编排,Multimodal Orchestration of Social Action, Inference, and Communication),这是一个受控基准,其中两个具身智能体在合作与竞争场景中交互,需要在系统性变化的ToM约束下整合言语陈述、空间轨迹、注视方向与面部表情。我们评估了13个模型(含11个VLM),每个模型进行200次试次,发现VLM无法在ToM阶约束下产出与预期结果一致的行为,且施加显式ToM阶约束未产生与指定推理水平对齐的可靠行为变化。信号层面分析揭示两个顺序瓶颈:大多数模型无法产出方向一致的非言语信号;即使信号存在,VLM智能体也无法解读他者行为并对其作出反应。PCM-LLM作为带显式ToM模块的结构化架构参考点,在所有条件下均成功,表明显式信念-行动耦合是此类任务的充分组成要素。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>embodied</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20962" target="_blank" rel="noopener">用于姿态不确定下物体获取与保持的混合滚柱-颗粒 jamming 夹爪</a></h3>
+                  <p class="deck">在家庭操作任务中,姿态不确定常导致初始接触偏离中心或部分接触,使得可靠的物体获取变得困难。基于滚柱的夹爪能主动将物体拉向中心但抓取后稳定性有限,而颗粒jamming夹爪需要先有足够接触再jamming才能实现强力保持。本文提出一种混合滚柱-jamming夹爪,在单一夹爪内集成主动物体吸入与抓后保持。提出的夹爪通过向内滚柱旋转增加接触并将物体拉向夹爪中心,随后通过真空诱发颗粒jamming使滚柱硬化以稳定抓取。本文还给出夹爪的简化几何分析与原型力能力的台架级表征。夹爪原型被安装于一条7-DoF机械臂上,使用八个测试物体进行评估。此外施加了受控的平面位置与姿态偏移,每个条件下重复三次。主要评估包括840次抓取试次,其中216次平面偏移试次与624次姿态偏移试次。整体而言,夹爪在812/840次试次中成功:215/216次平面偏移试次,597/624次姿态偏移试次。消融评估对三个物体进行162次试次。仅滚柱与仅jamming条件分别取得54/81与24/81次成功,表明二者贡献不同。这些结果为混合滚柱-jamming作为一种在首次接触不完美情况下提升获取与保持的策略提供了初步的机构级证据。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20948" target="_blank" rel="noopener">Neural-Primitive:一种用于自主飞行的基于基元模仿学习的高效端到端局部规划器</a></h3>
+                  <p class="deck">未知杂乱环境中的自主飞行受到机载轨迹生成的计算-质量-内存三难困境制约。本文通过模仿学习提出一种高效的端到端局部规划器。设计了一个轻量的离线基元数据集采集框架,以在非凸环境中产出安全且高质量的轨迹基元。一个紧凑的神经网络直接将感知输入映射到多项式系数,这些系数天然编码更高阶的动力学信息。学习得到的策略在无后端求解的情况下实时生成平滑、经验上无碰撞且动力学可行的轨迹。其计算极快(标准桌面上低于1ms,机载飞行平均3.68ms),同时机载内存占用低(小于1.5MiB)。大量仿真基准表明其在规划延迟与目标到达进度质量上均具优势。在真实世界实验中的零样本部署进一步验证了该方法的鲁棒sim-to-real迁移能力。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>imitation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20946" target="_blank" rel="noopener">带硬约束的快速协调双臂运动规划</a></h3>
+                  <p class="deck">双臂操作能完成复杂任务,但由于涉及大量自由度而引入额外复杂度。在操作刚体时,两个末端执行器之间的相对变换必须在整个运动过程中保持不变,这表现为一个非线性等式约束,将可行构型空间限制为一个测度零的流形,从而对常规运动规划器构成挑战。我们提出一种快速双臂运动规划流水线,通过主-从参数化沿整条路径连续强制该硬变换约束:将主端的构型视为自由变量,而从端构型通过逆运动学确定以满足约束。我们在仿真环境中对多样化环境、约束及双臂平台进行了大量评估,在保证连续约束满足的前提下规划速度比先前工作快19.4倍。在双臂Kinova Gen3平台上的真实世界实验(包括托盘运输与细长物体操作)验证了规划轨迹向真实硬件的直接迁移。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20936" target="_blank" rel="noopener">用于连续控制中形态参数泛化的图算子世界模型</a></h3>
+                  <p class="deck">用于连续控制的世界模型通常针对一个固定物理系统训练,当已知形态参数(如连杆长度、质量、阻尼与驱动)变化时可能会退化。已有方法常将这些参数作为条件信息,但未指明习得转移的哪部分应保持可复用、哪部分应随形态变化而变。我们提出Graph-Operator World Models(GraphOp-WM),一种面向相关关节机器人家族内未见形态参数泛化的结构化世界模型。GraphOp-WM将机体及其运动学关系表示为一个属性图,并将每次转移分解为一个与形态无关的局部动力学基与一个形态条件化的结构化算子。该算子结合节点局部调制、运动学树耦合以及低秩全局校正,而架构信息分离、基归一化与配对形态监督促使静态形态依赖由算子通路承载。图级读出与边级动作表示为奖励、价值与TD-MPC式规划提供了兼容接口。我们进一步在Hopper、Walker2d与HalfCheetah上定义受控的MuJoCo参数划分,涵盖连杆几何、质量、阻尼与驱动参数的内插、外推与留出组合。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20913" target="_blank" rel="noopener">可解释深度伪造检测：基于特征鲁棒增强与证据驱动解释优化</a></h3>
+                  <p class="deck">可解释深度伪造检测在二元分类的基础上进一步要求模型不仅能预测真伪，还能提供可解释的判定依据。这一扩展范围在实践中至关重要，因为取证分析人员等用户需要洞悉检测背后的推理逻辑。尽管已有进展，现有方法仍存在两个关键缺陷：(1) 对图像质量退化敏感：在低质量样本上检测准确率急剧下降，且朴素的增强策略在多样性扩展时可能引发特征漂移并损害性能。(2) 解释存在事实性错误：解释模型可能遗漏篡改证据或产生与任务无关的幻觉，损害可解释性。为解决这些问题，我们提出一个具有两项创新的框架。在鲁棒深度伪造检测方面，我们引入特征鲁棒增强（Feature-robust Augmentation），它包含多样化的退化感知增强策略，以及一种配对均值教师架构的有监督对比学习模式，通过一致性约束稳定特征应对增强。在解释方面，我们设计了一种证据驱动偏好优化流程，通过学习由选定与被拒解释对构成的样本（其中被拒样本通过证据遗漏或不相关信息注入构建），引导模型优先关注真实篡改痕迹。所提方法在ACM Multimedia 2026可解释深度伪造检测挑战赛中获得第一名。代码可在 https://github.com/oceanflowlab/EDD.git 获取。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>manipulation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20909" target="_blank" rel="noopener">离线强化学习的解耦策略提取</a></h3>
+                  <p class="deck">离线强化学习方法通常联合训练 actor 和 critic，其中 critic 用于引导 actor 趋向更高价值的动作。这种耦合学习过程在在线强化学习中得到了很好的动机解释,因为改进后的 actor 会收集新数据,可进一步更新 actor 和 critic。然而,在离线强化学习中训练数据保持固定,这使得 actor 端的策略改进无法生成新数据来验证或修正 critic。此外,保留这种耦合范式会带来两个相关挑战。首先,actor 更新可能漂移到高价值但潜在分布外 (OOD) 的动作,并放大 critic 的过估计。其次,保守的价值估计或行为克隆正则化在抑制 OOD 动作和在数据支持区域内选择高价值动作之间形成了困难的权衡。受此观察启发,我们重新审视传统的离线强化学习范式,并提出将策略改进与 actor 训练解耦。具体而言,我们仅训练 actor 来建模行为分布,并在推理时通过使用单独学习的 critic 对多个 actor 生成的候选动作进行重排序来执行策略改进。我们将这种范式称为解耦策略提取范式。在该范式下,actor 提供行为支持的动作候选,而 critic 在该候选集内执行基于价值的选择。大量实验表明,解耦策略提取范式优于行为克隆和联合学习的离线强化学习方法,即使使用朴素的 Q-learning critic 也依然有效。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20906" target="_blank" rel="noopener">面向关键任务中失效仍可运行无人机集群的安全驱动架构框架</a></h3>
+                  <p class="deck">无人机(UAV)集群在安全关键运行中的认证需要可验证的设计保证。适航标准要求确定性可靠性,而多智能体协调算法执行非确定性模型。本文提出一种混合关键性(mixed-criticality)架构框架,将SAE ARP4754B方法应用于集群重构。首先,硬件隔离的安全监控器(Safety Monitor)作为运行时保证(Run-Time Assurance, RTA)网关,将飞行关键核心与非确定性集群管理器(Swarm Manager)解耦。其次,该监控器基于智能体健康向量(Health Vectors)执行形式化安全契约,这些健康向量从功能危害评估(Functional Hazard Assessment, FHA)系统化推导得出。第三,该框架将这些健康向量传播至集体规划器,以触发失效仍可运行(fail-operational)的任务重分配,在不损害飞行关键隔离的前提下实现智能集群行为。Markov可靠性建模表明,对于我们的SAIL IV场景,只要安全监控器满足 $C_{monitor}>0.9991$ ,即与DAL B CMD/MON实现一致,每飞行小时 $10^{-7}$ 次失效的危害性目标理论上可实现。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20904" target="_blank" rel="noopener">面向自动驾驶系统的可扩展分布式仿真测试</a></h3>
+                  <p class="deck">基于虚拟场景的测试是验证自动驾驶系统（ADS）和智能交通系统（ITS）的关键使能技术。然而，执行涉及可能数千个场景的大规模测试套件仍然劳动密集、难以规模化。本文提出了一种端到端、DevOps驱动的框架，可在轻量级Kubernetes集群上自动化构建、部署和分布式执行基于CARLA的ADS场景测试。ROS 2应用被打包为根据仓库规范生成的标准化Kubernetes Helm chart，而整个仿真环境则通过动态Helmfile清单以声明方式组合。本文描述了如何在Argo Workflows中实现分布式测试工作流，以置备环境、从可配置源聚合和批量处理OpenSCENARIO测试用例，并行跨集群节点执行场景，并收集日志和资源指标。在运行200个场景的多节点K3s集群上的评估中，最佳配置将端到端工作流时间相比顺序基线加速超过八倍。结果表明在端到端执行时间方面取得了显著收益，并量化了并行性、编排开销与集群稳定性之间的权衡。该框架还在一个真实世界ADS测试应用中得到了演示，该应用连接场景源和下游评估模块。这表明该方法不仅为可扩展的仿真测试提供了坚实基础，还能生成可追溯的证据以支持安全论证。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20891" target="_blank" rel="noopener">无IMU的四旋翼基于机体坐标系稀疏场景流状态估计</a></h3>
+                  <p class="deck">我们提出了一种仅依赖视觉的状态估计系统，适用于配备标准双目相机对且无惯性传感器的X型四旋翼。该系统完全在机体坐标系下运行，仅需同步的立体图像与电机推力指令。在复合流形状态 $\langle SE(3), \mathbb{R}^3, \ldots \rangle$ 上运行的连续-离散扩展卡尔曼滤波器，维持机体坐标系下的位姿、速度、角速度、重力及扰动的估计，并将静止场景点作为隐式惯性参考。特征点通过FAST、Shi-Tomasi进行检测，通过SSD、Lucas-Kanade进行时间跟踪，并通过NCC进行跨相机匹配，搜索区域由滤波器推导的位姿与点不确定性预测得到。对归一化新息进行卡方门控，仅允许静止点进入滤波器。系统同时生成稀疏三维点云，包含逐点的位置、速度及联合协方差。这些来自一个4视图（两个时间戳下的两对立体匹配）完整束调整，联合从立体视差与时间视差估计位置与速度，并以滤波器推导的相对位姿为先验。EKF中的特征点不进入求解器，其信息通过位姿先验反映。点云密度具有空间自适应性：外部焦点引导分配，在关注区域产生密集覆盖，在其他区域产生稀疏覆盖。输出包括机体坐标系下的状态估计、校准后的位姿变化以及稀疏场景流。该系统旨在为下游锚定于当前机体坐标系的世界模型提供测量源，不依赖GPS、IMU或任何世界坐标系基础设施，但其架构可容纳未来集成。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20890" target="_blank" rel="noopener">面向基于VLA的端到端自动驾驶的协作多模态交互</a></h3>
+                  <p class="deck">Vision-Language-Action (VLA)模型已成为端到端自动驾驶的强大范式,通过在统一的多模态框架内联合整合感知、推理与决策。然而,现有大多数VLA模型将端到端自动驾驶建模为视觉问答任务,导致决策推理不可靠且可解释性较差。此外,它们未能建立跨异构传感器的有效多模态交互,从而限制了长尾驾驶场景中的鲁棒场景感知与可靠驾驶推理。为此,我们提出了一种基于VLA的鲁棒端到端自动驾驶系统,该系统将多模态交互与多轨迹规划及优化相结合,从而实现更可靠、更具可解释性、更安全的驾驶决策。我们的方法包含三个核心组件:(1)用于主-辅模态双向交互的亲和度引导最优传输;(2)用于异构模态分布迁移与跨模态交互的分布一致性模态迁移;(3)面向驾驶决策的多模态多轨迹规划,以及面向感知的长尾驾驶场景轨迹优化。在开环与闭环数据集上的实验结果表明,相较于现有驾驶系统,本方法在安全长时序驾驶推理与道路场景感知方面均有提升,突显了我们的多模态交互及多轨迹规划与优化在可扩展的基于VLA的系统中的能力。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>vla</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20874" target="_blank" rel="noopener">面向自动驾驶的多模态交通标志检测与语义属性</a></h3>
+                  <p class="deck">可靠的交通标志检测是自动驾驶系统全球部署的前提条件，监管合规与道路安全依赖于在不同地区、距离和天气条件下正确识别标志。尽管近年来取得了进展，基于视觉的方法仍面临三项根本性局限：因各国差异巨大而导致的跨地区泛化能力差；在远距离小目标检测上性能下降（交通标志在200米处仅占 $10{\times}10$ 像素）；以及在车辆接近标志时发生的强非线性透视畸变下，时间跟踪十分脆弱。本文通过融合相机与激光雷达（Light Detection and Ranging，LiDAR）传感，解决稳健、远距离、区域无关的交通标志感知问题。我们提出了一种多模态检测框架，其强度感知可变形融合（Intensity-Aware Deformable Fusion）模块将逆反射 LiDAR 线索与相机特征对齐，将检测锚定在几何不变量而非区域特定的视觉外观上。我们进一步引入双运动模型跟踪器，显式建模车辆接近过程中的非线性透视变换，相较于线性运动假设显著提升了时间一致性。此外，我们构建了一条语义属性分类流水线，估计遮挡程度、可读性、标志嵌入度与道路相关性，为下游规划提供可操作的上下文信息。在涵盖 60 多个国家、超过 2,500 小时驾驶数据的数据集上进行广泛评估，结果表明所提出的流水线在 221,068 个评估序列中实现了 0.49% 的目标漏检率（Object Miss Ratio，OMR），证明了在商用级自动驾驶系统中实现全球可泛化的交通标志感知能力。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>imitation</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20852" target="_blank" rel="noopener">基于演示引导的人形机器人在模拟可变地形上的站立</a></h3>
+                  <p class="deck">本文提出了一种参考引导的强化学习框架,用于在可变软地面上为具有 29-DOF 的 Unitree G1 人形机器人生成站立动作,所用的人类演示是在硬地面上录制的。地形顺应性通过 MuJoCo 刚体软接触模型中的 solref 和 solimp 参数建模。奖励由以下部分组成:(i) 通过残余关节位置控制实现参考动作跟踪,以及 (ii) 显式恢复目标,例如骨盆高度、躯干直立度和最终姿态。首先,使用指定的奖励在硬地面条件下训练策略。然后,通过更新 solref 降低地形刚度,并使用 solimp 扩展名义表面穿透区域。后续训练使策略能够适应由于接触密集阶段显著表面穿透而导致的支撑力延迟生成,同时保留原始演示模式。所学策略在仿真中成功完成从倒地到站立的整个过程,达到目标骨盆高度和直立度,过程中最大接触穿透约为 40 mm。所提方法在两组站立序列上得到验证,并在硬地面和软地面上均成功实现最终恢复目标。消融研究表明,单独的参考跟踪不足以实现成功站立,显式恢复奖励至关重要。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>humanoid</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20823" target="_blank" rel="noopener">面向仿人机器人的自然坐起动作合成：基于引导辅助课程与分段奖励</a></h3>
+                  <p class="deck">仿人机器人在保持平衡的情况下从坐姿站起有无穷多种方式，这使得坐起（STS）成为一个具有挑战性的控制问题。我们使用强化学习从零开始合成自然的仿人坐起动作，无需示范或参考轨迹。一个单一的近端策略优化（PPO）策略通过三个互补组件学习平滑、类人的起身动作。（i）使用耦合力/椅高课程。垂直骨盆辅助力用于早期轨迹探索，并在训练过程中逐渐衰减。较高的椅子随辅助力衰减而解锁。这确保了策略在每个椅高下都能掌握可行的坐起轨迹，然后才接触更难的任务，避免了过早的分布偏移导致泛化失败。（ii）通过从大量逆运动学生成的初始和目标姿态中随机采样实现运动鲁棒性，涵盖八个椅高。（iii）定义了一组受生物力学和最优控制研究启发的奖励函数。它们塑造机器人用于离座的角动量，并通过压力中心吸引函数实现支撑区域过渡，以确保平滑的低能耗驱动。在确定性的无外力评估器上，该策略在八个椅高上达到超过 97% 的平衡站立成功率。该策略可在不同椅高间泛化平滑运动，并使机器人能够从比现有技术显著更深的坐姿中起身。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                    <span class="dot"></span>
+                    <span>humanoid</span>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="kicker">
+arXiv                  </div>
+                  <h3><a href="https://arxiv.org/abs/2608.20820" target="_blank" rel="noopener">基于组合界与安全持久性的LLM安全多轮鲁棒性认证</a></h3>
+                  <p class="deck">大语言模型（LLM）易遭受多轮越狱攻击，攻击者逐步操控对话上下文。现有的认证鲁棒性方法仅限于单轮输入；朴素的多轮组合得到的界随轮数呈指数级退化。我们提出多轮认证鲁棒性（MTCR）框架，通过状态对抗MDP建模对话安全性，并将 $k$ 轮认证鲁棒性定义为跨 $k$ 个对抗轮的最坏情况安全概率。MTCR包含：(i) 通过嵌入空间模式分解的组合式认证，给出比朴素乘法更紧的认证下界；(ii) $(α,β)$-安全持久性，将退化速率从 $\underline{p}^{k}$ 改善为 $β^k$（其中 $β> \underline{p}$），并给出可解释的轮次范围估计；(iii) 给出匹配的信息论上界以确立紧度；(iv) 一套统一算法，综合运用以上结果。在六种LLM上于 $ε$-有界攻击及Crescendo风格攻击下进行的实验表明，实证安全性始终高于认证界。</p>
+                  <div class="byline">
+                    <span>4d ago</span>
+                  </div>
+                </article>
+            </div>
+      </section>
+      <section class="panel tools "
+               id="panel-tools"
+               data-sec="tools"
+               role="tabpanel"
+               aria-labelledby="tab-tools">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">III</div>
+            <div class="title"><em>§ III.</em> 工具链进展</div>
+            <div class="meta">
+              <strong>6</strong> stories
+· <strong>6</strong> repos            </div>
+          </div>
+
+            <!-- Tools: brief list, no lead -->
+            <div class="brief-list">
+              <article class="brief">
+                <span class="cat">simulator</span>
+                <div>
+                  <div class="repo">https://github.com/isaac-sim/IsaacLab</div>
+                  <h3><a href="https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0-beta2.patch1" target="_blank" rel="noopener">Isaac Lab v3.0.0-beta2.patch1：对 Isaac Sim 6.0.1 的兼容性补丁</a></h3>
+                  <p class="desc">在 v3.0.0-beta2 基础上发布的小型补丁：升级对 Isaac Sim 6.0.1 的支持（含 NuRec 工作流修复），h5py 要求提升至 >=3.16.0，并 cherry-pick 一个 Isaac Sim 6.0 流式崩溃修复（PR #6295）；额外修复 Isaac Lab 依赖与 docker 镜像对 Isaac Sim 的兼容性。</p>
+                  <div class="when">2026-07-02</div>
+                </div>
+              </article>
+              <article class="brief">
+                <span class="cat">vla</span>
+                <div>
+                  <div class="repo">https://github.com/openvla/openvla</div>
+                  <h3><a href="https://github.com/openvla/openvla" target="_blank" rel="noopener">OpenVLA：开源 7B 视觉-语言-动作模型仓库</a></h3>
+                  <p class="desc">OpenVLA 提供 1B-34B 参数范围的视觉-语言-动作模型训练与微调代码库，基于 PyTorch FSDP 与 Flash-Attention。旗舰 openvla-7b 由 DINOv2+SigLIP 视觉骨干 + Llama-2 LLM 构成，在 970K 轨迹（Open-X Magic Soup++）上预训练；OFT 微调方案较原版推理加速 25-50 倍。在 LIBERO 四套基准…</p>
+                  <div class="when">21d ago</div>
+                </div>
+              </article>
+              <article class="brief">
+                <span class="cat">vla</span>
+                <div>
+                  <div class="repo">https://github.com/physical-intelligence/openpi</div>
+                  <h3><a href="https://github.com/physical-intelligence/openpi" target="_blank" rel="noopener">openpi：Physical Intelligence 开源机器人模型与训练代码库</a></h3>
+                  <p class="desc">Physical Intelligence 发布的开源模型与训练仓库，包含 π0（流式 VLA，基于 PaliGemma）、π0-FAST（自回归 VLA + FAST 动作 tokenizer）、π0.5（开放世界泛化升级版，知识隔离训练）三类基础模型，均基于 1 万+ 小时机器人数据预训练。附 π0.5-LIBERO 检查点（LIBERO SOTA 性能）、π0-DROID/π0-FAST-D…</p>
+                  <div class="when">10d ago</div>
+                </div>
+              </article>
+              <article class="brief">
+                <span class="cat">dataset</span>
+                <div>
+                  <div class="repo">https://droid-dataset.github.io/</div>
+                  <h3><a href="https://droid-dataset.github.io/" target="_blank" rel="noopener">DROID v1.1 包含 76k 条轨迹</a></h3>
+                  <p class="desc">DROID 扩展至 76k 条机器人操控轨迹,覆盖 13 家机构,带有语言条件任务标签与质量标注。</p>
+                  <div class="when">17d ago</div>
+                </div>
+              </article>
+              <article class="brief">
+                <span class="cat">simulator</span>
+                <div>
+                  <div class="repo">https://github.com/google-deepmind/mujoco_playground</div>
+                  <h3><a href="https://github.com/google-deepmind/mujoco_playground/releases/tag/v0.2.0" target="_blank" rel="noopener">MuJoCo Playground v0.2.0：新增视觉 PPO 训练配置 + MuJoCo Warp 默认后端</a></h3>
+                  <p class="desc">DeepMind MuJoCo Playground v0.2.0 新增 CartpoleBalance 与 PandaPickCubeCartesian 的视觉输入 PPO 训练配置（已调参）；将所有环境的默认物理后端切换为 MuJoCo Warp，视觉 notebook 一并迁移；并将过时的 nconmax / nccdmax 配置字段重命名为 naconmax / naccdmax，对齐新版…</p>
+                  <div class="when">6d ago</div>
+                </div>
+              </article>
+              <article class="brief">
+                <span class="cat">simulator</span>
+                <div>
+                  <div class="repo">https://github.com/Genesis-Embodied-AI/Genesis</div>
+                  <h3><a href="https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.3.3" target="_blank" rel="noopener">Genesis v1.3.3：刚体求解器收敛修复 + 确定性可复现模式</a></h3>
+                  <p class="desc">Genesis 仿真器 v1.3.3 (2026-08-13) 修复刚体求解器在不同朝向/尺度下的收敛回归，并新增 use_deterministic_algorithms 选项以实现机器内的 bit-exact 可复现。MuJoCo 兼容模式扩展至原生 contact patch 多接触面（通过 RigidOptions.enable_contact_patch 启用）；其他修复包括 gener…</p>
+                  <div class="when">12d ago</div>
+                </div>
+              </article>
+            </div>
+
+      </section>
+    </main>
+
+    <!-- ═══ Audit strip ═══ -->
+    <div class="audit-strip">
+      <div>
+        <strong>链接真实性审核</strong> ·
+        本期 59 条链接中 53 条与标题一致（89.8%）。
+剩余 6 条已标记待人工复核。      </div>
+      <div class="pills">
+        <span class="pill good">53 ✓ match</span>
+<span class="pill warn">6 ? low_sim</span>        <a href="content-audit.html">→ 完整审核报告</a>
+      </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+      <div class="left">Compiled daily from RSS feeds, official blogs, arXiv, and GitHub.</div>
+      <div class="right">
+        <a href="data/digest.json">digest.json</a>
+        <a href="content-audit.html">audit</a>
+        <a href="https://github.com/chenzx1300/daily-frontier" target="_blank" rel="noopener">source</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab switching — show one panel at a time
+    (function () {
+      var tabs = document.querySelectorAll('.toc-item');
+      var panels = document.querySelectorAll('.panel');
+      function activate(sec) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute('data-sec') === sec;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-sec') === sec);
+        });
+        try {
+          history.replaceState(null, '', '#' + sec);
+        } catch (e) { /* ignore */ }
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { activate(t.getAttribute('data-sec')); });
+      });
+      // Restore from hash on load
+      var hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash && document.getElementById('panel-' + hash)) {
+        activate(hash);
+      }
+    })();
+  </script>
+</body>
+</html>

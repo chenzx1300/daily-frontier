@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Frontier · Issue №2 · 2026-08-31</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── Journal palette (Nature/Science-inspired) ───────────── */
+      --paper:        #faf7f2;     /* warm cream */
+      --paper-deep:   #f0ebe1;
+      --paper-shade:  #ece5d6;
+      --ink:          #1a1815;
+      --ink-soft:     #3a3530;
+      --muted:        #8a8275;
+      --rule:         #1a1815;     /* heavy ink rule */
+      --line:         #d8d1c1;
+      --line-soft:    #e8e2d3;
+
+      /* brand — Nature-style crimson */
+      --brand:        #9b1c1f;
+      --brand-dark:   #7c1517;
+      --brand-tint:   rgba(155, 28, 31, 0.06);
+
+      /* section accents */
+      --companies:    #1f5fa3;     /* deep blue */
+      --papers:       #6b3fa0;     /* deep purple */
+      --tools:        #1e7a51;     /* deep green */
+
+      /* tier colors */
+      --tier-breaking: #9b1c1f;
+      --tier-major:    #b45309;
+      --tier-notable:  #1a1815;
+      --tier-mention:  #8a8275;
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
+    body {
+      font: 16px/1.62 "Source Serif 4", Georgia, "Source Han Serif SC",
+            "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei", serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* ═══ TOP SKU STRIP ════════════════════════════════════════ */
+    .sku-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sku-strip .left  { font-weight: 600 }
+    .sku-strip .right { display: flex; gap: 18px }
+    .sku-strip .right span strong { color: var(--ink); font-weight: 700; margin-left: 4px }
+
+    /* ═══ MASTHEAD ══════════════════════════════════════════════ */
+    .masthead {
+      padding: 28px 0 22px;
+      border-bottom: 4px double var(--rule);
+      text-align: center;
+    }
+    .masthead .name {
+      font-family: "Fraunces", "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144;
+      margin: 0;
+    }
+    .masthead .name em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .masthead .sub {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .masthead .meta {
+      margin-top: 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      align-items: center;
+    }
+    .masthead .meta strong { color: var(--brand); font-weight: 700 }
+    .masthead .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ TOC / TAB NAV ═════════════════════════════════════════ */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+      padding: 0;
+    }
+    .toc-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 24px 16px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      text-align: left;
+      transition: background .15s ease;
+      color: var(--ink-soft);
+    }
+    .toc-item:last-child { border-right: none }
+    .toc-item:hover { background: var(--paper-deep) }
+    .toc-item.active { background: var(--brand-tint) }
+    .toc-item .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .toc-item.active .roman { color: var(--brand) }
+    .toc-item .label {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .toc-item .meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ═══ SECTION PANELS ════════════════════════════════════════ */
+    .panel {
+      display: none;
+      padding-top: 36px;
+      border-top: 3px solid var(--line);
+      margin-top: 28px;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .panel.companies { border-top-color: var(--companies) }
+    .panel.papers    { border-top-color: var(--papers) }
+    .panel.tools     { border-top-color: var(--tools) }
+    .panel.active { display: block }
+    .panel-empty {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    /* ═══ SECTION HEADING ═══════════════════════════════════════ */
+    .section-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: end;
+      gap: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section-head .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 0.85;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+    }
+    .section-head .title {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .section-head .title em { font-style: italic; font-weight: 700; color: var(--brand); }
+    .section-head .meta {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    .section-head .meta strong { color: var(--ink); font-weight: 700 }
+
+    /* ═══ ARTICLE TYPE LABEL (used by lead + cards) ═════════════ */
+    .article-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .article-type .type { color: var(--brand); }
+    .article-type .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .article-type .tier-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      border-radius: 1px;
+      font-weight: 800;
+    }
+    .article-type .tier-tag.tier-breaking {
+      background: var(--tier-breaking); color: var(--paper); border: 1px solid var(--tier-breaking);
+    }
+    .article-type .tier-tag.tier-major {
+      background: transparent; color: var(--tier-major);
+      border: 1px solid var(--tier-major);
+    }
+    .article-type .tier-tag.tier-notable {
+      background: transparent; color: var(--tier-notable);
+      border: 1px solid var(--line);
+    }
+    .article-type .tier-tag.tier-mention {
+      background: transparent; color: var(--tier-mention);
+      border: 1px solid var(--line-soft);
+    }
+
+    /* ═══ LEAD STORY ════════════════════════════════════════════ */
+    .lead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 36px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lead h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      font-variation-settings: "opsz" 144;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .lead h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--brand) }
+    .lead .deck {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 60ch;
+      font-variation-settings: "opsz" 60;
+    }
+    /* Abstract blockquote — left red border, italic serif, indented */
+    .lead .abstract {
+      margin: 4px 0 0;
+      padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--brand);
+      font-family: "Source Serif 4", "Fraunces", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 64ch;
+    }
+    .lead .abstract strong { color: var(--ink); font-weight: 700 }
+    .lead .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .lead .byline strong { color: var(--ink-soft); font-weight: 700 }
+    .lead .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .lead .read {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .lead .read::before { content: "→ "; margin-right: 4px }
+
+    /* verify badge — shown when lead is flagged */
+    .verify-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+    }
+    .verify-badge.match  { color: var(--tools); background: rgba(30,122,81,.06) }
+    .verify-badge.flag   { color: var(--brand); background: var(--brand-tint) }
+    .verify-badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    }
+
+    /* ═══ CARD GRID ══════════════════════════════════════════════ */
+    .grid {
+      display: grid;
+      /* minmax(0, 1fr) lets columns shrink below min-content so a wide title
+         doesn't push the panel beyond the wrap (papers/tools had this bug). */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 32px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 0 22px;
+      border-top: 1px solid var(--ink);
+    }
+    .card .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+    .card .kicker strong { color: var(--brand); font-weight: 800 }
+    .card h3 {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
+      margin: 0;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px }
+    .card .deck {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .card .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ COMPANY GROUPS (sub-headers inside the news panel) ══════ */
+    .company-group {
+      margin-top: 32px;
+    }
+    .company-group:first-of-type { margin-top: 0 }
+    .company-group-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 0 0 10px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+    }
+    .company-group-head .dot-accent {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--companies);
+      display: inline-block;
+      flex: none;
+      transform: translateY(1px);
+    }
+    .company-group-head .name {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .company-group-head .count {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* ═══ BRIEF LIST (tools — DEPRECATED; kept responsive fallback) ═ */
+    .brief-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 40px;
+    }
+    .brief {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 18px 0 18px;
+      border-top: 1px solid var(--ink);
+    }
+    .brief .cat {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--brand);
+      align-self: start;
+      padding-top: 4px;
+    }
+
+    /* ═══ TOOL CARD (same width as companies/papers cards) ══════ */
+    .card .repo {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin: -2px 0 2px;
+    }
+    .cat-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      font-family: "Inter", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 2px;
+      color: var(--paper);
+      background: var(--tools);
+      border: 1px solid var(--tools);
+    }
+    .cat-tag.cat-foundation-model { background: #1f5fa3; border-color: #1f5fa3 }
+    .cat-tag.cat-learning         { background: #1e7a51; border-color: #1e7a51 }
+    .cat-tag.cat-policy           { background: #6b3fa0; border-color: #6b3fa0 }
+    .cat-tag.cat-benchmark        { background: #b45309; border-color: #b45309 }
+    .cat-tag.cat-release          { background: var(--ink); border-color: var(--ink) }
+
+    /* ═══ FOOTER ═════════════════════════════════════════════════ */
+    footer {
+      margin-top: 64px;
+      padding: 28px 0 16px;
+      border-top: 4px double var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer .left  {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink-soft);
+    }
+    footer .right { display: flex; gap: 18px }
+    footer .right a { color: var(--ink-soft) }
+    footer .right a:hover { color: var(--brand) }
+
+    /* ═══ AUDIT STRIP ════════════════════════════════════════════ */
+    .audit-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--paper-shade);
+      border-left: 3px solid var(--brand);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+    .audit-strip strong { color: var(--ink); font-weight: 700 }
+    .audit-strip .pills { display: flex; gap: 10px }
+    .audit-strip .pill {
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+    }
+    .audit-strip .pill.good  { color: var(--tools); border-color: var(--tools) }
+    .audit-strip .pill.warn  { color: var(--tier-major); border-color: var(--tier-major) }
+    .audit-strip .pill.bad   { color: var(--brand); border-color: var(--brand) }
+    .audit-strip a { font-weight: 700; color: var(--brand) }
+
+    /* ═══ RESPONSIVE ═════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .wrap { padding: 0 24px 64px }
+      .masthead .name { font-size: 48px }
+      .masthead .meta { flex-wrap: wrap; gap: 12px }
+      .toc { grid-template-columns: 1fr; }
+      .toc-item { border-right: none; border-bottom: 1px solid var(--line) }
+      .toc-item:last-child { border-bottom: none }
+      .section-head { grid-template-columns: 60px 1fr; gap: 16px }
+      .section-head .meta { grid-column: 1 / -1; text-align: left }
+      .section-head .title { font-size: 28px }
+      .section-head .roman { font-size: 48px }
+      .grid { grid-template-columns: 1fr 1fr }
+      .brief-list { grid-template-columns: 1fr }
+      .lead h2 { font-size: 34px }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px 48px }
+      .masthead { padding: 18px 0 16px }
+      .masthead .name { font-size: 36px }
+      .grid { grid-template-columns: 1fr }
+      .brief { grid-template-columns: 1fr; gap: 4px }
+      .lead h2 { font-size: 28px }
+      .lead .deck { font-size: 18px }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ═══ SKU strip ═══ -->
+    <div class="sku-strip">
+      <div class="left">Daily Frontier — The Embodied AI Daily</div>
+      <div class="right">
+        <span><strong>2026-08-31</strong></span>
+        <span>Vol. 1 · No. 2</span>
+        <span>38 stories</span>
+      </div>
+    </div>
+
+    <!-- ═══ Masthead ═══ -->
+    <header class="masthead">
+      <h1 class="name">Daily <em>Frontier</em></h1>
+      <div class="sub">每日具身智能动态 · A daily reading of the embodied-AI industry</div>
+      <div class="meta">
+        <span><strong>Issue №2</strong></span>
+        <span class="dot"></span>
+        <span>2026-08-31</span>
+        <span class="dot"></span>
+        <span>30d window</span>
+        <span class="dot"></span>
+        <span>Compiled 2026-08-31</span>
+      </div>
+    </header>
+
+    <!-- ═══ TOC strip ═══ -->
+    <nav class="toc" role="tablist">
+      <button type="button"
+              class="toc-item active"
+              data-sec="companies"
+              role="tab"
+              aria-selected="true">
+        <span class="roman">I</span>
+        <span class="label">公司动态</span>
+        <span class="meta">26 stories · n=26</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="papers"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">II</span>
+        <span class="label">学术前沿</span>
+        <span class="meta">8 stories · n=8</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="tools"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">III</span>
+        <span class="label">工具链进展</span>
+        <span class="meta">4 stories · n=4</span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="panel companies active"
+               id="panel-companies"
+               data-sec="companies"
+               role="tabpanel"
+               aria-labelledby="tab-companies">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">I</div>
+            <div class="title"><em>§ I.</em> 公司动态</div>
+            <div class="meta">
+              <strong>26</strong> stories
+            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-major">MAJOR</span>
+              </span>
+              <h2><a href="https://www.leiphone.com/category/industrynews/813poadxB0Dhb82w.html" target="_blank" rel="noopener">上半年营收增30%，毛利增55%，佑驾创新盈利能力持续改善</a></h2>
+              <p class="deck">8月28日，佑驾创新（2431.HK）发布2026年度中期业绩报告，交出营收毛利双增、亏损收窄、无人车收入爆发的中期答卷，规模效应加速释放，盈利质量与经营韧性同步提升。面对汽车智能化转型深水区带来的竞争加剧，佑驾创新以稳健经营与持续迭代，展现出自动驾驶科技企业穿越周期的硬实力。 报告期内，佑驾创新收入同比增长超30%，毛利润同比增长超55%，毛利率提升至17.9%，智能座舱收入翻</p>
+              <blockquote class="abstract">
+                8月28日，佑驾创新（2431.HK）发布2026年度中期业绩报告，交出营收毛利双增、亏损收窄、无人车收入爆发的中期答卷，规模效应加速释放，盈利质量与经营韧性同步提升。面对汽车智能化转型深水区带来的竞争加剧，佑驾创新以稳健经营与持续迭代，展现出自动驾驶科技企业穿越周期的硬实力。 报告期内，佑驾创新收入同比增长超30%，毛利润同比增长超55%，毛利率提升至17.9%，智能座舱收入翻
+              </blockquote>
+              <div class="byline">
+<strong>中文AI/机器人资讯</strong>                <span class="dot"></span>
+                <span>2d ago</span>
+                <span class="dot"></span>
+                <a class="read" href="https://www.leiphone.com/category/industrynews/813poadxB0Dhb82w.html" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+              <!-- Companies: grouped by source — each publisher gets its own block -->
+              <section class="company-group" data-company="Boston Dynamics">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">Boston Dynamics</span>
+                  <span class="count">12 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/scaling-new-career-heights-with-stretch/" target="_blank" rel="noopener">借助 Stretch 拓展职业新高度</a></h3>
+                    <p class="deck">借助 Stretch 拓展职业新高度</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/" target="_blank" rel="noopener">AIVI-Learning 现由 Google Gemini Robotics 提供支持</a></h3>
+                    <p class="deck">AIVI-Learning 现由 Google Gemini Robotics 提供支持</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/tools-for-your-to-do-list-with-spot-and-gemini-robotics/" target="_blank" rel="noopener">使用 Spot 和 Gemini Robotics 处理你的待办事项</a></h3>
+                    <p class="deck">使用 Spot 和 Gemini Robotics 处理你的待办事项</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/ask-a-roboticist-meet-ethan/" target="_blank" rel="noopener">机器人专家问答：认识 Ethan</a></h3>
+                    <p class="deck">机器人专家问答：认识 Ethan</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/training-a-humanoid-robot-for-hard-work/" target="_blank" rel="noopener">训练人形机器人从事繁重工作</a></h3>
+                    <p class="deck">训练人形机器人从事繁重工作</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/ask-a-roboticist-meet-chastity/" target="_blank" rel="noopener">对话机器人专家：认识 Chastity</a></h3>
+                    <p class="deck">对话机器人专家：认识 Chastity</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/can-football-teach-a-robot-to-move/" target="_blank" rel="noopener">足球能教会机器人运动吗？</a></h3>
+                    <p class="deck">足球能教会机器人运动吗？</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/securing-the-fifa-world-cup-2026/" target="_blank" rel="noopener">为 FIFA 2026 世界杯保驾护航</a></h3>
+                    <p class="deck">为 FIFA 2026 世界杯保驾护航</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/bridging-the-porch-gap/" target="_blank" rel="noopener">弥合"最后一公里"鸿沟（Porch Gap）</a></h3>
+                    <p class="deck">弥合"最后一公里"鸿沟（Porch Gap）</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/deploying-robots-into-and-onto-the-field/" target="_blank" rel="noopener">将机器人部署到（及部署上）作业现场</a></h3>
+                    <p class="deck">将机器人部署到（及部署上）作业现场</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/ask-a-roboticist-meet-taylor/" target="_blank" rel="noopener">向机器人专家提问：认识 Taylor</a></h3>
+                    <p class="deck">向机器人专家提问：认识 Taylor</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>Boston Dynamics</strong>
+                    </div>
+                    <h3><a href="https://bostondynamics.com/blog/ask-a-roboticist-meet-mark/" target="_blank" rel="noopener">向机器人专家提问：认识 Mark</a></h3>
+                    <p class="deck">向机器人专家提问：认识 Mark</p>
+                    <div class="byline">
+                      <span>7h ago</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section class="company-group" data-company="世界机器人大赛 (WRC)">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">世界机器人大赛 (WRC)</span>
+                  <span class="count">9 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3650.html" target="_blank" rel="noopener">媒体关注｜从“能跑会跳”到“能想会干”——人形机器人加速“进化”</a></h3>
+                    <p class="deck">媒体关注｜从“能跑会跳”到“能想会干”——人形机器人加速“进化”</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3651.html" target="_blank" rel="noopener">媒体关注｜全球媒体聚焦丨“中国正在成为人形机器人技术中心”</a></h3>
+                    <p class="deck">媒体关注｜全球媒体聚焦丨“中国正在成为人形机器人技术中心”</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3658.html" target="_blank" rel="noopener">媒体关注｜从花式炫技到“能干活、能交付”，人形机器人“加速进化”</a></h3>
+                    <p class="deck">媒体关注｜从花式炫技到“能干活、能交付”，人形机器人“加速进化”</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3653.html" target="_blank" rel="noopener">媒体关注｜外交部谈机器人大会：中国底层逻辑始终是开放合作、互利共赢，而非封闭独占</a></h3>
+                    <p class="deck">媒体关注｜外交部谈机器人大会：中国底层逻辑始终是开放合作、互利共赢，而非封闭独占</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3654.html" target="_blank" rel="noopener">媒体关注｜WRC 2026：灵巧手比拼进入下半场，数据成破局关键</a></h3>
+                    <p class="deck">媒体关注｜WRC 2026：灵巧手比拼进入下半场，数据成破局关键</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3655.html" target="_blank" rel="noopener">媒体关注｜外媒：世界机器人大会展现中国未来发展趋势</a></h3>
+                    <p class="deck">媒体关注｜外媒：世界机器人大会展现中国未来发展趋势</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3656.html" target="_blank" rel="noopener">媒体关注｜2026世界机器人大会在京开幕 国际专家：中国机器人“年年跃升”</a></h3>
+                    <p class="deck">媒体关注｜2026世界机器人大会在京开幕 国际专家：中国机器人“年年跃升”</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3659.html" target="_blank" rel="noopener">媒体关注｜2026世界机器人大会见证“人机共生 产需共融”</a></h3>
+                    <p class="deck">媒体关注｜2026世界机器人大会见证“人机共生 产需共融”</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>世界机器人大赛 (WRC)</strong>
+                    </div>
+                    <h3><a href="https://www.worldrobotconference.com/news/3660.html" target="_blank" rel="noopener">2026世界机器人大会 先进机器人与自动化学术会议在京举办</a></h3>
+                    <p class="deck">2026世界机器人大会 先进机器人与自动化学术会议在京举办</p>
+                    <div class="byline">
+                      <span>future</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section class="company-group" data-company="中文AI/机器人资讯">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">中文AI/机器人资讯</span>
+                  <span class="count">4 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/iot/wSd8yNXuuYwSg9hp.html" target="_blank" rel="noopener">WRC2026 | 别急着给机器人更强「大脑」，先补上更省电的神经系统</a></h3>
+                    <p class="deck">data-src="https://static.leiphone.co</p>
+                    <div class="byline">
+                      <span>2d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/H2PFxmf25qYtFbee.html" target="_blank" rel="noopener">一段视频，让机器人学会开门并穿越：Video2DoorTraversal 如何打通 Real-to-Sim-to-Real</a></h3>
+                    <p class="deck">对人来说，推门近乎是一种下意识动作。对移动操作机器人来说，这是一道把感知、移动、操作和控制绑在一起的综合题。</p>
+                    <div class="byline">
+                      <span>2d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/ai/ncVQF4d9AckBMZwP.html" target="_blank" rel="noopener">大晓联合香港大学发布StreamPI，让 VLA 真正理解时间，迈向连续物理智能</a></h3>
+                    <p class="deck">当 VLA 模型理解语言、感知环境并直接生成机器人动作，一个更基础的问题开始浮现：机器人如何理解一个持续变化的物理世界？物体从哪里移动而来、杯子此前遮住了什么、机械臂正在接近还是远离目标——真正决定下一步动作的信息，往往不只存在于当前一帧，而存在于连续的时间之中。 </</p>
+                    <div class="byline">
+                      <span>2d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>中文AI/机器人资讯</strong>
+                    </div>
+                    <h3><a href="https://www.leiphone.com/category/industrynews/gE5Am1JMBQG2AjNJ.html" target="_blank" rel="noopener">首家“碰一下”机器人租赁体验店落地上海徐家汇！支付宝“碰一下”解锁机器人互动与租赁新体验</a></h3>
+                    <p class="deck">只需手机“碰一下”，就能租借机器人，甚至让它跳舞表演？ 8月28日，全国首家“碰一下”机器人租赁体验店在上海徐汇区新六百YOUNG商场焕新开业。该店由宇树科技核心生态伙伴具深科技旗下品牌“机时租”接入支付宝“碰一下”能力打造，实现线下机器人“碰一下”快捷租赁，并支持“碰一下”唤醒AI智能体操控机器人动作。活动当日，普通市民可实现零门槛沉浸式感受“一碰即控”的机器人互动乐趣。</p</p>
+                    <div class="byline">
+                      <span>2d ago</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+      </section>
+      <section class="panel papers "
+               id="panel-papers"
+               data-sec="papers"
+               role="tabpanel"
+               aria-labelledby="tab-papers">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">II</div>
+            <div class="title"><em>§ II.</em> 学术前沿</div>
+            <div class="meta">
+              <strong>8</strong> stories
+· top venue <strong>NeurIPS 2025</strong>            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-notable">NOTABLE</span>
+              </span>
+              <h2><a href="https://openreview.net/forum?id=qjee4tiBGZ" target="_blank" rel="noopener">AC-DiT：面向移动操作的适应性协调扩散 Transformer</a></h2>
+              <p class="deck">近期，移动操作因能实现家庭任务中以语言为条件的机器人控制而日益受到关注。然而，现有方法在协调移动底座与机械臂方面仍面临挑战，主要源于两个局限。一方面，它们未能显式……</p>
+              <blockquote class="abstract">
+                近期，移动操作因能实现家庭任务中以语言为条件的机器人控制而日益受到关注。然而，现有方法在协调移动底座与机械臂方面仍面临挑战，主要源于两个局限。一方面，它们未能显式……
+              </blockquote>
+              <div class="byline">
+<strong>Sixiang Chen</strong><strong>NeurIPS 2025</strong>                <span class="dot"></span>
+                <span>2025-05-06</span>
+                <span class="dot"></span>
+                <a class="read" href="https://openreview.net/forum?id=qjee4tiBGZ" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+              <!-- Papers: flat 3-col grid (same width as companies / tools) -->
+              <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+<strong>NeurIPS 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=2aIoEG2Hwz" target="_blank" rel="noopener">$\textit{HiMaCon}$：从未标注多模态数据中发现层次化操作概念</a></h3>
+                    <div class="repo">Ruizhe Liu et al.</div>
+                    <p class="deck">机器人操作中的有效泛化需要能跨环境与任务捕捉交互不变模式的表征。我们提出一个自监督框架，通过跨模态感知学习编码这些不变模式的层次化操作概念……</p>
+                    <div class="byline">
+                      <span>2025-05-04</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>NeurIPS 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=PdRf0O7baQ" target="_blank" rel="noopener">借助视觉-语言模型搭建灵巧操作脚手架</a></h3>
+                    <div class="repo">Vincent de Bakker et al.</div>
+                    <p class="deck">灵巧的机器人手对于执行复杂操作任务至关重要，但因演示采集困难及高维控制难题而难以训练。虽然强化学习 (RL) 可通过在仿真中生成经验来缓解数据瓶颈，但……</p>
+                    <div class="byline">
+                      <span>2025-05-12</span>
+                      <span class="dot"></span>
+                      <span>manipulation · dexterous</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>NeurIPS 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=h6xQClTm4W" target="_blank" rel="noopener">探索视觉-语言-动作模型在跨任务泛化中的极限</a></h3>
+                    <div class="repo">Jiaming Zhou et al.</div>
+                    <p class="deck">视觉-语言-动作(VLA)模型对未见过的任务的泛化能力,对于在开放世界环境中实现通用机器人操作至关重要。然而,现有VLA模型的跨任务泛化能力仍显著未被充分探索。为了解决这一</p>
+                    <div class="byline">
+                      <span>2025-04-05</span>
+                      <span class="dot"></span>
+                      <span>VLA · manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=FuvU7PTyED" target="_blank" rel="noopener">DreamDojo:基于大规模人类视频的通用机器人世界模型</a></h3>
+                    <div class="repo">Shenyuan Gao et al.</div>
+                    <p class="deck">能够在多样化环境中模拟动作结果将彻底改变大规模通用智能体的开发。然而,建模这些世界动态,尤其是灵巧机器人任务,由于数据覆盖有限和动作标签稀缺,面临重大挑战。</p>
+                    <div class="byline">
+                      <span>2026-01-20</span>
+                      <span class="dot"></span>
+                      <span>world model · dexterous</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=786uULN9ZG" target="_blank" rel="noopener">从想象未来到可执行动作:面向机器人操作的动作潜在混合模型</a></h3>
+                    <div class="repo">Yajie Li et al.</div>
+                    <p class="deck">视频生成模型通过预测长时域未来观察,为机器人操作提供了一种有前景的想象机制,但如何有效利用这些想象未来来执行动作仍具挑战性。现有方法要么将策略条件化在预测帧上,要么直接</p>
+                    <div class="byline">
+                      <span>2026-01-18</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=Ffdn32iFeH" target="_blank" rel="noopener">跨XPU表征视觉-语言-动作模型:机器人部署的约束与加速</a></h3>
+                    <div class="repo">Kaijun Zhou et al.</div>
+                    <p class="deck">视觉-语言-动作(VLA)模型在通用机器人控制方面前景广阔,但机器人在部署时受到严格成本和能耗预算下实时推理的瓶颈制约。大多数先前的评估依赖桌面级GPU,掩盖了异构e所提供的权衡和机遇</p>
+                    <div class="byline">
+                      <span>2026-01-24</span>
+                      <span class="dot"></span>
+                      <span>VLA</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=4JRO9plGAI" target="_blank" rel="noopener">CaP-X:用于机器人操作代码智能体基准测试和改进的框架</a></h3>
+                    <div class="repo">Letian Fu et al.</div>
+                    <p class="deck">Code-as-Policy(CaP)是一种语言或视觉-语言模型生成可执行机器人控制程序的范式,然而其作为具身操作自主控制器的有效性仍未被充分探索。先前的CaP系统通常依赖人工设计的高层原语,使得</p>
+                    <div class="byline">
+                      <span>2026-01-21</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+              </div>
+      </section>
+      <section class="panel tools "
+               id="panel-tools"
+               data-sec="tools"
+               role="tabpanel"
+               aria-labelledby="tab-tools">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">III</div>
+            <div class="title"><em>§ III.</em> 工具链进展</div>
+            <div class="meta">
+              <strong>4</strong> stories
+· <strong>4</strong> repos            </div>
+          </div>
+
+            <!-- Tools: 3-col card grid (same width as companies / papers) -->
+            <div class="grid">
+              <article class="card tool-card">
+                <div class="kicker">
+                  <strong class="cat-tag cat-foundation-model">foundation-model</strong>
+                </div>
+                <h3><a href="https://github.com/NVIDIA/Isaac-GR00T/releases/tag/n1.7-release" target="_blank" rel="noopener">n1.7 版本发布</a></h3>
+                <div class="repo">NVIDIA/Isaac-GR00T</div>
+                <p class="deck">Early Access n1.7 版本发布</p>
+                <div class="byline">
+                  <span>2026-04-18</span>
+                </div>
+              </article>
+              <article class="card tool-card">
+                <div class="kicker">
+                  <strong class="cat-tag cat-learning">learning</strong>
+                </div>
+                <h3><a href="https://github.com/huggingface/lerobot/releases/tag/v0.6.1" target="_blank" rel="noopener">Release v0.6.1</a></h3>
+                <div class="repo">huggingface/lerobot</div>
+                <p class="deck">## ⚠️ 破坏性变更（v0.6.0 -> v0.6.1） - `lerobot.types` 模块已重命名为 `lerobot.lerobot_types`：https://github.com/huggingface/lerobot/pull/4232 ## 变更内容 * chore(dependencies)：由 @imstevenpmwork 在 https://github.com/huggingface/l 中将 lerobot 升级至 0.6.1</p>
+                <div class="byline">
+                  <span>27d ago</span>
+                </div>
+              </article>
+              <article class="card tool-card">
+                <div class="kicker">
+                  <strong class="cat-tag cat-policy">policy</strong>
+                </div>
+                <h3><a href="https://github.com/octo-models/octo/releases/tag/v1.5" target="_blank" rel="noopener">v1.5</a></h3>
+                <div class="repo">octo-models/octo</div>
+                <p class="deck">## 变更内容 * 通过在上下文窗口中每个时间步重复语言 token，改进了视觉 token 与语言 token 之间的交叉注意力。 * 使用 GPT-3.5 生成的改写对数据中的语言指令进行了增强。 * Bug 修复： - 关闭了 d 中的 dropout</p>
+                <div class="byline">
+                  <span>2024-05-24</span>
+                </div>
+              </article>
+              <article class="card tool-card">
+                <div class="kicker">
+                  <strong class="cat-tag cat-benchmark">benchmark</strong>
+                </div>
+                <h3><a href="https://github.com/ARISE-Initiative/robomimic/releases/tag/v0.5.0" target="_blank" rel="noopener">v0.5</a></h3>
+                <div class="repo">ARISE-Initiative/robomimic</div>
+                <p class="deck"># robomimic v0.5 版本发布说明 ## 亮点 - 🧠 新算法（Diffusion Policy） - 🕹️ 支持 Action dicts 和 normalization - 🗄️ 多数据集训练 - 📝 语言条件策略学习 - ⏯️ 恢复（Resume）功能 - 其他体验改进 ## 🧠 新</p>
+                <div class="byline">
+                  <span>2025-06-27</span>
+                </div>
+              </article>
+            </div>
+
+      </section>
+    </main>
+
+    <!-- ═══ Audit strip ═══ -->
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+      <div class="left">Compiled daily from RSS feeds, official blogs, arXiv, and GitHub.</div>
+      <div class="right">
+        <a href="data/digest.json">digest.json</a>
+        <a href="content-audit.html">audit</a>
+        <a href="https://github.com/chenzx1300/daily-frontier" target="_blank" rel="noopener">source</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab switching — show one panel at a time
+    (function () {
+      var tabs = document.querySelectorAll('.toc-item');
+      var panels = document.querySelectorAll('.panel');
+      function activate(sec) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute('data-sec') === sec;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-sec') === sec);
+        });
+        try {
+          history.replaceState(null, '', '#' + sec);
+        } catch (e) { /* ignore */ }
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { activate(t.getAttribute('data-sec')); });
+      });
+      // Restore from hash on load
+      var hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash && document.getElementById('panel-' + hash)) {
+        activate(hash);
+      }
+    })();
+  </script>
+</body>
+</html>
