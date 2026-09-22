@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Content Audit · 2026-08-24 · Issue №1</title>
+<style>
+  :root {
+    --bg: #faf7f2; --ink: #1a1815; --muted: #8a8275; --line: #d8d1c1;
+    --good: #047857; --bad: #991b1b; --warn: #b45309;
+  }
+  body { font: 14px/1.55 Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); margin:0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 40px 80px; }
+  h1 { font: 700 28px/1.1 Georgia, serif; margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+  .summary { display: flex; gap: 14px; margin: 20px 0 28px; flex-wrap: wrap; }
+  .pill { font: 11px/1 Inter; letter-spacing: .1em; text-transform: uppercase;
+          padding: 6px 10px; border: 1px solid var(--line); border-radius: 2px; }
+  .pill.good { background: rgba(4,120,87,.08); color: var(--good); border-color: var(--good); }
+  .pill.bad { background: rgba(153,27,27,.08); color: var(--bad); border-color: var(--bad); }
+  .pill.warn { background: rgba(180,83,9,.08); color: var(--warn); border-color: var(--warn); }
+  table { width:100%; border-collapse: collapse; }
+  th { text-align: left; font: 600 11px/1 Inter; letter-spacing: .14em; text-transform: uppercase;
+       color: var(--muted); border-bottom: 2px solid var(--ink); padding: 8px 10px; }
+  td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr.row--unreachable td, tr.row--blocked td, tr.row--redirect td,
+  tr.row--mismatch td, tr.row--no-url td, tr.row--payload-fail td,
+  tr.row--low-sim td { background: rgba(153,27,27,.04); }
+  .status { font: 600 10px/1 Inter; letter-spacing: .12em; text-transform: uppercase;
+             padding: 4px 6px; border-radius: 2px; border: 1px solid currentColor; }
+  .status--match        { color: var(--good); }
+  .status--mismatch, .status--unreachable, .status--blocked,
+  .status--redirect, .status--no-url, .status--payload-fail
+                         { color: var(--bad); }
+  .status--low-sim      { color: var(--warn); }
+  .sec { font: 600 10px/1 JetBrains Mono, monospace; letter-spacing: .12em;
+         text-transform: uppercase; color: var(--muted); }
+  .title { font-weight: 600; line-height: 1.35; margin-bottom: 4px; }
+  .url { font: 11px/1.4 JetBrains Mono, monospace; color: var(--ink-soft);
+         text-decoration: none; word-break: break-all; }
+  .url:hover { text-decoration: underline; }
+  .reason { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .verdict { font: 600 11px/1 Inter; letter-spacing: .1em; text-transform: uppercase;
+              color: var(--warn); margin-left: 8px; }
+  .sim { font: 12px JetBrains Mono, monospace; color: var(--ink-soft); white-space: nowrap; }
+  .muted { color: var(--muted); font-size: 11px; margin-top: 4px; }
+  footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line);
+            color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Content Audit</h1>
+  <div class="meta">2026-08-24 · Issue №1 · 59 items checked</div>
+  <div class="summary">
+    <span class="pill good">53 match</span>
+    <span class="pill warn">6 low_sim</span>
+    <span class="pill bad">0 mismatch</span>
+    <span class="pill bad">0 unreachable</span>
+    <span class="pill bad">0 blocked</span>
+    <span class="pill bad">0 redirect</span>
+    <span class="pill bad">0 payload_fail</span>
+    <span class="pill bad">0 no_url</span>
+    <span class="pill">overall = 0.90</span>
+  </div>
+  <table>
+    <thead><tr>
+      <th>Status</th><th>Section</th><th>Item</th><th>Similarity</th>
+    </tr></thead>
+    <tbody>
+      
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Figure 03 自主爬梯演示</div>
+    <a class="url" href="https://interestingengineering.com/ai-robotics/figures-new-humanoid-scales-ladder-autonomously-marking-ai-mobility-advancement" target="_blank" rel="noopener">https://interestingengineering.com/ai-robotics/figures-new-humanoid-scales-ladder-autonomously-marking-ai-mobility-advancement</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;figure&#x27;] cross-lang signals: strong=2 [&#x27;figure&#x27;, &#x27;helix&#x27;], slug=0.00, entity=0.67</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.06</div>
+    <div class="muted">Figure 03 humanoid tackles autonomous ladder climb in the latest demo</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">BotQ 工厂实现每小时 1 台人形机器人量产</div>
+    <a class="url" href="https://ai2.work/blog/inside-botq-how-figure-ai-reached-one-humanoid-robot-per-hour" target="_blank" rel="noopener">https://ai2.work/blog/inside-botq-how-figure-ai-reached-one-humanoid-robot-per-hour</a>
+    <div class="reason">alias MATCH — 2 brand(s) [&#x27;figure&#x27;, &#x27;tesla&#x27;] cross-lang signals: strong=2 [&#x27;figure&#x27;, &#x27;botq&#x27;], slug=0.00, entity=0.08</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">Inside BotQ: How Figure AI Reached One Humanoid Robot Per Hour</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Adcock: 轮式机器人是&#x27;死胡同&#x27;，双足才是未来</div>
+    <a class="url" href="https://www.frontiernews.ai/news/article/figure-ais-675m-bet-on-humanoid-robots-is-starting-0cfaee4d" target="_blank" rel="noopener">https://www.frontiernews.ai/news/article/figure-ais-675m-bet-on-humanoid-robots-is-starting-0cfaee4d</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;figure&#x27;] cross-lang signals: strong=1 [&#x27;figure&#x27;], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.02</div>
+    <div class="muted">Figure AI&#x27;s $20,000 Humanoid Robot Is About to Upend the Economics of Labor</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Figure 03 在宝马 Spartanburg 工厂持续部署</div>
+    <a class="url" href="https://robotwale.com/news/figure-ai-tesla-advance-humanoid-robotics-new-benchmarks-pricing" target="_blank" rel="noopener">https://robotwale.com/news/figure-ai-tesla-advance-humanoid-robotics-new-benchmarks-pricing</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;figure&#x27;] cross-lang signals: strong=1 [&#x27;figure&#x27;], slug=0.00, entity=0.07</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.02</div>
+    <div class="muted">Figure AI and Tesla Advance Humanoid Robotics with New Benchmarks and Pricing - </div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">1X NEO Hayward 工厂正式投产</div>
+    <a class="url" href="https://robotd.net/article/1x-neo-mass-production-2026" target="_blank" rel="noopener">https://robotd.net/article/1x-neo-mass-production-2026</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;1x&#x27;] cross-lang signals: strong=2 [&#x27;neo&#x27;, &#x27;1x&#x27;], slug=0.00, entity=0.06</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.01</div>
+    <div class="muted">1X&#x27;s NEO Goes Mass-Production: The First US Humanoid Robot Factory Is Here,</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">1X 推出 25 自由度灵巧手并展示精细操作</div>
+    <a class="url" href="https://www.1x.tech/discover/neos-hands" target="_blank" rel="noopener">https://www.1x.tech/discover/neos-hands</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;1x&#x27;] cross-lang signals: strong=1 [&#x27;neo&#x27;], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">NEO’s Hands | An API to the Physical World</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Tesla Optimus V3 启动量产</div>
+    <a class="url" href="https://optimusk.blog/blog/tesla-optimus-plant-cube-production" target="_blank" rel="noopener">https://optimusk.blog/blog/tesla-optimus-plant-cube-production</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;tesla&#x27;] cross-lang signals: strong=2 [&#x27;tesla&#x27;, &#x27;optimus&#x27;], slug=0.00, entity=0.18</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">Tesla Optimus Plant Cube &amp; Production: Fremont vs Giga Texas (2026)</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">马斯克敲定 Optimus V3 灵巧手设计</div>
+    <a class="url" href="https://m.cls.cn/detail/2141354" target="_blank" rel="noopener">https://m.cls.cn/detail/2141354</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;tesla&#x27;] cross-lang signals: strong=2 [&#x27;optimus&#x27;, &#x27;v3&#x27;], slug=0.00, entity=0.22</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.03</div>
+    <div class="muted">特斯拉Optimus V3量产渐近 灵巧手或迎重大升级 马斯克：正在敲定设计</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Atlas 通过强化学习训练完成重物搬运</div>
+    <a class="url" href="https://bostondynamics.com/blog/large-behavior-models-atlas-find-new-footing/" target="_blank" rel="noopener">https://bostondynamics.com/blog/large-behavior-models-atlas-find-new-footing/</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;boston-dynamics&#x27;] cross-lang signals: strong=1 [&#x27;atlas&#x27;], slug=0.00, entity=0.10</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.01</div>
+    <div class="muted">Large Behavior Models and Atlas Find New Footing | Boston Dynamics</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Atlas 在 Hyundai RMAC 与 Google DeepMind 部署</div>
+    <a class="url" href="https://globalnewsly.com/boston-dynamics-atlas-enters-the-real-world/" target="_blank" rel="noopener">https://globalnewsly.com/boston-dynamics-atlas-enters-the-real-world/</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;boston-dynamics&#x27;] cross-lang signals: strong=1 [&#x27;atlas&#x27;], slug=0.00, entity=0.09</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">Boston Dynamics&#x27; Atlas Enters the Real World</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Apptronik 启用 9 万平方英尺 Robot Park 训练场</div>
+    <a class="url" href="https://apptronik.com/news-collection/welcome-to-robot-park-where-apptroniks-apollo-goes-to-work" target="_blank" rel="noopener">https://apptronik.com/news-collection/welcome-to-robot-park-where-apptroniks-apollo-goes-to-work</a>
+    <div class="reason">title_sim=0.10 (need ≥ 0.55); summary_sim=0.00 (need ≥ 0.35) cross-lang signals: strong=1 [&#x27;apptronik&#x27;], slug=0.00, entity=0.14</div>
+  </td>
+  <td class="sim">
+    <div>t=0.10 · s=0.00</div>
+    <div class="muted">Apptronik - NewsX</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Physical Intelligence 估值达 110 亿美元</div>
+    <a class="url" href="https://www.sohu.com/a/1002851374_122063396" target="_blank" rel="noopener">https://www.sohu.com/a/1002851374_122063396</a>
+    <div class="reason">title_sim=0.10 (need ≥ 0.55); summary_sim=0.00 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.40</div>
+  </td>
+  <td class="sim">
+    <div>t=0.10 · s=0.00</div>
+    <div class="muted">速递｜前DeepMind创立，物理世界模型Physical Intelligence，估值四个月内翻倍至110亿美元</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Physical Intelligence：从 π0 到 π0.7 的通用机器人基础模型路线图</div>
+    <a class="url" href="https://tradeflock.com/physical-intelligence-one-brain-for-every-robot/" target="_blank" rel="noopener">https://tradeflock.com/physical-intelligence-one-brain-for-every-robot/</a>
+    <div class="reason">title_sim=0.11 (need ≥ 0.55); summary_sim=0.02 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.22</div>
+  </td>
+  <td class="sim">
+    <div>t=0.11 · s=0.02</div>
+    <div class="muted">Learn How Physical Intelligence’s π0 Model Powers Robotics</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Agility Robotics 与 Churchill Capital 达成 SPAC 合并</div>
+    <a class="url" href="https://robot.ofweek.com/2026-08/ART-898890-8460-30696752.html" target="_blank" rel="noopener">https://robot.ofweek.com/2026-08/ART-898890-8460-30696752.html</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;agility&#x27;] cross-lang signals: strong=1 [&#x27;agility&#x27;], slug=0.00, entity=0.11</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">25����Ԫ��ֵ��������˾Agilityƾʲô��Ϊ���λ�������ɹ�����ҵ�������� - OFweek��������</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Agility Robotics 通过与 Churchill Capital Corp XI 合并上市，代号 AGLT</div>
+    <a class="url" href="https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi" target="_blank" rel="noopener">https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;agility&#x27;] cross-lang signals: strong=1 [&#x27;agility&#x27;], slug=0.00, entity=0.40</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.01</div>
+    <div class="muted">Agility Robotics to Go Public Through Merger with Churchill Capital Corp XI | Ag</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">Skild Brain 进驻 LaGuardia 机场 T2 巡检</div>
+    <a class="url" href="https://www.skild.ai/blogs/reindustrial-revolution" target="_blank" rel="noopener">https://www.skild.ai/blogs/reindustrial-revolution</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;skild&#x27;] cross-lang signals: strong=0 [], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.07</div>
+    <div class="muted">The Reindustrial Revolution: Partnering with ABB Robotics, Universal Robots, and</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">智元机器人累计交付突破 1.5 万台</div>
+    <a class="url" href="https://www.agibot.com.cn/article/315/detail/171.html" target="_blank" rel="noopener">https://www.agibot.com.cn/article/315/detail/171.html</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;agibot&#x27;] cross-lang signals: strong=1 [&#x27;智元&#x27;], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.01</div>
+    <div class="muted">不到3个月再破里程碑！智元第15000台具身机器人下线，创下全球量产新纪录-智元创新（上海）科技股份有限公司</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">智元 Genie G2 在龙旗 3C 产线 8 小时作业成功率 99.5%</div>
+    <a class="url" href="https://www.agibot.com.cn/article/315/detail/170.html" target="_blank" rel="noopener">https://www.agibot.com.cn/article/315/detail/170.html</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;agibot&#x27;] cross-lang signals: strong=1 [&#x27;智元&#x27;], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">全球首个3C产线质检工段全覆盖机器人作业直播，智元加速“部署态”规模化落地-智元创新（上海）科技股份有限公司</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">宇树 &#x27;Superman&#x27; 原型机器人刷新速度纪录</div>
+    <a class="url" href="https://airoboticdaily.com/ai-robotic-products/unitree-superman-humanoid-robot-2661" target="_blank" rel="noopener">https://airoboticdaily.com/ai-robotic-products/unitree-superman-humanoid-robot-2661</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;unitree&#x27;] cross-lang signals: strong=1 [&#x27;superman&#x27;], slug=0.00, entity=0.10</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.02</div>
+    <div class="muted">Unitree Superman Robot Breaks Human Speed and Jumping Records</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">宇树人形机器人累计产量突破 1.8 万台</div>
+    <a class="url" href="https://yangtzeer.com/news/startups/unitree-humanoid-output-18000" target="_blank" rel="noopener">https://yangtzeer.com/news/startups/unitree-humanoid-output-18000</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;unitree&#x27;] cross-lang signals: strong=0 [], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">Unitree&#x27;s humanoid robot output hits 18,000 as production ramps up - The Ya</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">优必选中标 2.64 亿元广西边境口岸项目</div>
+    <a class="url" href="https://www.aastocks.com/tc/stocks/news/aafn-news/NOW.1486029" target="_blank" rel="noopener">https://www.aastocks.com/tc/stocks/news/aafn-news/NOW.1486029</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;ubtech&#x27;] cross-lang signals: strong=0 [], slug=0.00, entity=0.10</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.05</div>
+    <div class="muted">優必選(09880.HK)中標2.64億人幣人形機械人項目 料12月交付</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">摩根大通上调优必选 Walker S 系列出货目标至 5,000 台</div>
+    <a class="url" href="https://aastocks.com/en/stocks/news/aafn-con/NOW.1515719/popular-news/AAFN" target="_blank" rel="noopener">https://aastocks.com/en/stocks/news/aafn-con/NOW.1515719/popular-news/AAFN</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;ubtech&#x27;] cross-lang signals: strong=1 [&#x27;walker&#x27;], slug=0.00, entity=0.06</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">&lt;Research&gt;JPM Raises UBTECH ROBOTICS Walker S Series Humanoid Robot Shipme</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">companies</span></td>
+  <td class="t">
+    <div class="title">中国 H1 出货占全球人形机器人 97%</div>
+    <a class="url" href="https://www.globaltimes.cn/page/202608/1367923.shtml?id=12" target="_blank" rel="noopener">https://www.globaltimes.cn/page/202608/1367923.shtml?id=12</a>
+    <div class="reason">alias MATCH — 1 brand(s) [&#x27;unitree&#x27;] cross-lang signals: strong=1 [&#x27;h1&#x27;], slug=0.00, entity=0.29</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.00</div>
+    <div class="muted">China takes 97% of H1 global humanoid robot shipments; supply chains, vast marke</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21358" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21358</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.17</div>
+    <div class="muted">Mining beyond Earth with Space Robots: Exploration, Sampling, and Extraction</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">ViTacPhys: Physical Property-Aware Grasping from Human Visual-Tactile Demonstrations</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21355" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21355</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.19</div>
+    <div class="muted">ViTacPhys: Physical Property-Aware Grasping from Human Visual-Tactile Demonstrat</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Anatomy-Informed Neural Networks: Encoding Anatomic Priors in Loss and Architecture, with an SE(3) Formulation of Guidewire-Induced Aortoiliac Deformation</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21332" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21332</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.17</div>
+    <div class="muted">Anatomy-Informed Neural Networks: Encoding Anatomic Priors in Loss and Architect</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">NeSAM: Neuro-Symbolic Kinodynamics with Soil Adaptation for Off-Road Mobility</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21330" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21330</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.21</div>
+    <div class="muted">NeSAM: Neuro-Symbolic Kinodynamics with Soil Adaptation for Off-Road Mobility</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Unified Branch-and-Bound Search for the Steiner Traveling Salesman Problem on Graphs of Convex Sets</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21319" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21319</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.22</div>
+    <div class="muted">Unified Branch-and-Bound Search for the Steiner Traveling Salesman Problem on Gr</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">VT-MUSE: Multimodal Unified Sequential Visuotactile Representation Learning for Manipulation</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21290" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21290</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.22</div>
+    <div class="muted">VT-MUSE: Multimodal Unified Sequential Visuotactile Representation Learning for </div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">The Coastline as a Structural Constraint: Harnessing Scene Geometry for Autonomous Surface Vessel Localization</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21276" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21276</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">The Coastline as a Structural Constraint: Harnessing Scene Geometry for Autonomo</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Just Noticeable Difference Modeling for Token Compression in Vision-Language-Action Models</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21247" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21247</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.16</div>
+    <div class="muted">Just Noticeable Difference Modeling for Token Compression in Vision-Language-Act</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21204" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21204</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.18</div>
+    <div class="muted">Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21175" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21175</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">SRL-MPC: Shape-Aware Reinforcement Learned Model Predictive Control</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Teaching is a Process: The TOSS Framework for Modeling Human Teaching Decisions in Human-Interactive Robot Learning</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21083" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21083</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">Teaching is a Process: The TOSS Framework for Modeling Human Teaching Decisions </div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">FF-MPCC: High-speed Agile Formation Flight with Model Predictive Contouring Control</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21056" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21056</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.24</div>
+    <div class="muted">FF-MPCC: High-speed Agile Formation Flight with Model Predictive Contouring Cont</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">TaPeR: Probabilistic Recovery of Sparse Task Precedence Graphs from a Handful of Demonstrations</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21035" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21035</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.21</div>
+    <div class="muted">TaPeR: Probabilistic Recovery of Sparse Task Precedence Graphs from a Handful of</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Roadside-Cooperative Autonomous Driving: From Data Platform to Vision-Language End-to-End Reasoning</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21032" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21032</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.22</div>
+    <div class="muted">Roadside-Cooperative Autonomous Driving: From Data Platform to Vision-Language E</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">PhysCaP: Grounding Code-as-Policy Agent with Physics-Informed Exploration</div>
+    <a class="url" href="https://arxiv.org/abs/2608.21031" target="_blank" rel="noopener">https://arxiv.org/abs/2608.21031</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">PhysCaP: Grounding Code-as-Policy Agent with Physics-Informed Exploration</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordinated Social Action in Vision-Language Models</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20975" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20975</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.22</div>
+    <div class="muted">Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordi</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Hybrid Roller-Jamming Gripper for Object Acquisition and Retention Under Pose Uncertainty</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20962" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20962</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.19</div>
+    <div class="muted">Hybrid Roller-Jamming Gripper for Object Acquisition and Retention Under Pose Un</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Neural-Primitive: An Efficient End-to-end Local Planner with Primitive-based Imitation Learning for Autonomous Flight</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20948" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20948</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.25</div>
+    <div class="muted">Neural-Primitive: An Efficient End-to-end Local Planner with Primitive-based Imi</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Fast Coordinated Bimanual Motion Planning With Hard Constraints</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20946" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20946</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.26</div>
+    <div class="muted">Fast Coordinated Bimanual Motion Planning With Hard Constraints</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Graph-Operator World Models for Morphology-Parameter Generalization in Continuous Control</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20936" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20936</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">Graph-Operator World Models for Morphology-Parameter Generalization in Continuou</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Explainable Deepfake Detection with Feature-robust Augmentation and Evidence-grounded Explanation Optimization</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20913" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20913</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.18</div>
+    <div class="muted">Explainable Deepfake Detection with Feature-robust Augmentation and Evidence-gro</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Decoupling Policy Extraction for Offline Reinforcement Learning</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20909" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20909</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.19</div>
+    <div class="muted">Decoupling Policy Extraction for Offline Reinforcement Learning</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">A Safety-Driven Architectural Framework for Fail-Operational Drone Swarms in Critical Missions</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20906" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20906</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.25</div>
+    <div class="muted">A Safety-Driven Architectural Framework for Fail-Operational Drone Swarms in Cri</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Scalable Distributed Simulation-Based Testing for Automated Driving Systems</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20904" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20904</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">Scalable Distributed Simulation-Based Testing for Automated Driving Systems</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">IMU-Free Body-Frame State Estimation with Sparse Scene Flow for Quadcopters</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20891" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20891</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.16</div>
+    <div class="muted">IMU-Free Body-Frame State Estimation with Sparse Scene Flow for Quadcopters</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">A Collaborative Multi-Modality Interaction for VLA-based End-to-End Autonomous Driving</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20890" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20890</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.20</div>
+    <div class="muted">A Collaborative Multi-Modality Interaction for VLA-based End-to-End Autonomous D</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Multi-Modal Traffic Sign Detection with Semantic Attributes for Autonomous Driving</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20874" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20874</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.17</div>
+    <div class="muted">Multi-Modal Traffic Sign Detection with Semantic Attributes for Autonomous Drivi</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Demonstration-Guided Humanoid Stand-Up on an Emulated Deformable Surface</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20852" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20852</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.21</div>
+    <div class="muted">Demonstration-Guided Humanoid Stand-Up on an Emulated Deformable Surface</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Natural Sit-to-Stand Motion Synthesis For Humanoids via Guided Assistance Curricula and Staged Rewards</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20823" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20823</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.19</div>
+    <div class="muted">Natural Sit-to-Stand Motion Synthesis For Humanoids via Guided Assistance Curric</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">papers</span></td>
+  <td class="t">
+    <div class="title">Certified Multi-Turn Robustness for LLM Safety via Compositional Bounds and Safety Persistence</div>
+    <a class="url" href="https://arxiv.org/abs/2608.20820" target="_blank" rel="noopener">https://arxiv.org/abs/2608.20820</a>
+    <div class="reason"></div>
+  </td>
+  <td class="sim">
+    <div>t=1.00 · s=0.29</div>
+    <div class="muted">Certified Multi-Turn Robustness for LLM Safety via Compositional Bounds and Safe</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">Isaac Lab v3.0.0-beta2.patch1：对 Isaac Sim 6.0.1 的兼容性补丁</div>
+    <a class="url" href="https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0-beta2.patch1" target="_blank" rel="noopener">https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0-beta2.patch1</a>
+    <div class="reason">alias MATCH — 2 brand(s) [&#x27;nvidia&#x27;, &#x27;unitree&#x27;] cross-lang signals: strong=3 [&#x27;h1&#x27;, &#x27;isaac&#x27;, &#x27;v3&#x27;], slug=0.05, entity=0.11</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.07</div>
+    <div class="muted">Release v3.0.0-beta2.patch1 · isaac-sim/IsaacLab</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">OpenVLA：开源 7B 视觉-语言-动作模型仓库</div>
+    <a class="url" href="https://github.com/openvla/openvla" target="_blank" rel="noopener">https://github.com/openvla/openvla</a>
+    <div class="reason">anchor MATCH — 2 strong anchors cross-lang signals: strong=2 [&#x27;openvla&#x27;, &#x27;vla&#x27;], slug=0.00, entity=0.14</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">GitHub - openvla/openvla: OpenVLA: An open-source vision-language-action model f</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">openpi：Physical Intelligence 开源机器人模型与训练代码库</div>
+    <a class="url" href="https://github.com/physical-intelligence/openpi" target="_blank" rel="noopener">https://github.com/physical-intelligence/openpi</a>
+    <div class="reason">title_sim=0.19 (need ≥ 0.55); summary_sim=0.02 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.00</div>
+  </td>
+  <td class="sim">
+    <div>t=0.19 · s=0.02</div>
+    <div class="muted">GitHub - Physical-Intelligence/openpi</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">DROID v1.1 with 76k trajectories</div>
+    <a class="url" href="https://droid-dataset.github.io/" target="_blank" rel="noopener">https://droid-dataset.github.io/</a>
+    <div class="reason">title_sim=0.11 (need ≥ 0.55); summary_sim=0.00 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.12</div>
+  </td>
+  <td class="sim">
+    <div>t=0.11 · s=0.00</div>
+    <div class="muted">DROID: A Large-Scale In-the-Wild Robot Manipulation Dataset</div>
+  </td>
+</tr>
+<tr class="row--low-sim">
+  <td><span class="status status--low_sim">low_sim</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">MuJoCo Playground v0.2.0：新增视觉 PPO 训练配置 + MuJoCo Warp 默认后端</div>
+    <a class="url" href="https://github.com/google-deepmind/mujoco_playground/releases/tag/v0.2.0" target="_blank" rel="noopener">https://github.com/google-deepmind/mujoco_playground/releases/tag/v0.2.0</a>
+    <div class="reason">title_sim=0.11 (need ≥ 0.55); summary_sim=0.09 (need ≥ 0.35) cross-lang signals: strong=0 [], slug=0.00, entity=0.09</div>
+  </td>
+  <td class="sim">
+    <div>t=0.11 · s=0.09</div>
+    <div class="muted">Release Release v0.2.0 · google-deepmind/mujoco_playground</div>
+  </td>
+</tr>
+<tr class="row--match">
+  <td><span class="status status--match">match</span></td>
+  <td><span class="sec">tools</span></td>
+  <td class="t">
+    <div class="title">Genesis v1.3.3：刚体求解器收敛修复 + 确定性可复现模式</div>
+    <a class="url" href="https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.3.3" target="_blank" rel="noopener">https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.3.3</a>
+    <div class="reason">anchor MATCH — 2 strong anchors cross-lang signals: strong=2 [&#x27;act&#x27;, &#x27;v1&#x27;], slug=0.00, entity=0.17</div>
+  </td>
+  <td class="sim">
+    <div>t=0.65 · s=0.04</div>
+    <div class="muted">Release v1.3.3 · Genesis-Embodied-AI/genesis-world</div>
+  </td>
+</tr>
+    </tbody>
+  </table>
+  <footer>
+    Generated by <code>lib/verify.py</code>. 6 items flagged.
+    <br>Error: none
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Frontier · Issue №3 · 2026-09-07</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── Journal palette (Nature/Science-inspired) ───────────── */
+      --paper:        #faf7f2;     /* warm cream */
+      --paper-deep:   #f0ebe1;
+      --paper-shade:  #ece5d6;
+      --ink:          #1a1815;
+      --ink-soft:     #3a3530;
+      --muted:        #8a8275;
+      --rule:         #1a1815;     /* heavy ink rule */
+      --line:         #d8d1c1;
+      --line-soft:    #e8e2d3;
+
+      /* brand — Nature-style crimson */
+      --brand:        #9b1c1f;
+      --brand-dark:   #7c1517;
+      --brand-tint:   rgba(155, 28, 31, 0.06);
+
+      /* section accents */
+      --companies:    #1f5fa3;     /* deep blue */
+      --papers:       #6b3fa0;     /* deep purple */
+      --tools:        #1e7a51;     /* deep green */
+
+      /* tier colors */
+      --tier-breaking: #9b1c1f;
+      --tier-major:    #b45309;
+      --tier-notable:  #1a1815;
+      --tier-mention:  #8a8275;
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
+    body {
+      font: 16px/1.62 "Source Serif 4", Georgia, "Source Han Serif SC",
+            "Noto Serif CJK SC", "PingFang SC", "Microsoft YaHei", serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* ═══ TOP SKU STRIP ════════════════════════════════════════ */
+    .sku-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sku-strip .left  { font-weight: 600 }
+    .sku-strip .right { display: flex; gap: 18px }
+    .sku-strip .right span strong { color: var(--ink); font-weight: 700; margin-left: 4px }
+
+    /* ═══ MASTHEAD ══════════════════════════════════════════════ */
+    .masthead {
+      padding: 28px 0 22px;
+      border-bottom: 4px double var(--rule);
+      text-align: center;
+    }
+    .masthead .name {
+      font-family: "Fraunces", "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144;
+      margin: 0;
+    }
+    .masthead .name em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .masthead .sub {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .masthead .meta {
+      margin-top: 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      align-items: center;
+    }
+    .masthead .meta strong { color: var(--brand); font-weight: 700 }
+    .masthead .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ TOC / TAB NAV ═════════════════════════════════════════ */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+      padding: 0;
+    }
+    .toc-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 24px 16px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      text-align: left;
+      transition: background .15s ease;
+      color: var(--ink-soft);
+    }
+    .toc-item:last-child { border-right: none }
+    .toc-item:hover { background: var(--paper-deep) }
+    .toc-item.active { background: var(--brand-tint) }
+    .toc-item .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .toc-item.active .roman { color: var(--brand) }
+    .toc-item .label {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+    .toc-item .meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ═══ SECTION PANELS ════════════════════════════════════════ */
+    .panel {
+      display: none;
+      padding-top: 36px;
+      border-top: 3px solid var(--line);
+      margin-top: 28px;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .panel.companies { border-top-color: var(--companies) }
+    .panel.papers    { border-top-color: var(--papers) }
+    .panel.tools     { border-top-color: var(--tools) }
+    .panel.active { display: block }
+    .panel-empty {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    /* ═══ SECTION HEADING ═══════════════════════════════════════ */
+    .section-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: end;
+      gap: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section-head .roman {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 0.85;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+    }
+    .section-head .title {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .section-head .title em { font-style: italic; font-weight: 700; color: var(--brand); }
+    .section-head .meta {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    .section-head .meta strong { color: var(--ink); font-weight: 700 }
+
+    /* ═══ ARTICLE TYPE LABEL (used by lead + cards) ═════════════ */
+    .article-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .article-type .type { color: var(--brand); }
+    .article-type .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .article-type .tier-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      border-radius: 1px;
+      font-weight: 800;
+    }
+    .article-type .tier-tag.tier-breaking {
+      background: var(--tier-breaking); color: var(--paper); border: 1px solid var(--tier-breaking);
+    }
+    .article-type .tier-tag.tier-major {
+      background: transparent; color: var(--tier-major);
+      border: 1px solid var(--tier-major);
+    }
+    .article-type .tier-tag.tier-notable {
+      background: transparent; color: var(--tier-notable);
+      border: 1px solid var(--line);
+    }
+    .article-type .tier-tag.tier-mention {
+      background: transparent; color: var(--tier-mention);
+      border: 1px solid var(--line-soft);
+    }
+
+    /* ═══ LEAD STORY ════════════════════════════════════════════ */
+    .lead {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 36px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lead h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      font-variation-settings: "opsz" 144;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .lead h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--brand) }
+    .lead .deck {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 60ch;
+      font-variation-settings: "opsz" 60;
+    }
+    /* Abstract blockquote — left red border, italic serif, indented */
+    .lead .abstract {
+      margin: 4px 0 0;
+      padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--brand);
+      font-family: "Source Serif 4", "Fraunces", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 64ch;
+    }
+    .lead .abstract strong { color: var(--ink); font-weight: 700 }
+    .lead .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .lead .byline strong { color: var(--ink-soft); font-weight: 700 }
+    .lead .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+    .lead .read {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .lead .read::before { content: "→ "; margin-right: 4px }
+
+    /* verify badge — shown when lead is flagged */
+    .verify-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+    }
+    .verify-badge.match  { color: var(--tools); background: rgba(30,122,81,.06) }
+    .verify-badge.flag   { color: var(--brand); background: var(--brand-tint) }
+    .verify-badge::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    }
+
+    /* ═══ CARD GRID ══════════════════════════════════════════════ */
+    .grid {
+      display: grid;
+      /* minmax(0, 1fr) lets columns shrink below min-content so a wide title
+         doesn't push the panel beyond the wrap (papers/tools had this bug). */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 32px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 0 22px;
+      border-top: 1px solid var(--ink);
+    }
+    .card .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+    .card .kicker strong { color: var(--brand); font-weight: 800 }
+    .card h3 {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
+      margin: 0;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px }
+    .card .deck {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card .byline {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .card .byline .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); display: inline-block }
+
+    /* ═══ COMPANY GROUPS (sub-headers inside the news panel) ══════ */
+    .company-group {
+      margin-top: 32px;
+    }
+    .company-group:first-of-type { margin-top: 0 }
+    .company-group-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 0 0 10px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      font-family: "Inter", sans-serif;
+    }
+    .company-group-head .dot-accent {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--companies);
+      display: inline-block;
+      flex: none;
+      transform: translateY(1px);
+    }
+    .company-group-head .name {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .company-group-head .count {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* ═══ BRIEF LIST (tools — DEPRECATED; kept responsive fallback) ═ */
+    .brief-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 40px;
+    }
+    .brief {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 18px 0 18px;
+      border-top: 1px solid var(--ink);
+    }
+    .brief .cat {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--brand);
+      align-self: start;
+      padding-top: 4px;
+    }
+
+    /* ═══ TOOL CARD (same width as companies/papers cards) ══════ */
+    .card .repo {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin: -2px 0 2px;
+    }
+    .cat-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      font-family: "Inter", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 2px;
+      color: var(--paper);
+      background: var(--tools);
+      border: 1px solid var(--tools);
+    }
+    .cat-tag.cat-foundation-model { background: #1f5fa3; border-color: #1f5fa3 }
+    .cat-tag.cat-learning         { background: #1e7a51; border-color: #1e7a51 }
+    .cat-tag.cat-policy           { background: #6b3fa0; border-color: #6b3fa0 }
+    .cat-tag.cat-benchmark        { background: #b45309; border-color: #b45309 }
+    .cat-tag.cat-release          { background: var(--ink); border-color: var(--ink) }
+
+    /* ═══ FOOTER ═════════════════════════════════════════════════ */
+    footer {
+      margin-top: 64px;
+      padding: 28px 0 16px;
+      border-top: 4px double var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer .left  {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink-soft);
+    }
+    footer .right { display: flex; gap: 18px }
+    footer .right a { color: var(--ink-soft) }
+    footer .right a:hover { color: var(--brand) }
+
+    /* ═══ AUDIT STRIP ════════════════════════════════════════════ */
+    .audit-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--paper-shade);
+      border-left: 3px solid var(--brand);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+    .audit-strip strong { color: var(--ink); font-weight: 700 }
+    .audit-strip .pills { display: flex; gap: 10px }
+    .audit-strip .pill {
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+    }
+    .audit-strip .pill.good  { color: var(--tools); border-color: var(--tools) }
+    .audit-strip .pill.warn  { color: var(--tier-major); border-color: var(--tier-major) }
+    .audit-strip .pill.bad   { color: var(--brand); border-color: var(--brand) }
+    .audit-strip a { font-weight: 700; color: var(--brand) }
+
+    /* ═══ RESPONSIVE ═════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .wrap { padding: 0 24px 64px }
+      .masthead .name { font-size: 48px }
+      .masthead .meta { flex-wrap: wrap; gap: 12px }
+      .toc { grid-template-columns: 1fr; }
+      .toc-item { border-right: none; border-bottom: 1px solid var(--line) }
+      .toc-item:last-child { border-bottom: none }
+      .section-head { grid-template-columns: 60px 1fr; gap: 16px }
+      .section-head .meta { grid-column: 1 / -1; text-align: left }
+      .section-head .title { font-size: 28px }
+      .section-head .roman { font-size: 48px }
+      .grid { grid-template-columns: 1fr 1fr }
+      .brief-list { grid-template-columns: 1fr }
+      .lead h2 { font-size: 34px }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px 48px }
+      .masthead { padding: 18px 0 16px }
+      .masthead .name { font-size: 36px }
+      .grid { grid-template-columns: 1fr }
+      .brief { grid-template-columns: 1fr; gap: 4px }
+      .lead h2 { font-size: 28px }
+      .lead .deck { font-size: 18px }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ═══ SKU strip ═══ -->
+    <div class="sku-strip">
+      <div class="left">Daily Frontier — The Embodied AI Daily</div>
+      <div class="right">
+        <span><strong>2026-09-07</strong></span>
+        <span>Vol. 1 · No. 3</span>
+        <span>34 stories</span>
+      </div>
+    </div>
+
+    <!-- ═══ Masthead ═══ -->
+    <header class="masthead">
+      <h1 class="name">Daily <em>Frontier</em></h1>
+      <div class="sub">每日具身智能动态 · A daily reading of the embodied-AI industry</div>
+      <div class="meta">
+        <span><strong>Issue №3</strong></span>
+        <span class="dot"></span>
+        <span>2026-09-07</span>
+        <span class="dot"></span>
+        <span>30d window</span>
+        <span class="dot"></span>
+        <span>Compiled 2026-09-08</span>
+      </div>
+    </header>
+
+    <!-- ═══ TOC strip ═══ -->
+    <nav class="toc" role="tablist">
+      <button type="button"
+              class="toc-item active"
+              data-sec="companies"
+              role="tab"
+              aria-selected="true">
+        <span class="roman">I</span>
+        <span class="label">公司动态</span>
+        <span class="meta">13 stories · n=13</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="papers"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">II</span>
+        <span class="label">学术前沿</span>
+        <span class="meta">20 stories · n=20</span>
+      </button>
+      <button type="button"
+              class="toc-item "
+              data-sec="tools"
+              role="tab"
+              aria-selected="false">
+        <span class="roman">III</span>
+        <span class="label">工具链进展</span>
+        <span class="meta">1 stories · n=1</span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="panel companies active"
+               id="panel-companies"
+               data-sec="companies"
+               role="tabpanel"
+               aria-labelledby="tab-companies">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">I</div>
+            <div class="title"><em>§ I.</em> 公司动态</div>
+            <div class="meta">
+              <strong>13</strong> stories
+            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-breaking">BREAKING</span>
+              </span>
+              <h2><a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1QTWR5anNabnlmTnVZWmx1R3NlelBTVHJXWF9Rc3M2ZEJuRDBNZEk2bzNFQVY0dEhHRkREX3NoazJFV0lESVhCM1ZoWWFEa1VKdWRpbkwtVQ?oc=5" target="_blank" rel="noopener">中国第一具身大模型获21亿元融资，银河通用机器人估值突破200 亿 - 美通社</a></h2>
+              <p class="deck">中国第一具身大模型</p>
+              <blockquote class="abstract">
+                中国第一具身大模型
+              </blockquote>
+              <div class="byline">
+<strong>银河通用 (Google News)</strong>                <span class="dot"></span>
+                <span>2025-12-19</span>
+                <span class="dot"></span>
+                <a class="read" href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1QTWR5anNabnlmTnVZWmx1R3NlelBTVHJXWF9Rc3M2ZEJuRDBNZEk2bzNFQVY0dEhHRkREX3NoazJFV0lESVhCM1ZoWWFEa1VKdWRpbkwtVQ?oc=5" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+              <!-- Companies: grouped by source — each publisher gets its own block -->
+              <section class="company-group" data-company="银河通用 (Google News)">
+                <header class="company-group-head">
+                  <span class="dot-accent"></span>
+                  <span class="name">银河通用 (Google News)</span>
+                  <span class="count">12 条</span>
+                </header>
+                <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiiwJBVV95cUxNOVZUbHlwck1OQ1JCS2VucnF5T21RRk9FM1AxRFFNZTJtaG1sV21adEdfMld3V0tNdWxvY0pOU3ZnaHlpUXVicHQ3T09wWFRuMGkxRUVWY3psZklTRTBnaGU3dDZHYWpVWlRoNGNabWdsQ0hKY0pLc1EwOEMyNHpXQ0QzMEVMZzRiMjJBOVN3dFc0QkNDUXB0WXZ0WjR2ZVp4MnlVOVIyYlNpczlBVE9tbEwzc3F6elEzREdlY1NaNi0wX3pyT1hoTkI3R0hBLWo1QUlubXdDNEl1ZTQyekpXNzJ6TnJxWENkM1JJRFczWEh5QnM4VG5QdmpTQ01fc3hmN2xhWHRSVkp0blU?oc=5" target="_blank" rel="noopener">银河通用发布人形机器人银河星仔，并展示具身大模型银河星脑 - gasgoo.com</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMiiwJBVV95cUxNOVZUbHlwck1OQ1JCS2VucnF5T21RRk9FM1AxRFFNZTJtaG1sV21adEdfMld3V0tNdWxvY0pOU3ZnaHlpUXVicHQ3T09wWFRuMGkxRUVWY3psZklTRTBnaGU3dDZHYWpVWlRoNGNabW</p>
+                    <div class="byline">
+                      <span>14d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE0wZmNTX2pRMmN6VDVGcVc4VS1QVWJsbElGcWt0R0lSbzhuTmRpT0xFZVZqNGJsOWFLRkZRam5ITlBaNDBjNVFQZFNFTkhrUQ?oc=5" target="_blank" rel="noopener">银河通用发布人形机器人Galbot ET-1 创始人谈安全治理 - guandian.cn</a></h3>
+                    <p class="deck">银河通用发布人形机器人Galbot ET-</p>
+                    <div class="byline">
+                      <span>19d ago</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE1tZkkzQzRlcTlZZTQtc1dmY1ZfT0lYaVdILUw2cF9TV3c5WWNjd2JfUW9HYzdSX1FBeDFJbFVya3l2UWxyUHM5RXk0aGJXTk9hb1IzYlRMbmJ5SEh6U044OGVXZ0hZZw?oc=5" target="_blank" rel="noopener">专访银河通用傅强：具身智能不急于追"人形"，先让机器人在货架间"干实事" - 每日经济新闻</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE1tZkkzQzRlcTlZZTQtc1dmY1ZfT0lYaVdILUw2cF9TV3c5WWNjd2JfUW9HYzdSX1FBeDFJbFVya3l2UWxyUHM5RXk0aGJXTk9hb1IzYlRMbmJ5SEh6U044OGVXZ0hZZw?oc=5" targe</p>
+                    <div class="byline">
+                      <span>2025-08-02</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFA3QlVXRlZ5WjVlQXhoeXNuamEtUXI0ZmZjQzNIVk1qYjFzdW9FbTJ1TmxYMTNWS2dDMXhESzJfeXZMcmFGTlNrdHVaN0NBdw?oc=5" target="_blank" rel="noopener">银河通用超级大脑筑基，中国具身智能站上全球创新潮头 - 36 Kr</a></h3>
+                    <p class="deck">银河通用超级大脑筑基，中国具身智能站上全球</p>
+                    <div class="byline">
+                      <span>2026-03-12</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiRkFVX3lxTE9qdGZGd2tlejdaLTM1RERVTklkTGxqaHlBdHQxUHlZYVk1NGpqTE9wQnNabzJ0cE5TVzQ3YzBvU2FMTU0zbEE?oc=5" target="_blank" rel="noopener">银河通用世界人形机器人运动会夺冠，全自主操作遥遥领先，大秀落地硬实力 - 智东西</a></h3>
+                    <p class="deck">银河通用世界人形机器人运动会夺冠，全自主操作遥遥领先，大秀落地硬</p>
+                    <div class="byline">
+                      <span>2025-08-17</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE9QeFp1THNocm4zVlNNdWhEa0w4TXB0Y3l6S0EyaGUzcFVDS1I1cFlGTGFNeVVuXzl1QXNRQTVLVXQtR3hFamloc1lCdFlGNEZwZXRobWg2OGF3LWtU?oc=5" target="_blank" rel="noopener">人形机器人疯狂进厂打工！银河通用、智元、乐聚机器人怕是都疯了 - Forbes China</a></h3>
+                    <p class="deck">人形机</p>
+                    <div class="byline">
+                      <span>2025-01-21</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMizgRBVV95cUxOMWFzVmJqZWlKNUwzczNDMlR3QVNUckV2aXFBMG0ycElhMjE1bGpZeW93aHd3b00ybFVxZTV4OG1UU2dXTkU3SENyS1JZUkUwNVM3ZXlNeXQ2LXhRZlJWVndLd2IyUlJGU3NkeUpJU0pYYzY3c2paTE43Mzg0MGtrOWcwc3NaWDFLRnFST3cwRkVqMGs4UzF2azFqSnYzOEZqQTdYZkpyUWM2bFZBdXpFc05ZRVhHT281YkZzWThoWFNVOFE1d1RQbkFZRTFneE1pbHVBVFJOeTFTZTU2NmlJbWp6ZGZpdDEwSUV3YUF4WXVncXJEbzFDN21uTGU0SkR1aDBpVHNPazBNQXBpUjdwSnc4M1N0RlAtX3c0OHdJUjBlVGJSS3E0cnlZYVlTLXVJWUc2WTVXYnpQLTFldXpUbEphcXdOVGVCNVBvZG54NXdjTGtURTZ5QkNmb0N5NWQyNlRhZFphYkRMOE5veWdwT0R0V2JvZG5oMVBsdlNxUHBHMzl3VWhnbWplOHlORG5lSDJJRVJ4Tl91S3RZN1hSa3VwelhLVXo3dnR2Q3ZzbnFOcnI0cVlFMElBdTRsd280cElJLWZLWF95UElyZXZsQ0tjdGUyMWx0ZXdEaWU5c0JPSVdFTF9MbXpYNkQ1WjBrOW5sMzc3VHMtRDB3d2ZpOTh3MGFTY2xocDhpUDZ3dkFNcWFDb2huRmR5SkhfRmZVR01oSUwySUUtQ24wNjNfckl5YWthSklSdjJuS09NUUZBdHhfTzNjSkpKcU1FZw?oc=5" target="_blank" rel="noopener">启明星| 银河通用王鹤：专注研发具身智能多模态大模型通用机器人，提供跨领域泛化能力解决方案 - 启明创投</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMizgRBVV95cUxOMWFzVmJqZWlKNUwzczNDMlR3QVNUckV2aXFBMG0ycElhMjE1bGpZeW93aHd3b00ybFVxZTV4OG1UU2dXTkU3SENyS1JZUkUwNVM3ZXlNeXQ2LXhRZlJWVndLd2IyUlJGU3NkeUpJU0</p>
+                    <div class="byline">
+                      <span>2025-09-11</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1BdXc1RTNZMGxuSkR2VkM1R1VPUEphemtsN0IxbFpCZHJrcWhjaF8tVFNoc2pCSVlNVFlOWVp5WUlZdmhFWXctQl9XWGVrQ1EtbjJ4cjFSQUtSSUxVSDFFdno3Z3hEbWRsRUNHSEdpOGdGc3BVTF9GcVRtWjlXdUE?oc=5" target="_blank" rel="noopener">启明星| 银河通用王鹤：专注研发具身智能多模态大模型通用机器人，提供跨领域泛化能力解决方案 - 新浪财经</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1BdXc1RTNZMGxuSkR2VkM1R1VPUEphemtsN0IxbFpCZHJrcWhjaF8tVFNoc2pCSVlNVFlOWVp5WUlZdmhFWXctQl9XWGVrQ1EtbjJ4cjFSQUtSSUxVSDFFdno3Z3hEbWRsRUNHSEdpOG</p>
+                    <div class="byline">
+                      <span>2025-09-11</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOWUZoekt6NEFYZE9wQ2pWVnBrc2J4M1g4RFp5czJERG5penVTMGJzWm9hVGQ0bG5ja2RMQUJWY2F5aEdUVjhTNzlxN3Z6UzF1aEhYVERpUXdHdjZoZ2Q4aEtEaTFmMmd2SmZrMDc5TFFieUd4aXU0MWhYa0FOWDkxZ3VWaGItTE5xcFRnLVdiMjM?oc=5" target="_blank" rel="noopener">银河通用Galbot获得世界人形机器人运动会医院场景药品分拣比赛冠军 - sipac.gov.cn</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOWUZoekt6NEFYZE9wQ2pWVnBrc2J4M1g4RFp5czJERG5penVTMGJzWm9hVGQ0bG5ja2RMQUJWY2F5aEdUVjhTNzlxN3Z6UzF1aEhYVERpUXdHdjZoZ2Q4aEtEaTFmMmd2SmZrMDc5TF</p>
+                    <div class="byline">
+                      <span>2025-08-22</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9QbmFpdzczZzkxV0pIclcwblhLTGVKRnM2MjY4d1lrbzBFSllfN0F4YjNzRER1eGlfc3Q2Ymk3dVJ5UFNIUU96S0JtSkNLR2dZVEJIZmRxbEpQZlp6ZlE2OXc0d1V4V2pxOTNDQ0t3WDc?oc=5" target="_blank" rel="noopener">机器人"店员"卖货，北京海淀拓展具身智能零售新场景 - 中国科技网</a></h3>
+                    <p class="deck">href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9QbmFpdzczZzkxV0pIclcwblhLTGVKRnM2MjY4d1lrbzBFSllfN0F4YjNzRER1eGlfc3Q2Ymk3dVJ5UFNIUU96S0JtSkNLR2dZVEJIZmRxbEpQZlp6ZlE2OXc0d1V4V2pxOTNDQ0t3WD</p>
+                    <div class="byline">
+                      <span>2025-08-20</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTFAyR2Q1bnJrZVJRNmx3UDQ4NS1HSG5RbWtWdWp3OHBIWldpUUJpTks1MlR5MVFGZXFKeC0tS2NwLXh6Tk5yU3lhXzJHSEVVMTZPZ2pn?oc=5" target="_blank" rel="noopener">Galbot零遥操惊艳WAIC：银河通用端到端大模型开启具身智能商用新时代 - 华尔街见闻</a></h3>
+                    <p class="deck">Galbot零遥操惊艳WAIC</p>
+                    <div class="byline">
+                      <span>2025-07-26</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+                      <strong>银河通用 (Google News)</strong>
+                    </div>
+                    <h3><a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTFBpODd1RVd1WHdFNkJsamJhUEllMU5FOVBaM3pOc0VweWNPVlpQWjdid3IxMWpDUGJGLThoTllNcWRQRXdoRGhpU3BBTFJLOHRKTFNDUEM2eEo?oc=5" target="_blank" rel="noopener">中关村论坛‖银河通用王鹤：人形机器人进入应用时代 - 上观新闻</a></h3>
+                    <p class="deck">中关村论坛‖银河</p>
+                    <div class="byline">
+                      <span>2025-03-27</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+      </section>
+      <section class="panel papers "
+               id="panel-papers"
+               data-sec="papers"
+               role="tabpanel"
+               aria-labelledby="tab-papers">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">II</div>
+            <div class="title"><em>§ II.</em> 学术前沿</div>
+            <div class="meta">
+              <strong>20</strong> stories
+· top venue <strong>NeurIPS 2025</strong>            </div>
+          </div>
+
+            <!-- Companies / Papers: lead + 3-col grid -->
+            <article class="lead">
+              <span class="article-type">
+                <span class="type">Article</span>
+                <span class="dot"></span>
+                <span class="tier-tag tier-notable">NOTABLE</span>
+              </span>
+              <h2><a href="https://openreview.net/forum?id=r4dzaP61QH" target="_blank" rel="noopener">DynaRend：通过掩码未来渲染学习 3D 动力学以实现机器人操作</a></h2>
+              <p class="deck">由于真实世界多样化训练数据的稀缺，学习可泛化的机器人操作策略仍然是一项关键挑战。虽然近期方法尝试通过自监督表示学习来缓解这一问题，但大多数方法要么依赖于 2D 视觉预训练范式，如 m</p>
+              <blockquote class="abstract">
+                由于真实世界多样化训练数据的稀缺，学习可泛化的机器人操作策略仍然是一项关键挑战。虽然近期方法尝试通过自监督表示学习来缓解这一问题，但大多数方法要么依赖于 2D 视觉预训练范式，如 m
+              </blockquote>
+              <div class="byline">
+<strong>Jingyi Tian</strong><strong>NeurIPS 2025</strong>                <span class="dot"></span>
+                <span>2025-04-14</span>
+                <span class="dot"></span>
+                <a class="read" href="https://openreview.net/forum?id=r4dzaP61QH" target="_blank" rel="noopener">Read full story</a>
+              </div>
+            </article>
+
+              <!-- Papers: flat 3-col grid (same width as companies / tools) -->
+              <div class="grid">
+                  <article class="card">
+                    <div class="kicker">
+<strong>NeurIPS 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=1mokb8ohOQ" target="_blank" rel="noopener">ForgerySleuth：赋能多模态大语言模型进行图像篡改检测</a></h3>
+                    <div class="repo">Zhihao Sun et al.</div>
+                    <p class="deck">多模态大语言模型为各种多模态任务开启了新的可能。然而，它们在图像篡改检测方面的潜力仍未得到充分挖掘。当直接应用于 IMD 任务时，M-LLMs 常常产生存在幻觉和过度思考问题的推理文本。为了</p>
+                    <div class="byline">
+                      <span>2025-05-10</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>NeurIPS 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=ZY5mzxlnCA" target="_blank" rel="noopener">CoDA：用于关节物体全身操作协调的扩散噪声优化</a></h3>
+                    <div class="repo">Huaijin Pi et al.</div>
+                    <p class="deck">合成关节物体的全身操作（包括身体运动、手部运动和物体运动）是一项关键且具有挑战性的任务，在虚拟人类和机器人领域有广泛应用。其核心挑战主要体现在两个方面。首先，实现逼真的全身运动需要紧密</p>
+                    <div class="byline">
+                      <span>2025-05-01</span>
+                      <span class="dot"></span>
+                      <span>manipulation · whole-body</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=CWerqtOXif" target="_blank" rel="noopener">预测关键内容：通过未来语义掩码实现鲁棒的通用机器人策略学习</a></h3>
+                    <div class="repo">Yunfan Lou et al.</div>
+                    <p class="deck">源自大规模视频生成预训练的世界模型已成为通用机器人策略学习的一种有前景的范式。然而，标准方法通常专注于高保真 RGB 视频预测，这可能导致过拟合到无关因素，例如动态背景</p>
+                    <div class="byline">
+                      <span>2026-01-20</span>
+                      <span class="dot"></span>
+                      <span>world model · RL</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=9wYjjPydfe" target="_blank" rel="noopener">TIC-VLA：用于动态环境中机器人导航的 Think-in-Control 视觉-语言-动作模型</a></h3>
+                    <div class="repo">Zhiyu Huang et al.</div>
+                    <p class="deck">处于动态、以人为本环境的机器人必须遵循语言指令，同时保持实时反应式控制。视觉-语言-动作（VLA）模型提供了一个有前景的框架，但它们假设推理与控制在时间上是对齐的，尽管语义推理本质上是延迟的</p>
+                    <div class="byline">
+                      <span>2026-01-22</span>
+                      <span class="dot"></span>
+                      <span>VLA</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICML 2026</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=USAkWviwng" target="_blank" rel="noopener">SoMA：用于机器人软体操作的 Real-to-Sim 神经仿真器</a></h3>
+                    <div class="repo">Mu Huang et al.</div>
+                    <p class="deck">在丰富交互下仿真可形变物体仍然是 real-to-sim 机器人操作的一项根本性挑战，其动力学由环境效应和机器人动作共同驱动。现有仿真器依赖于预定义物理或无机器人条件控制的数据驱动动力学，</p>
+                    <div class="byline">
+                      <span>2026-01-09</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICLR 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=bhUIoQ61pA" target="_blank" rel="noopener">HuWo：为仿人机器人运动构建物理交互世界模型</a></h3>
+                    <div class="repo">Han Zheng et al.</div>
+                    <p class="deck">强化学习控制已被证明是四足机器人运动的有效方法。然而，仿人机器人的运动任务具有挑战性，尤其是在复杂环境中。主要原因在于仿人机器人在运动过程中必须保持平衡，并持续应对</p>
+                    <div class="byline">
+                      <span>2024-09-28</span>
+                      <span class="dot"></span>
+                      <span>world model · locomotion</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICLR 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=Afjf6izLvJ" target="_blank" rel="noopener">利用视觉运动语言引导锚定机器人策略</a></h3>
+                    <div class="repo">Arthur Bucker et al.</div>
+                    <p class="deck">自然语言处理和计算机视觉领域的最新进展已展现出从大规模互联网数据理解世界底层动力学的巨大潜力。然而，由于数据稀缺，将这些知识迁移到机器人系统仍然是一个开放性挑战，</p>
+                    <div class="byline">
+                      <span>2024-09-27</span>
+                      <span class="dot"></span>
+                      <span>RL</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>ICLR 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=aVyJwS1fqQ" target="_blank" rel="noopener">Mani-WM：用于真实机器人操控的交互式世界模型</a></h3>
+                    <div class="repo">Fangqi Zhu et al.</div>
+                    <p class="deck">真实世界中的可扩展机器人学习受到真实机器人成本和安全问题的限制。此外，在真实世界中展开机器人轨迹既耗时又费力。在本文中，我们提出学习一个用于机器人操控的交互式世界模型作为一种替代方案</p>
+                    <div class="byline">
+                      <span>2024-09-26</span>
+                      <span class="dot"></span>
+                      <span>world model · manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>CoRL 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=VVhAhzr2WV" target="_blank" rel="noopener">Real2Render2Real：无需动力学仿真或机器人硬件即可扩展机器人数据</a></h3>
+                    <div class="repo">Justin Yu et al.</div>
+                    <p class="deck">扩展机器人学习需要海量且多样化的数据集。然而，当前主流的数据收集范式——人类遥操作——仍然成本高昂，并受到人工操作和物理机器人访问的限制。我们提出了 Real2Render2Real (R2R2R)，一种无需依赖</p>
+                    <div class="byline">
+                      <span>2025-04-20</span>
+                      <span class="dot"></span>
+                      <span>teleop</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>CoRL 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=oRwcxFuN25" target="_blank" rel="noopener">机器人训练机器人：面向人形机器人的自动真实世界策略适应与学习</a></h3>
+                    <div class="repo">Kaizhe Hu et al.</div>
+                    <p class="deck">基于仿真的强化学习 (RL) 显著推动了人形机器人运动任务的进展，然而从零开始的直接真实世界 RL 或从预训练策略出发的训练仍然罕见，这限制了人形机器人的全部潜力。真实世界训练对于克服仿真到</p>
+                    <div class="byline">
+                      <span>2025-04-09</span>
+                      <span class="dot"></span>
+                      <span>locomotion · RL</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>CoRL 2025</strong>                    </div>
+                    <h3><a href="https://openreview.net/forum?id=ZqBXnR6ppz" target="_blank" rel="noopener">超越动作标签数据的通用机器人操控</a></h3>
+                    <div class="repo">Alexander Spiridonov et al.</div>
+                    <p class="deck">通用机器人操控领域的最新进展利用了预训练的视觉-语言模型 (VLMs) 和大规模机器人演示数据，以零样本方式处理多样化任务。一个关键挑战依然存在：扩展高质量、带动作标签的机器人演示数据，现有方法依赖于</p>
+                    <div class="byline">
+                      <span>2025-04-06</span>
+                      <span class="dot"></span>
+                      <span>manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>arXiv</strong>                    </div>
+                    <h3><a href="https://arxiv.org/abs/2609.05416" target="_blank" rel="noopener">WorldSculpt：从接地视频生成组合式世界</a></h3>
+                    <div class="repo">Muyao Niu et al.</div>
+                    <p class="deck">我们研究生成包含数百个物体的杂乱场景的组合式 3D 表示问题。目标是将该场景表示为置于共享世界坐标系中的各个物体网格集合，以满足游戏、AR/VR、仿真等下游应用的需求</p>
+                    <div class="byline">
+                      <span>4d ago</span>
+                      <span class="dot"></span>
+                      <span>RL</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>arXiv</strong>                    </div>
+                    <h3><a href="https://arxiv.org/abs/2609.05376" target="_blank" rel="noopener">什么、何时重要：诊断与改进视觉运动模仿策略中的条件视觉定位</a></h3>
+                    <div class="repo">Vivek Chavan et al.</div>
+                    <p class="deck">视觉运动模仿策略在分布内的视觉条件下可以实现高性能，但当引入视觉上相似的物体或容器时会失败。我们将这种行为视为条件视觉定位问题：成功控制所需的视觉目标会随着</p>
+                    <div class="byline">
+                      <span>4d ago</span>
+                      <span class="dot"></span>
+                      <span>imitation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>arXiv</strong>                    </div>
+                    <h3><a href="https://arxiv.org/abs/2609.05374" target="_blank" rel="noopener">CUA-Universe：面向混合 GUI+CLI 智能体的可扩展动态环境</a></h3>
+                    <div class="repo">Haoting Shi et al.</div>
+                    <p class="deck">计算机使用智能体在 OSWorld 和 AndroidWorld 等基准测试上取得了进展，但仍主要通过 GUI 行动，往往产生低效的轨迹。真实世界的计算机工作是混合式的，将视觉状态检查与精确、高吞吐量的命令行操作相结合，因此有能力的智能体</p>
+                    <div class="byline">
+                      <span>4d ago</span>
+                      <span class="dot"></span>
+                      <span>RL</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>RSS 2025</strong>                    </div>
+                    <h3><a href="https://roboticsproceedings.org/rss21/p057.html" target="_blank" rel="noopener">GeoDEx：力不确定性下触觉灵巧操作与外部操作的几何统一框架</a></h3>
+                    <div class="repo">Sirui Chen et al.</div>
+                    <p class="deck"></p>
+                    <div class="byline">
+                      <span></span>
+                      <span class="dot"></span>
+                      <span>manipulation · dexterous</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>RSS 2025</strong>                    </div>
+                    <h3><a href="https://roboticsproceedings.org/rss21/p110.html" target="_blank" rel="noopener">CordViP：基于对应的视觉运动策略用于真实世界中的灵巧操作</a></h3>
+                    <div class="repo">Yankai Fu et al.</div>
+                    <p class="deck"></p>
+                    <div class="byline">
+                      <span></span>
+                      <span class="dot"></span>
+                      <span>manipulation · dexterous</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>RSS 2024</strong>                    </div>
+                    <h3><a href="https://roboticsproceedings.org/rss20/p061.html" target="_blank" rel="noopener">HumanoidBench：用于全身运动与操作的仿真人形机器人基准</a></h3>
+                    <div class="repo">Carmelo Sferrazza et al.</div>
+                    <p class="deck"></p>
+                    <div class="byline">
+                      <span></span>
+                      <span class="dot"></span>
+                      <span>manipulation · locomotion</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>CVPR 2026</strong>                    </div>
+                    <h3><a href="https://openaccess.thecvf.com/content/CVPR2026/html/Huang_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_Manipulation_CVPR_2026_paper.html" target="_blank" rel="noopener">PointWorld：面向野外机器人操作的3D世界模型扩展</a></h3>
+                    <p class="deck"></p>
+                    <div class="byline">
+                      <span></span>
+                      <span class="dot"></span>
+                      <span>world model · manipulation</span>
+                    </div>
+                  </article>
+                  <article class="card">
+                    <div class="kicker">
+<strong>CVPR 2026</strong>                    </div>
+                    <h3><a href="https://openaccess.thecvf.com/content/CVPR2026/html/Xu_Affordance_Field_Intervention_Enabling_VLAs_to_Escape_Memory_Traps_in_CVPR_2026_paper.html" target="_blank" rel="noopener">Affordance Field Intervention：使VLA在机器人操作中摆脱记忆陷阱</a></h3>
+                    <p class="deck"></p>
+                    <div class="byline">
+                      <span></span>
+                      <span class="dot"></span>
+                      <span>VLA · manipulation</span>
+                    </div>
+                  </article>
+              </div>
+      </section>
+      <section class="panel tools "
+               id="panel-tools"
+               data-sec="tools"
+               role="tabpanel"
+               aria-labelledby="tab-tools">
+
+
+          <!-- Section heading -->
+          <div class="section-head">
+            <div class="roman">III</div>
+            <div class="title"><em>§ III.</em> 工具链进展</div>
+            <div class="meta">
+              <strong>1</strong> stories
+· <strong>1</strong> repos            </div>
+          </div>
+
+            <!-- Tools: 3-col card grid (same width as companies / papers) -->
+            <div class="grid">
+              <article class="card tool-card">
+                <div class="kicker">
+                  <strong class="cat-tag cat-simulator">simulator</strong>
+                </div>
+                <h3><a href="https://github.com/Genesis-Embodied-AI/genesis-world/releases/tag/v1.4.0" target="_blank" rel="noopener">v1.4.0</a></h3>
+                <div class="repo">Genesis-Embodied-AI/Genesis</div>
+                <p class="deck">此版本引入了将场景与完整轨迹导出为独立归档的能力,该归档可在任何机器上加载,并通过 `gs replay` 确保比特级精确回放。目标是让未来的 bug 报告变得更加容易。仅 rigid solver 支持(此处原文被截断)。</p>
+                <div class="byline">
+                  <span>2d ago</span>
+                </div>
+              </article>
+            </div>
+
+      </section>
+    </main>
+
+    <!-- ═══ Audit strip ═══ -->
+
+    <!-- ═══ Footer ═══ -->
+    <footer>
+      <div class="left">Compiled daily from RSS feeds, official blogs, arXiv, and GitHub.</div>
+      <div class="right">
+        <a href="data/digest.json">digest.json</a>
+        <a href="content-audit.html">audit</a>
+        <a href="https://github.com/chenzx1300/daily-frontier" target="_blank" rel="noopener">source</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Tab switching — show one panel at a time
+    (function () {
+      var tabs = document.querySelectorAll('.toc-item');
+      var panels = document.querySelectorAll('.panel');
+      function activate(sec) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute('data-sec') === sec;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-sec') === sec);
+        });
+        try {
+          history.replaceState(null, '', '#' + sec);
+        } catch (e) { /* ignore */ }
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { activate(t.getAttribute('data-sec')); });
+      });
+      // Restore from hash on load
+      var hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash && document.getElementById('panel-' + hash)) {
+        activate(hash);
+      }
+    })();
+  </script>
+</body>
+</html>
